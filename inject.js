@@ -104,12 +104,21 @@ function calculateWeightedGPA() {
 		
 		
 		
-		let unweighted = weightaverage - gpa_sub / gpa_cnt;
-        console.log(unweighted);
+		let weighted = weightaverage - gpa_sub / gpa_cnt;
+        console.log(weighted);
         // Display GPA
         let gpa_container = document.createElement("div");
         gpa_container.style = "float:right; margin-right:5px;";
-        gpa_container.innerHTML = "<h2 class=\"sf_heading\">Weighted GPA: " + (Math.round(unweighted * 1000) / 1000).toString() + "</h2>";
+        gpa_container.innerHTML = "<h2 class=\"sf_heading\">|| Weighted GPA: " + (Math.round(weighted * 1000) / 1000).toString() + "</h2>";
+		
+		let detectNaN = weighted;
+		detectNaN = +detectNaN || 0;
+		if(detectNaN === 0){
+			gpa_container.innerHTML = "<h2 class=\"sf_heading\">|| Select class weights to see weighted GPA </h2>";
+		}
+		
+		console.log(detectNaN)
+		console.log(gpa_container.innerHTML)
         container.prepend(gpa_container);
     }
 };
