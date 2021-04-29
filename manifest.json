@@ -1,0 +1,29 @@
+{
+    "name": "Skyward thing",
+    "description": "Skyward Script Thing idk",
+    "version": "0.1",
+    "permissions": [
+        "https://skyward.allenisd.org/*",
+        "http://skyward.allenisd.org/*",
+        "tabs"
+		"storage"
+    ],
+    "browser_action": {
+        "default_icon": "icon.png"
+    },
+    "content_scripts": [
+        {
+        "matches": [
+            "https://skyward.allenisd.org/*",
+            "http://skyward.allenisd.org/*"
+            ],
+        "js": ["inject.js"],
+        "run_at": "document_end"
+        }
+    ],
+	"browser_action": {
+        "default_title": "Reee",
+        "default_popup": "popup.html"
+    },
+    "manifest_version": 2
+}
