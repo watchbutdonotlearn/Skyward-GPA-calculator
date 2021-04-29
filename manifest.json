@@ -5,7 +5,7 @@
     "permissions": [
         "https://skyward.allenisd.org/*",
         "http://skyward.allenisd.org/*",
-        "tabs"
+        "tabs",
 		"storage"
     ],
     "browser_action": {
