@@ -3,8 +3,8 @@
     "description": "Skyward Script Thing idk",
     "version": "0.1",
     "permissions": [
-        "https://skyward.allenisd.org/*",
-        "http://skyward.allenisd.org/*",
+        "http://*/scripts/wsisa.dll/WService=wsEAplus/*",
+		"https://*/scripts/wsisa.dll/WService=wsEAplus/*",
         "tabs",
 	"storage"
     ],
@@ -14,7 +14,8 @@
     "content_scripts": [
         {
         "matches": [
-            "*/scripts/wsisa.dll/WService=wsEAplus/*"
+            "http://*/scripts/wsisa.dll/WService=wsEAplus/*",
+			"https://*/scripts/wsisa.dll/WService=wsEAplus/*"
         ],
         "js": ["inject.js"],
         "run_at": "document_end"
