@@ -5,8 +5,6 @@ var scriptTag = document.createElement("script");
 scriptTag.innerHTML = myJavaScript;
 document.head.appendChild(scriptTag); 
 
-setInterval(function(){gUsrIdle.clearIdle();console.log('lmao1');}, 10000);
-
 let url = location.href;
 let page = url.split("/scripts/wsisa.dll/WService=wsEAplus/")[1];
 console.log("[DEBUG] page = " + page);
@@ -67,15 +65,19 @@ function calculateGPA() {
     container.prepend(gpa_container);
 };
 
-
 //get weights
-
 if(page == "sfgradebook001.w"){
     chrome.storage.local.get(['storedGPA1', 'storedGPA2', 'storedGPA3', 'storedGPA4', 'storedGPA5', 'storedGPA6', 'storedGPA7'], function(data){
         console.log(data)
         let weightsum = 0.0;
+        let data_len = 0;
         for(let [key, value] of Object.entries(data)){
             weightsum += parseFloat(value);
+            data_len++;
+        }
+        if(data_len < 7){
+            weightsum = NaN;
+            console.log(weightsum);
         }
         console.log(weightsum);
         weightaverage = weightsum / 7;
