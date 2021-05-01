@@ -12,6 +12,12 @@
   left: 8px;
 }
 
+.settingspage {
+  position: absolute;
+  top: 50px;
+  left: 8px;
+}
+
 .class1 {
   position: absolute;
   top: 50px;
@@ -76,7 +82,7 @@
   
   <p>Version 0.1</p>
   <button id="popupBtn">Select GPA weights</button>
-  
+  <button id="popupBtn2">Settings</button>
   </div>
   
   
@@ -183,6 +189,23 @@
 	
 	</div>
 	
+	
+	<div class="settingspage" id="settingsdiv">
+	<form id="algorithmsetting" name="algorithmForm">
+    <div class="alorithm">
+    Algorithm to use when calculating GPA:
+  
+    <input type="radio" id="Alg1" name="algorithm" value="1">
+  <label for="4">Subtraction</label> 
+  <input type="radio" id="Alg2" name="algorithm" value="2">
+  <label for="4.5">Simple Average</label>
+    </div>
+	(Default: Subtraction)
+	<p>NOTE: THIS FEATURE HAS NOT BEEN IMPLEMENTED YET, SO FAR THE ONLY ALGORITHM AVAILABLE IS SUBTRACTION</p>
+    </form>
+	<button id="closeSettings">Save and exit to main page</button>
+	<button id="closeSettingsNoSave">Exit without saving</button>
+	</div>
 	
 	<script src="background.js"></script>
 	
