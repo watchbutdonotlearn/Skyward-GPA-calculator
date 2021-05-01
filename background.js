@@ -7,6 +7,15 @@ function myFunction() {
   }
 }
 
+function myFunction3() {
+  var x = document.getElementById("settingsdiv");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
 function myFunction2() {
   var z = document.getElementById("mainPage");
   if (z.style.display === "none") {
@@ -19,6 +28,8 @@ function myFunction2() {
 var y = document.getElementById("weightselectordiv");
 y.style.display = "none";
 
+var z = document.getElementById("settingsdiv");
+z.style.display = "none";
 /* document.getElementById('popupBtn').addEventListener('click', showhide);
  */
 
@@ -28,6 +39,10 @@ window.onload=function(){
 	document.getElementById('closeWeight').addEventListener('click', getGPAValues);
 	document.getElementById('closeNoSave').addEventListener('click', showhide);
 	document.getElementById('closeNoSave').addEventListener('click', returnWeights);
+	document.getElementById('popupBtn2').addEventListener('click', showhide2);
+	document.getElementById('closeSettings').addEventListener('click', showhide2);
+	document.getElementById('closeSettings').addEventListener('click', getAlgorithm);
+	document.getElementById('closeSettingsNoSave').addEventListener('click', showhide2);
 	
 	/* var i;
 	for (i = 1; i < 8; i++){
@@ -77,12 +92,44 @@ window.onload=function(){
 	}
 	
 	returnWeights();
+	
+	function returnAlgorithm(){
+		chrome.storage.local.get(['storedAlgorithm'] , function(items) {
+			console.log(items.storedAlgorithm);
+			let algValue = items.storedAlgorithm;
+			algValue = +algValue || 0;
+			var algValueCorrected = algValue;
+			if(algValue === 0){
+				chrome.storage.local.set({storedAlgorithm: 1});
+				console.log("changing stored algorithm from blank to default value of 1")
+				algValueCorrected = 1;
+			}
+			//change radio of settings to saved value
+			let getRadioId = "Alg" + algValueCorrected.toString();
+			console.log(getRadioId);
+			let getFormId = "algorithmsetting";
+			const selectedItem = document.getElementById(getRadioId);
+			console.log(selectedItem);
+			const newItem1 = document.createElement('radio');
+			newItem1.innerHTML = '<input type="radio" id="Alg' + algValue + '" name="algorithm" value="' + algValue + '" checked="checked">';
+			selectedItem.parentNode.replaceChild(newItem1, selectedItem);
+		})
+	}
+	returnAlgorithm();
+	
 }
 function showhide(){
     console.log("ok this works i guess lol");
 	myFunction();
 	myFunction2();
 }
+
+function showhide2(){
+	console.log("ok this works i guess lol");
+	myFunction2();
+	myFunction3();
+}
+
 
 function getGPAValues(){
 	//begin saving the GPA weights to variables
@@ -109,4 +156,10 @@ function getGPAValues(){
 	chrome.storage.local.set({storedGPA5: gpa5});
 	chrome.storage.local.set({storedGPA6: gpa6});
 	chrome.storage.local.set({storedGPA7: gpa7});
+}
+
+function getAlgorithm(){
+	let algorithmValue = document.forms.algorithmForm.algorithm.value;
+	console.log(algorithmValue);
+	chrome.storage.local.set({storedAlgorithm: algorithmValue});
 }
