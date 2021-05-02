@@ -42,7 +42,6 @@ function calculateGPA() {
                 let c_child = child.children[j];
                 if(c_child.children[0].innerHTML.length < 10) continue;
                 final_grade = parseInt(c_child.children[0].children[0].innerHTML);
-				//console.log(final_grade);
             }
             //console.log(final_grade);
 			if(final_grade === -1) continue;
@@ -53,7 +52,6 @@ function calculateGPA() {
 				classSum += final_grade;
 				let pushClassArray = classSumArray.push(classSum / 2);
 				classSum = 0;
-				//console.log(classSumArray);
 			}else{
 				//gpa_cnt is an odd number
 				classSum += final_grade;
@@ -65,7 +63,6 @@ function calculateGPA() {
 	let preGPAsum = 0
 	for(let i=0; i < 7; i++){
 		preGPAw = weightArray[i] * classSumArray[i] * 0.01;
-		//console.log(preGPAw);
 		preGPAsum = preGPAsum + preGPAw;
 		preGPAw = 0;
 	}
@@ -75,12 +72,12 @@ function calculateGPA() {
 	preGPAsum = 0
 	for(let i=0; i < 7; i++){
 		preGPAu = 4 * classSumArray[i] * 0.01;
-		//console.log(preGPAu);
 		preGPAsum = preGPAsum + preGPAu;
 		preGPAu = 0;
 	}
 	var gpaAverageU = preGPAsum / 7;
 	console.log(gpaAverageU);
+	console.log(classSumArray);
 	//subtraction formula
 	console.log(gpa_sub + " " + gpa_cnt);
     let unweighted = 4.0 - gpa_sub / gpa_cnt;
@@ -112,7 +109,7 @@ function calculateGPA() {
     }
     gpa_container.innerHTML = GPAstr;
     console.log(detectNaN);
-    console.log(gpa_container.innerHTML)
+    console.log(gpa_container.innerHTML);
     container.prepend(gpa_container);
 };
 
@@ -125,7 +122,6 @@ function something(){
 		if(senseNaN === 0){
 			algNumber = 1;
 		}
-		console.log(algNumber);
 	});
 }
 something();
@@ -143,7 +139,6 @@ if(page == "sfgradebook001.w"){
 		console.log(weightArray);
         if(data_len < 7){
             weightsum = NaN;
-            console.log(weightsum);
         }
         console.log(weightsum);
         weightaverage = weightsum / 7;
