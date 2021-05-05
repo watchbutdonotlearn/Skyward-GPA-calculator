@@ -200,11 +200,30 @@
   <input type="radio" id="Alg2" name="algorithm" value="2">
   <label for="4.5">Simple Average</label>
     </div>
-	(Some school districts use different methods of calculating GPA. The subtraction algorithm is where each percentage point from 100 is a reduction of 0.05 from its class weight. The simple average algorithm is where the percentage score in each class is multiplied by the class weight, divided by 100, then averaged.)
+	(Some school districts use different methods of calculating GPA. The subtraction algorithm is where each percentage point from 100 is a reduction of 0.05 from its class weight. The simple average algorithm is where the percentage score in each class is multiplied by the class weight, divided by 100, then averaged. Default is subtraction.)
     </form>
+	
+	<form id="divnumbersetting" name="divnumberForm">
+    <div class="divnumber">
+    Number of grade boxes
+  
+    <input type="radio" id="gradeDiv1" name="gradeDivNumber" value="1">
+  <label for="4">1</label> 
+  <input type="radio" id="gradeDiv2" name="gradeDivNumber" value="2">
+  <label for="4.5">2</label>
+    </div>
+	(Some people may have multiple boxes in their gradebook for grades, the first one of which may be blank. If this is so, click the second option. Default is 1.)
+    </form>
+	
+	
 	<button id="closeSettings">Save and exit to main page</button>
 	<button id="closeSettingsNoSave">Exit without saving</button>
 	</div>
+	
+	
+	
+	
+	
 	
 	<script src="background.js"></script>
 	
