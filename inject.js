@@ -16,13 +16,27 @@ var weightArray = [];
 function calculateGPA() {
     let container = document.getElementById("printGradesContainer"); // Get main node
     // Find grade node
-    let grade_container = null;
+    let counterthing = 1;
+	let grade_container = null;
     for(let i = 0; i < container.children.length; i++){
         let child = container.children[i];
-        if(child.id.substring(0, 18) === "grid_stuGradesGrid"){
-            grade_container = child;
-            break;
-        }
+        if(numberOfGradeDivs == 1){
+			console.log('number of grade divs is 1')
+			if(child.id.substring(0, 18) === "grid_stuGradesGrid"){
+				grade_container = child;
+				break;
+			}
+		}else{
+			console.log('number of grade divs is 2')
+			if(child.id.substring(0, 18) === "grid_stuGradesGrid"){
+				counterthing++
+				if(counterthing === 2){
+					continue;
+				}
+				grade_container = child;
+				break;
+			}
+		}
     }
     if(grade_container === null){
         console.log("[ERROR] Grades not found");
@@ -125,6 +139,21 @@ function something(){
 	});
 }
 something();
+
+var numberOfGradeDivs;
+function something2(){
+	chrome.storage.local.get(['storedGradesDivNum'], function(data){
+		console.log(data);
+		numberOfGradeDivs = data.storedGradesDivNum;
+		let senseNaN = numberOfGradeDivs;
+		senseNaN = +senseNaN || 0;
+		if(senseNaN === 0){
+			numberOfGradeDivs = 1;
+		}
+		console.log(numberOfGradeDivs)
+	});
+}
+something2();
 
 //get weights
 if(page == "sfgradebook001.w"){
