@@ -1,28 +1,28 @@
 function myFunction() {
-  var x = document.getElementById("weightselectordiv");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+	var x = document.getElementById("weightselectordiv");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
 }
 
 function myFunction3() {
-  var x = document.getElementById("settingsdiv");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+	var x = document.getElementById("settingsdiv");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
 }
 
 function myFunction2() {
-  var z = document.getElementById("mainPage");
-  if (z.style.display === "none") {
-    z.style.display = "block";
-  } else {
-    z.style.display = "none";
-  }
+	var z = document.getElementById("mainPage");
+	if (z.style.display === "none") {
+		z.style.display = "block";
+	} else {
+		z.style.display = "none";
+	}
 }
 
 var y = document.getElementById("weightselectordiv");
@@ -42,6 +42,7 @@ window.onload=function(){
 	document.getElementById('popupBtn2').addEventListener('click', showhide2);
 	document.getElementById('closeSettings').addEventListener('click', showhide2);
 	document.getElementById('closeSettings').addEventListener('click', getAlgorithm);
+	document.getElementById('closeSettings').addEventListener('click', storeDivNumberGrades);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', showhide2);
 	
 	/* var i;
@@ -117,6 +118,30 @@ window.onload=function(){
 	}
 	returnAlgorithm();
 	
+	function returndivgrades(){
+		chrome.storage.local.get(['storedGradesDivNum'] , function(items) {
+			console.log(items.storedGradesDivNum);
+			let numValue = items.storedGradesDivNum;
+			numValue = +numValue || 0;
+			var numValueCorrected = numValue;
+			if(numValue === 0){
+				chrome.storage.local.set({storedGradesDivNum: 1});
+				console.log("changing stored grade div number from blank to default value of 1")
+				numValueCorrected = 1;
+			}
+			//change radio of settings to saved value
+			let getRadioId = "gradeDiv" + numValueCorrected.toString();
+			console.log(getRadioId);
+			let getFormId = "divnumbersetting";
+			const selectedItem = document.getElementById(getRadioId);
+			console.log(selectedItem);
+			const newItem1 = document.createElement('radio');
+			newItem1.innerHTML = '<input type="radio" id="divNumber' + numValue + '" name="gradeDivNumber" value="' + numValue + '" checked="checked">';
+			selectedItem.parentNode.replaceChild(newItem1, selectedItem);
+		})
+	}
+	returndivgrades();
+	
 }
 function showhide(){
     console.log("ok this works i guess lol");
@@ -162,4 +187,10 @@ function getAlgorithm(){
 	let algorithmValue = document.forms.algorithmForm.algorithm.value;
 	console.log(algorithmValue);
 	chrome.storage.local.set({storedAlgorithm: algorithmValue});
+}
+
+function storeDivNumberGrades(){
+	let gradesDivNumberValue = document.forms.divnumberForm.gradeDivNumber.value;
+	console.log(gradesDivNumberValue);
+	chrome.storage.local.set({storedGradesDivNum: gradesDivNumberValue});
 }
