@@ -1,6 +1,6 @@
 {
-    "name": "Skyward thing",
-    "description": "Skyward Script Thing idk",
+    "name": "Skyward GPA Calculator - And More",
+    "description": "This is an extension which injects various scripts into Skyward, to calculate GPA and perform other tasks, such as disabling the idle logout prompt.",
     "version": "0.1",
     "permissions": [
         "http://*/scripts/wsisa.dll/WService=wsEAplus/*",
@@ -8,9 +8,20 @@
         "tabs",
 	"storage"
     ],
-    "browser_action": {
-        "default_icon": "icon.png"
-    },
+	"icons": {                   
+		"16": "icon16.png",
+		"38": "icon38.png",
+		"48": "icon48.png",
+		"128": "icon128.png"  
+	},    
+	"browser_action": {
+		"default_icon": {                   
+			"16": "icon16.png",
+			"38": "icon38.png",
+			"48": "icon48.png",
+			"128": "icon128.png"  
+		}
+	},
     "content_scripts": [
         {
         "matches": [
