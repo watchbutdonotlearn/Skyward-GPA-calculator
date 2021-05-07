@@ -38,7 +38,14 @@ function calculateGPA() {
 			}
 		}
     }
+	console.log(grade_container)
     if(grade_container === null){
+        console.log("[ERROR] Grades not found");
+        return;
+    }
+	let detectUndefined = grade_container;
+	//detectUndefined = +detectUndefined || 0;
+	if(detectUndefined === undefined){
         console.log("[ERROR] Grades not found");
         return;
     }
