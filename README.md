@@ -20,10 +20,10 @@ Examples:
 The default popup window:
 
 
-![Default popup window](https://media.discordapp.net/attachments/826866653844602922/838997937051664404/unknown.png)
+![Default popup window](https://cdn.discordapp.com/attachments/826866653844602922/840098256754704384/unknown.png)
 
 
 An example of the extension working:
 
 
-![script in action](http://elfly.pythonanywhere.com/s.png)
+![script in action](https://cdn.discordapp.com/attachments/826866653844602922/840098423583539210/687474703a2f2f656c666c792e707974686f6e616e7977686572652e636f6d2f732e706e67.png)
