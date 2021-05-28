@@ -66,6 +66,11 @@
   left: 8px;
 }
 
+.class9 {
+  position: absolute;
+  top: 210px;
+  left: 8px;
+}
 
   </style>
   
@@ -73,7 +78,7 @@
  
         <h1>Skyward GPA Calculator</h1>
        
-       <img src='Skyward.png' id='skywardimg'width="380" height="310"> 
+       <img src='Skyward.png' id='skywardimg'width="418" height="341"> 
   
   
   
@@ -183,10 +188,24 @@
     </div>
     </form>
 	
-	<div class="class8">
+	<form id="form8" name="GPAform8">
+    <div class="class8">
+    Class 8 Weight
+  
+    <input type="radio" id="4-8" name="GPA" value="4">
+  <label for="4">4</label> 
+  <input type="radio" id="4.5-8" name="GPA" value="4.5">
+  <label for="4.5">4.5</label>
+  <input type="radio" id="5.0-8" name="GPA" value="5.0">
+  <label for="5">5</label>
+    </div>
+    </form>
+	
+	<div class="class9">
+	<p>Leave any classes you don't have blank. Enter in the order that they appear in skyward.</p>
+	<p><button id="clearWeightSelections">Clear selections</button></p>
 	<button id="closeWeight">Save and exit to main page</button>
 	<button id="closeNoSave">Exit without saving</button>
-	
 	</div>
 	
 	</div>
@@ -207,7 +226,7 @@
 	
 	<form id="divnumbersetting" name="divnumberForm">
     <div class="divnumber">
-    Number of grade boxes
+    <strong>Number of grade boxes:</strong>
   
     <input type="radio" id="gradeDiv1" name="gradeDivNumber" value="1">
   <label for="4">1</label> 
