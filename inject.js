@@ -79,24 +79,36 @@ function calculateGPA() {
 			}
         }
     }
-    //average formula weighted
+    let finalerrormessage = 0;
+	//average formula weighted
 	let preGPAw = 0;
-	let preGPAsum = 0
-	for(let i=0; i < 7; i++){
+	let preGPAsum = 0;
+	let numberOfGrades = classSumArray.length;
+	let numberOfGrades1 = classSumArray.length;
+	if(numberOfGrades > numberOfWeights){
+		console.log(numberOfGrades.toString() + 'grades found, but only' + numberOfWeights.toString() + 'weights selected.');
+		finalerrormessage = 2;
+		numberOfGrades1 = numberOfWeights;
+	}
+	if(numberOfGrades < numberOfWeights){
+		finalerrormessage = 3;
+		console.log(numberOfGrades.toString() + ' grades found, but ' + numberOfWeights.toString() + ' weights selected');
+	}
+	for(let i=0; i < numberOfGrades1; i++){
 		preGPAw = weightArray[i] * classSumArray[i] * 0.01;
 		preGPAsum = preGPAsum + preGPAw;
 		preGPAw = 0;
 	}
-	var gpaAverageW = preGPAsum / 7;
+	var gpaAverageW = preGPAsum / numberOfGrades1;
 	console.log(gpaAverageW);
 	let preGPAu = 0;
 	preGPAsum = 0
-	for(let i=0; i < 7; i++){
+	for(let i=0; i < numberOfGrades; i++){
 		preGPAu = 4 * classSumArray[i] * 0.01;
 		preGPAsum = preGPAsum + preGPAu;
 		preGPAu = 0;
 	}
-	var gpaAverageU = preGPAsum / 7;
+	var gpaAverageU = preGPAsum / numberOfGrades;
 	console.log(gpaAverageU);
 	console.log(classSumArray);
 	//subtraction formula
@@ -121,11 +133,23 @@ function calculateGPA() {
 	let gpa_container = document.createElement("div");
     gpa_container.style = "float:right; margin-right:5px;";
     let GPAstr = "<h2 class=\"sf_heading\">Unweighted GPA: " + (Math.round(finalUnweightedNumber * 1000) / 1000).toString() + " || ";
-    let detectNaN = weighted;
+    let detectNaN = weightaverage;
     detectNaN = +detectNaN || 0;
-    if(detectNaN === 0){
+    /* if(numberOfWeights != classSumArray.length){
+		weighted = NaN;
+	} */
+	if(detectNaN === 0){
+		finalerrormessage = 1;
+	}
+	
+	if(finalerrormessage === 1){
         GPAstr += "Select class weights to see weighted GPA </h2>";
-    }else{
+    }else if(finalerrormessage === 2){
+		GPAstr += numberOfGrades.toString() + ' grades found, but only ' + numberOfWeights.toString() + ' weights selected'
+	}else if(finalerrormessage === 3){
+		GPAstr += numberOfGrades.toString() + ' grades found, but ' + numberOfWeights.toString() + ' weights selected'
+	}
+	else{
         GPAstr += "Weighted GPA: " + (Math.round(finalWeightedNumber * 1000) / 1000).toString() + "</h2>"   
     }
     gpa_container.innerHTML = GPAstr;
@@ -163,21 +187,31 @@ function something2(){
 something2();
 
 //get weights
+var numberOfWeights;
 if(page == "sfgradebook001.w"){
-    chrome.storage.local.get(['storedGPA1', 'storedGPA2', 'storedGPA3', 'storedGPA4', 'storedGPA5', 'storedGPA6', 'storedGPA7'], function(data){
+    chrome.storage.local.get(['storedGPA1', 'storedGPA2', 'storedGPA3', 'storedGPA4', 'storedGPA5', 'storedGPA6', 'storedGPA7', 'storedGPA8'], function(data){
 		let weightsum = 0.0;
         let data_len = 0;
 		for(let [key, value] of Object.entries(data)){
-            weightsum += parseFloat(value);
             data_len++;
+			let value1 = value;
+			if(!!value == false){
+				value1 = 0;
+			}
+			weightsum += parseFloat(value1);
 			pushWeightArray = weightArray.push(parseFloat(value));
         }
 		console.log(weightArray);
-        if(data_len < 7){
+		weightArray = weightArray.filter(e => (e === 0 || e));
+		console.log(weightArray);
+		numberOfWeights = weightArray.length;
+		console.log(numberOfWeights);
+		console.log(weightsum);
+        if(data_len < 8){
             weightsum = NaN;
         }
         console.log(weightsum);
-        weightaverage = weightsum / 7;
+        weightaverage = weightsum / numberOfWeights;
         console.log(weightaverage);
         
 		calculateGPA();
