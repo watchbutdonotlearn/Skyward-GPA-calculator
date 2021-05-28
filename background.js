@@ -30,8 +30,6 @@ y.style.display = "none";
 
 var z = document.getElementById("settingsdiv");
 z.style.display = "none";
-/* document.getElementById('popupBtn').addEventListener('click', showhide);
- */
 
 window.onload=function(){
     document.getElementById('popupBtn').addEventListener('click', showhide);
@@ -44,22 +42,14 @@ window.onload=function(){
 	document.getElementById('closeSettings').addEventListener('click', getAlgorithm);
 	document.getElementById('closeSettings').addEventListener('click', storeDivNumberGrades);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', showhide2);
+	document.getElementById('closeSettingsNoSave').addEventListener('click', returndivgrades);
+	document.getElementById('closeSettingsNoSave').addEventListener('click', returnAlgorithm);
+	document.getElementById('clearWeightSelections').addEventListener('click', clearWeightForms);
 	
-	/* var i;
-	for (i = 1; i < 8; i++){
-		console.log(i);
-		let toGetStorage = ['storedGPA' + i.toString()];
-		var storedGPAweight;
-		chrome.storage.local.get(toGetStorage, function(data){
-			let storedGPAweight = data.toGetStorage;
-			
-		})
-		console.log(storedGPAweight)
-		
-	} */
 	function returnWeights(){
+		clearRads();
 		var i = 1;
-		for(i=1; i<8; i++){(function(mykey) {
+		for(i=1; i<9; i++){(function(mykey) {
 			console.log(i);
 			//Now get value from Chrome Storage using this myKey.
 			mykey = 'storedGPA' + i;
@@ -68,25 +58,17 @@ window.onload=function(){
 				someValue = items[mykey];
 				console.log(someValue);
 				let seeIfUndefined = someValue;
-				seeIfUndefined = +seeIfUndefined || 0
+				seeIfUndefined = +seeIfUndefined || 0;
 				if(seeIfUndefined === 0){
 					console.log('Weights currently unselected')
-					
 				}else{
 					let getRadioId = someValue.toString() + '-' + a.toString();
 					console.log(getRadioId);
 					let getFormId = 'form' + someValue.toString();
-					// document.getElementById(getRadioId).innerHTML = '<input type="radio" id="' + getRadioId + '" name="GPA" value="' + someValue + '">';
 					const selectItem = document.getElementById(getRadioId);
 					const newItem = document.createElement('radio');
 					newItem.innerHTML = '<input type="radio" id="' + getRadioId + '" name="GPA" value="' + someValue + '" checked="checked">';
 					selectItem.parentNode.replaceChild(newItem, selectItem);
-					
-					
-					/* const selectItem = document.getElementById(getFormId);
-					const newItem = document.createElement('form');
-					newItem.innerHTML = '<form id="form' + a + '" name="GPAform7"><div class="class' + a + '">Class ' + a + ' Weight<input type="radio" id="4-' + a + '" name="GPA" value="4"><label for="4">4</label> <input type="radio" id="4.5-' + a + '" name="GPA" value="4.5"><label for="4.5">4.5</label><input type="radio" id="5.0-' + 7 + '" name="GPA" value="5.0"><label for="5">5</label></div></form>';
-					*/
 				}
 			});
 		}('storedGPA' + i.toString()))}
@@ -136,7 +118,7 @@ window.onload=function(){
 			const selectedItem = document.getElementById(getRadioId);
 			console.log(selectedItem);
 			const newItem1 = document.createElement('radio');
-			newItem1.innerHTML = '<input type="radio" id="divNumber' + numValue + '" name="gradeDivNumber" value="' + numValue + '" checked="checked">';
+			newItem1.innerHTML = '<input type="radio" id="gradeDiv' + numValue + '" name="gradeDivNumber" value="' + numValue + '" checked="checked">';
 			selectedItem.parentNode.replaceChild(newItem1, selectedItem);
 		})
 	}
@@ -172,6 +154,8 @@ function getGPAValues(){
 	console.log(gpa6);
 	var gpa7 = document.forms.GPAform7.GPA.value;
 	console.log(gpa7);
+	var gpa8 = document.forms.GPAform8.GPA.value;
+	console.log(gpa8);
 	
 	// begin storing variables in local storage
 	chrome.storage.local.set({storedGPA1: gpa1});
@@ -181,12 +165,25 @@ function getGPAValues(){
 	chrome.storage.local.set({storedGPA5: gpa5});
 	chrome.storage.local.set({storedGPA6: gpa6});
 	chrome.storage.local.set({storedGPA7: gpa7});
+	chrome.storage.local.set({storedGPA8: gpa8});
 }
 
 function getAlgorithm(){
 	let algorithmValue = document.forms.algorithmForm.algorithm.value;
 	console.log(algorithmValue);
 	chrome.storage.local.set({storedAlgorithm: algorithmValue});
+}
+
+function clearRads() {
+	var radList = document.getElementsByName("GPA");
+	for (var i = 0; i < radList.length; i++) {
+		if(radList[i].checked) document.getElementById(radList[i].id).checked = false;
+	}
+}
+
+function clearWeightForms(){
+	let currentform = "";
+	clearRads();
 }
 
 function storeDivNumberGrades(){
