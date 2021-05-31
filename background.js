@@ -1,10 +1,39 @@
 function myFunction() {
 	var x = document.getElementById("weightselectordiv");
+	var GPAForms = document.getElementsByClassName("GPAForm");
+	var openSkyward = document.getElementById("openSkyward");
+	var GPAFormHolder = document.getElementById("GPAFormHolder")
 	if (x.style.display === "none") {
 		x.style.display = "block";
 	} else {
 		x.style.display = "none";
 	}
+	chrome.storage.local.get(['numberOfClasses', 'classNames'], function(data){
+		console.log('Number Of Classes (from storage): ')
+		console.log(data)
+		if(!data.numberOfClasses || !data.classNames) {
+			openSkyward.style.display = 'block';
+		}
+		else {
+			let biggestClassTitleWidth = 0;
+			openSkyward.style.display = 'none';
+			GPAFormHolder.style.display = "block";
+			console.log(GPAForms)
+			for (let i = 0; i < GPAForms.length; i++) {
+				if(i < parseInt(data['numberOfClasses'])) {
+					GPAForms[i].style.display = "block";
+					let classTitleEl = GPAForms[i].getElementsByClassName('classTitle')[0]
+					classTitleEl.innerHTML = data.classNames[i]
+					if(classTitleEl.offsetWidth > biggestClassTitleWidth) biggestClassTitleWidth = classTitleEl.offsetWidth
+				}
+			}
+			console.log('biggestClassTitleWidth: '+biggestClassTitleWidth+"px")
+			let classTitles = document.getElementsByClassName('classTitle')
+			for (let o = 0; o < classTitles.length; o++) {
+				classTitles[o].style.minWidth = `${biggestClassTitleWidth+20}px`	
+			}
+		}
+	})
 }
 
 function myFunction3() {
@@ -141,21 +170,21 @@ function showhide2(){
 function getGPAValues(){
 	//begin saving the GPA weights to variables
 	var gpa1 = document.forms.GPAform1.GPA.value;
-	console.log(gpa1);
+	console.log("GPA1 Form Value:"+gpa1);
 	var gpa2 = document.forms.GPAform2.GPA.value;
-	console.log(gpa2);
+	console.log("GPA2 Form Value:"+gpa2);
 	var gpa3 = document.forms.GPAform3.GPA.value;
-	console.log(gpa3);
+	console.log("GPA3 Form Value:"+gpa3);
 	var gpa4 = document.forms.GPAform4.GPA.value;
-	console.log(gpa4);
+	console.log("GPA4 Form Value:"+gpa4);
 	var gpa5 = document.forms.GPAform5.GPA.value;
-	console.log(gpa5);
+	console.log("GPA5 Form Value:"+gpa5);
 	var gpa6 = document.forms.GPAform6.GPA.value;
-	console.log(gpa6);
+	console.log("GPA6 Form Value:"+gpa6);
 	var gpa7 = document.forms.GPAform7.GPA.value;
-	console.log(gpa7);
+	console.log("GPA7 Form Value:"+gpa7);
 	var gpa8 = document.forms.GPAform8.GPA.value;
-	console.log(gpa8);
+	if(gpa8) console.log("GPA8 Form Value:"+gpa8);
 	
 	// begin storing variables in local storage
 	chrome.storage.local.set({storedGPA1: gpa1});
