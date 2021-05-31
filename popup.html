@@ -18,6 +18,13 @@
   left: 8px;
 }
 
+.selectWeights {
+  position: absolute;
+  top: 0px;
+  left: 8px;
+  width: 98%;
+}
+
 .class1 {
   position: absolute;
   top: 50px;
@@ -72,183 +79,154 @@
   left: 8px;
 }
 
-  </style>
-  
-  <body>
- 
-        <h1>Skyward GPA Calculator</h1>
-       
-       <img src='Skyward.png' id='skywardimg'width="418" height="341"> 
-  
-  
-  
-  
-  <!-- main -->
-  <div class="Main" id="mainPage">
-  
-  
-  <button id="popupBtn">Select GPA weights</button>
-  <button id="popupBtn2">Settings</button>
-  <p>Version 0.1</p>
-  </div>
-  
-  
-  
-  
-  <!-- :kekw: -->
-  <div class="Selectweights" id="weightselectordiv">
-  <form id="form1" name="GPAform1">
-    <div class="class1">
-    Class 1 Weight
-  
-    <input type="radio" id="4-1" name="GPA" value="4">
-  <label for="4">4</label> 
-  <input type="radio" id="4.5-1" name="GPA" value="4.5">
-  <label for="4.5">4.5</label>
-  <input type="radio" id="5.0-1" name="GPA" value="5.0">
-  <label for="5">5</label>
+.GPAForm {
+  display: none;
+}
 
+.classTitle {
+  display: inline-block;
+}
+
+  </style>
+  <body>
+    <!-- Elements Present on All Pages -->
+    <h1>Skyward GPA Calculator</h1>
+    <img src='Skyward.png' id='skywardimg'width="418" height="341"> 
+    
+    <!-- Main page -->
+    <div class="Main" id="mainPage">
+        <button id="popupBtn">Select GPA weights</button>
+        <button id="popupBtn2">Settings</button>
+        <p>Version 0.1</p>
     </div>
-    </form>
-	  <form id="form2" name="GPAform2">
-    <div class="class2">
-    Class 2 Weight
-  
-    <input type="radio" id="4-2" name="GPA" value="4">
-  <label for="4">4</label> 
-  <input type="radio" id="4.5-2" name="GPA" value="4.5">
-  <label for="4.5">4.5</label>
-  <input type="radio" id="5.0-2" name="GPA" value="5.0">
-  <label for="5">5</label>
+
+    <!-- SelectWeights page -->
+    <div class="selectWeights" id="weightselectordiv">
+        <div id="openSkyward" style="display: none;">
+          <h1>Please Open Skyward first to allow the extension to gather the numbers/names of your classes.</h1>
+        </div>
+        <div id="GPAFormHolder" style="display: none;">
+          <form id="form1" name="GPAform1" class="GPAForm">
+              <div class="class1">
+                <span class="classTitle">Class 1 Weight</span>
+                <input type="radio" id="4-1" name="GPA" value="4">
+                <label for="4">4</label> 
+                <input type="radio" id="4.5-1" name="GPA" value="4.5">
+                <label for="4.5">4.5</label>
+                <input type="radio" id="5.0-1" name="GPA" value="5.0">
+                <label for="5">5</label>
+              </div>
+          </form>
+          <form id="form2" name="GPAform2" class="GPAForm">
+              <div class="class2">
+                <span class="classTitle">Class 2 Weight</span>
+                <input type="radio" id="4-2" name="GPA" value="4">
+                <label for="4">4</label> 
+                <input type="radio" id="4.5-2" name="GPA" value="4.5">
+                <label for="4.5">4.5</label>
+                <input type="radio" id="5.0-2" name="GPA" value="5.0">
+                <label for="5">5</label>
+              </div>
+          </form>
+          <form id="form3" name="GPAform3" class="GPAForm">
+              <div class="class3">
+                <span class="classTitle">Class 3 Weight</span>
+                <input type="radio" id="4-3" name="GPA" value="4">
+                <label for="4">4</label> 
+                <input type="radio" id="4.5-3" name="GPA" value="4.5">
+                <label for="4.5">4.5</label>
+                <input type="radio" id="5.0-3" name="GPA" value="5.0">
+                <label for="5">5</label>
+              </div>
+          </form>
+          <form id="form4" name="GPAform4" class="GPAForm">
+              <div class="class4">
+                <span class="classTitle">Class 4 Weight</span>
+                <input type="radio" id="4-4" name="GPA" value="4">
+                <label for="4">4</label> 
+                <input type="radio" id="4.5-4" name="GPA" value="4.5">
+                <label for="4.5">4.5</label>
+                <input type="radio" id="5.0-4" name="GPA" value="5.0">
+                <label for="5">5</label>
+              </div>
+          </form>
+          <form id="form5" name="GPAform5" class="GPAForm">
+              <div class="class5">
+                <span class="classTitle">Class 5 Weight</span>
+                <input type="radio" id="4-5" name="GPA" value="4">
+                <label for="4">4</label> 
+                <input type="radio" id="4.5-5" name="GPA" value="4.5">
+                <label for="4.5">4.5</label>
+                <input type="radio" id="5.0-5" name="GPA" value="5.0">
+                <label for="5">5</label>
+              </div>
+          </form>
+          <form id="form6" name="GPAform6" class="GPAForm">
+              <div class="class6">
+                <span class="classTitle">Class 6 Weight</span>
+                <input type="radio" id="4-6" name="GPA" value="4">
+                <label for="4">4</label> 
+                <input type="radio" id="4.5-6" name="GPA" value="4.5">
+                <label for="4.5">4.5</label>
+                <input type="radio" id="5.0-6" name="GPA" value="5.0">
+                <label for="5">5</label>
+              </div>
+          </form>
+          <form id="form7" name="GPAform7" class="GPAForm">
+              <div class="class7">
+                <span class="classTitle">Class 7 Weight</span>
+                <input type="radio" id="4-7" name="GPA" value="4">
+                <label for="4">4</label> 
+                <input type="radio" id="4.5-7" name="GPA" value="4.5">
+                <label for="4.5">4.5</label>
+                <input type="radio" id="5.0-7" name="GPA" value="5.0">
+                <label for="5">5</label>
+              </div>
+          </form>
+          <form id="form8" name="GPAform8" class="GPAForm">
+              <div class="class8">
+                <span class="classTitle">Class 8 Weight</span>
+                <input type="radio" id="4-8" name="GPA" value="4">
+                <label for="4">4</label> 
+                <input type="radio" id="4.5-8" name="GPA" value="4.5">
+                <label for="4.5">4.5</label>
+                <input type="radio" id="5.0-8" name="GPA" value="5.0">
+                <label for="5">5</label>
+              </div>
+          </form>
+          <div class="class9">
+              <p>Leave any classes you don't have blank. Enter in the order that they appear in skyward.</p>
+              <p><button id="clearWeightSelections">Clear selections</button></p>
+              <button id="closeWeight">Save and exit to main page</button>
+              <button id="closeNoSave">Exit without saving</button>
+          </div>
+        </div>
     </div>
-    </form>
-	
-	<form id="form3" name="GPAform3">
-    <div class="class3">
-    Class 3 Weight
-  
-    <input type="radio" id="4-3" name="GPA" value="4">
-  <label for="4">4</label> 
-  <input type="radio" id="4.5-3" name="GPA" value="4.5">
-  <label for="4.5">4.5</label>
-  <input type="radio" id="5.0-3" name="GPA" value="5.0">
-  <label for="5">5</label>
+    <div class="settingspage" id="settingsdiv">
+        <form id="algorithmsetting" name="algorithmForm">
+          <div class="alorithm">
+              <strong>Algorithm to use when calculating GPA:</strong>
+              <input type="radio" id="Alg1" name="algorithm" value="1">
+              <label for="4">Subtraction</label> 
+              <input type="radio" id="Alg2" name="algorithm" value="2">
+              <label for="4.5">Simple Average</label>
+          </div>
+          (Some school districts use different methods of calculating GPA. The subtraction algorithm is where each percentage point from 100 is a reduction of 0.05 from its class weight. The simple average algorithm is where the percentage score in each class is multiplied by the class weight, divided by 100, then averaged. Default is subtraction.)
+        </form>
+        <form id="divnumbersetting" name="divnumberForm">
+          <div class="divnumber">
+              <strong>Number of grade boxes:</strong>
+              <input type="radio" id="gradeDiv1" name="gradeDivNumber" value="1">
+              <label for="4">1</label> 
+              <input type="radio" id="gradeDiv2" name="gradeDivNumber" value="2">
+              <label for="4.5">2</label>
+          </div>
+          (Some people may have multiple boxes in their gradebook for grades, the first one of which may be blank. If this is so, click the second option. Default is 1.)
+        </form>
+        <button id="closeSettings">Save and exit to main page</button>
+        <button id="closeSettingsNoSave">Exit without saving</button>
     </div>
-    </form>
-	
-	<form id="form4" name="GPAform4">
-    <div class="class4">
-    Class 4 Weight
-  
-    <input type="radio" id="4-4" name="GPA" value="4">
-  <label for="4">4</label> 
-  <input type="radio" id="4.5-4" name="GPA" value="4.5">
-  <label for="4.5">4.5</label>
-  <input type="radio" id="5.0-4" name="GPA" value="5.0">
-  <label for="5">5</label>
-    </div>
-    </form>
-	
-	<form id="form5" name="GPAform5">
-    <div class="class5">
-    Class 5 Weight
-  
-    <input type="radio" id="4-5" name="GPA" value="4">
-  <label for="4">4</label> 
-  <input type="radio" id="4.5-5" name="GPA" value="4.5">
-  <label for="4.5">4.5</label>
-  <input type="radio" id="5.0-5" name="GPA" value="5.0">
-  <label for="5">5</label>
-    </div>
-    </form>
-	
-	<form id="form6" name="GPAform6">
-    <div class="class6">
-   Class 6 Weight
-  
-    <input type="radio" id="4-6" name="GPA" value="4">
-  <label for="4">4</label> 
-  <input type="radio" id="4.5-6" name="GPA" value="4.5">
-  <label for="4.5">4.5</label>
-  <input type="radio" id="5.0-6" name="GPA" value="5.0">
-  <label for="5">5</label>
-    </div>
-    </form>
-	
-	<form id="form7" name="GPAform7">
-    <div class="class7">
-    Class 7 Weight
-  
-    <input type="radio" id="4-7" name="GPA" value="4">
-  <label for="4">4</label> 
-  <input type="radio" id="4.5-7" name="GPA" value="4.5">
-  <label for="4.5">4.5</label>
-  <input type="radio" id="5.0-7" name="GPA" value="5.0">
-  <label for="5">5</label>
-    </div>
-    </form>
-	
-	<form id="form8" name="GPAform8">
-    <div class="class8">
-    Class 8 Weight
-  
-    <input type="radio" id="4-8" name="GPA" value="4">
-  <label for="4">4</label> 
-  <input type="radio" id="4.5-8" name="GPA" value="4.5">
-  <label for="4.5">4.5</label>
-  <input type="radio" id="5.0-8" name="GPA" value="5.0">
-  <label for="5">5</label>
-    </div>
-    </form>
-	
-	<div class="class9">
-	<p>Leave any classes you don't have blank. Enter in the order that they appear in skyward.</p>
-	<p><button id="clearWeightSelections">Clear selections</button></p>
-	<button id="closeWeight">Save and exit to main page</button>
-	<button id="closeNoSave">Exit without saving</button>
-	</div>
-	
-	</div>
-	
-	
-	<div class="settingspage" id="settingsdiv">
-	<form id="algorithmsetting" name="algorithmForm">
-    <div class="alorithm">
-    <strong>Algorithm to use when calculating GPA:</strong>
-  
-    <input type="radio" id="Alg1" name="algorithm" value="1">
-  <label for="4">Subtraction</label> 
-  <input type="radio" id="Alg2" name="algorithm" value="2">
-  <label for="4.5">Simple Average</label>
-    </div>
-	(Some school districts use different methods of calculating GPA. The subtraction algorithm is where each percentage point from 100 is a reduction of 0.05 from its class weight. The simple average algorithm is where the percentage score in each class is multiplied by the class weight, divided by 100, then averaged. Default is subtraction.)
-    </form>
-	
-	<form id="divnumbersetting" name="divnumberForm">
-    <div class="divnumber">
-    <strong>Number of grade boxes:</strong>
-  
-    <input type="radio" id="gradeDiv1" name="gradeDivNumber" value="1">
-  <label for="4">1</label> 
-  <input type="radio" id="gradeDiv2" name="gradeDivNumber" value="2">
-  <label for="4.5">2</label>
-    </div>
-	(Some people may have multiple boxes in their gradebook for grades, the first one of which may be blank. If this is so, click the second option. Default is 1.)
-    </form>
-	
-	
-	<button id="closeSettings">Save and exit to main page</button>
-	<button id="closeSettingsNoSave">Exit without saving</button>
-	</div>
-	
-	
-	
-	
-	
-	
-	<script src="background.js"></script>
-	
-	
+    <script src="background.js"></script>	
   </body>
 </html>
 
