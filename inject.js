@@ -1,6 +1,6 @@
-console.log("lmao")
+console.log("Attempting to inject script")
 
-var myJavaScript = "setInterval(function(){gUsrIdle.clearIdle();console.log('lmao1');}, 10000);";
+var myJavaScript = "console.log('injected script successfully');setInterval(function(){gUsrIdle.clearIdle();console.log('cleared idle');}, 10000);";
 var scriptTag = document.createElement("script");
 scriptTag.innerHTML = myJavaScript;
 document.head.appendChild(scriptTag); 
@@ -13,7 +13,11 @@ var weightaverage = 4.0;
 var algNumber = 1;
 var classSumArray = [];
 var weightArray = [];
+
 function calculateGPA() {
+
+	getNumberOfClasses()
+
     let container = document.getElementById("printGradesContainer"); // Get main node
     // Find grade node
     let counterthing = 1;
@@ -100,7 +104,7 @@ function calculateGPA() {
 		preGPAw = 0;
 	}
 	var gpaAverageW = preGPAsum / numberOfGrades1;
-	console.log(gpaAverageW);
+	console.log("gpaAverageW: "+gpaAverageW);
 	let preGPAu = 0;
 	preGPAsum = 0
 	for(let i=0; i < numberOfGrades; i++){
@@ -109,17 +113,17 @@ function calculateGPA() {
 		preGPAu = 0;
 	}
 	var gpaAverageU = preGPAsum / numberOfGrades;
-	console.log(gpaAverageU);
-	console.log(classSumArray);
+	console.log("gpaAverageU: "+gpaAverageU);
+	console.log("classSumArray: "+classSumArray);
 	//subtraction formula
 	console.log(gpa_sub + " " + gpa_cnt);
     let unweighted = 4.0 - gpa_sub / gpa_cnt;
     let weighted = weightaverage - gpa_sub / gpa_cnt;
-    console.log(weighted);
+    console.log("weighted: "+weighted);
     //use algorithm value to see which GPA value to use
 	var finalWeightedNumber;
 	var finalUnweightedNumber;
-	console.log(algNumber)
+	console.log("algNumber: "+algNumber)
 	if(algNumber == 1){
 		finalWeightedNumber = weighted;
 		finalUnweightedNumber = unweighted;
@@ -153,7 +157,7 @@ function calculateGPA() {
         GPAstr += "Weighted GPA: " + (Math.round(finalWeightedNumber * 1000) / 1000).toString() + "</h2>"   
     }
     gpa_container.innerHTML = GPAstr;
-    console.log(detectNaN);
+    console.log("detectNaN: "+detectNaN);
     console.log(gpa_container.innerHTML);
     container.prepend(gpa_container);
 };
@@ -216,4 +220,12 @@ if(page == "sfgradebook001.w"){
         
 		calculateGPA();
     });
+}
+
+function getNumberOfClasses() {
+	let length = 0;
+	length = document.getElementsByClassName('cPd vAm bZe tOA gDt3R').length
+	length = length / 2 // 2 Semesters
+	length = length / 2 // 2 Elements per row (title and grades)
+	console.log("Number Of Classes: "+length)
 }
