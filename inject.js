@@ -9,6 +9,33 @@ let url = location.href;
 let page = url.split("/scripts/wsisa.dll/WService=wsEAplus/")[1];
 console.log("[DEBUG] page = " + page);
 
+chrome.storage.local.get(['skywardDarkTheme'], function(data){
+	console.log(data);
+	if(data.skywardDarkTheme == true) {
+		let newElem1 = document.createElement("link")
+		newElem1.rel = "STYLESHEET"
+		newElem1.href = chrome.extension.getURL("css/qsfmain001.css");
+		document.head.appendChild(newElem1);
+		
+		let newElem2 = document.createElement("link")
+		newElem2.rel = "STYLESHEET"
+		newElem2.href = chrome.extension.getURL("css/sfhome001.css");
+		document.head.appendChild(newElem2);
+		
+		let oldCSS = document.getElementsByTagName("link");
+		
+		for (let i = 0; i < oldCSS.length; i++) {
+			const element = oldCSS[i];
+			if(element.href.includes("qcssloader.p?file=qsfmain001.css")) {
+				element.remove();
+			}
+			if(element.href.includes("qcssloader.p?file=sfhome001.cs")) {
+				element.remove();
+			}
+		}
+	}
+});
+
 var weightaverage = 4.0;
 var algNumber = 1;
 var classSumArray = [];
