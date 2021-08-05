@@ -15,6 +15,8 @@
 		"128": "icon128.png"  
 	},    
 	"browser_action": {
+        "default_title": "Reee",
+        "default_popup": "popup.html",
 		"default_icon": {                   
 			"16": "icon16.png",
 			"38": "icon38.png",
@@ -22,6 +24,13 @@
 			"128": "icon128.png"  
 		}
 	},
+    "web_accessible_resources": [
+        "css/qsfmain001.css",
+        "css/sfhome001.css",
+        "sprite/sf_bg_sprite001.png",
+        "sprite/sf_icons_sprite.png",
+        "sprite/sf_icons_sprite.p"
+    ],
     "content_scripts": [
         {
         "matches": [
@@ -32,9 +41,5 @@
         "run_at": "document_end"
         }
     ],
-	"browser_action": {
-        "default_title": "Reee",
-        "default_popup": "popup.html"
-    },
     "manifest_version": 2
 }

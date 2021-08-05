@@ -1,3 +1,9 @@
+function getDarkTheme() {
+	chrome.storage.local.get(['skywardDarkTheme'], function(data){
+		return data.skywardDarkTheme;
+	});
+}
+
 function myFunction() {
 	var x = document.getElementById("weightselectordiv");
 	var GPAForms = document.getElementsByClassName("GPAForm");
@@ -70,6 +76,7 @@ window.onload=function(){
 	document.getElementById('closeSettings').addEventListener('click', showhide2);
 	document.getElementById('closeSettings').addEventListener('click', getAlgorithm);
 	document.getElementById('closeSettings').addEventListener('click', storeDivNumberGrades);
+	document.getElementById('closeSettings').addEventListener('click', storeDarkMode);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', showhide2);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', returndivgrades);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', returnAlgorithm);
@@ -152,6 +159,27 @@ window.onload=function(){
 		})
 	}
 	returndivgrades();
+
+	function returnDivDarkMode(){
+		chrome.storage.local.get(['skywardDarkTheme'] , function(items) {
+			console.log(items.skywardDarkTheme);
+			let enabled = items.skywardDarkTheme;
+			console.log(enabled);
+			if(enabled === undefined || enabled === null || enabled === 0 || typeof enabled != "boolean"){
+				chrome.storage.local.set({skywardDarkTheme: false});
+				console.log("changing stored skyward Dark Theme blank to default value of false")
+				enabled = false;
+			}
+			//change radio of settings to saved value
+			let getRadioId = "divDarkMode" + enabled.toString();
+			const selectedItem = document.getElementById(getRadioId);
+			console.log(selectedItem);
+			const newItem1 = document.createElement('radio');
+			newItem1.innerHTML = '<input type="radio" id="divDarkMode' + enabled.toString() + '" name="darkModeRadio" value="' + (enabled ? "1" : "2") + '" checked="checked">';
+			selectedItem.parentNode.replaceChild(newItem1, selectedItem);
+		})
+	}
+	returnDivDarkMode();
 	
 }
 function showhide(){
@@ -219,4 +247,16 @@ function storeDivNumberGrades(){
 	let gradesDivNumberValue = document.forms.divnumberForm.gradeDivNumber.value;
 	console.log(gradesDivNumberValue);
 	chrome.storage.local.set({storedGradesDivNum: gradesDivNumberValue});
+}
+
+function storeDarkMode(){
+	let value = document.forms.divdarkmodeForm.darkModeRadio.value;
+	if(value == 1) {
+		console.log("Set Skyward Dark Mode to true")
+		chrome.storage.local.set({skywardDarkTheme: true});
+	}
+	else {
+		console.log("Set Skyward Dark Mode to false")
+		chrome.storage.local.set({skywardDarkTheme: false});
+	}
 }
