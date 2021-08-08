@@ -18,11 +18,24 @@ function myFunction() {
 		console.log('Number Of Classes (from storage): ')
 		console.log(data)
 		if(!data.numberOfClasses || !data.classNames) {
-			openSkyward.style.display = 'block';
+			let biggestClassTitleWidth = 0;
+			GPAFormHolder.style.display = "block";
+			for (let i = 0; i < GPAForms.length; i++) {
+				if(i < 7) {
+					GPAForms[i].style.display = "block";
+					let classTitleEl = GPAForms[i].getElementsByClassName('classTitle')[0]
+					classTitleEl.innerHTML = "Class "+Math.floor(i+1)
+					if(classTitleEl.offsetWidth > biggestClassTitleWidth) biggestClassTitleWidth = classTitleEl.offsetWidth
+				}
+			}
+			console.log('biggestClassTitleWidth: '+biggestClassTitleWidth+"px")
+			let classTitles = document.getElementsByClassName('classTitle')
+			for (let o = 0; o < classTitles.length; o++) {
+				classTitles[o].style.minWidth = `${biggestClassTitleWidth+20}px`	
+			}
 		}
 		else {
 			let biggestClassTitleWidth = 0;
-			openSkyward.style.display = 'none';
 			GPAFormHolder.style.display = "block";
 			console.log(GPAForms)
 			for (let i = 0; i < GPAForms.length; i++) {

@@ -1,12 +1,12 @@
 {
     "name": "Skyward GPA Calculator - And More",
     "description": "This is an extension which injects various scripts into Skyward, to calculate GPA and perform other tasks, such as disabling the idle logout prompt.",
-    "version": "0.1",
+    "version": "0.2",
     "permissions": [
         "http://*/scripts/wsisa.dll/WService=wsEAplus/*",
 		"https://*/scripts/wsisa.dll/WService=wsEAplus/*",
         "tabs",
-	"storage"
+	    "storage"
     ],
 	"icons": {                   
 		"16": "icon16.png",
@@ -28,8 +28,7 @@
         "css/qsfmain001.css",
         "css/sfhome001.css",
         "sprite/sf_bg_sprite001.png",
-        "sprite/sf_icons_sprite.png",
-        "sprite/sf_icons_sprite.p"
+        "sprite/sf_icons_sprite.png"
     ],
     "content_scripts": [
         {
