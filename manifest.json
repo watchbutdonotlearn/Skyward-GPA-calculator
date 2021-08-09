@@ -27,6 +27,8 @@
     "web_accessible_resources": [
         "css/qsfmain001.css",
         "css/sfhome001.css",
+        "css/qclssbase001.css",
+        "css/qclsslogin001.css",
         "sprite/sf_bg_sprite001.png",
         "sprite/sf_icons_sprite.png"
     ],

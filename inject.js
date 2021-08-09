@@ -16,20 +16,44 @@ chrome.storage.local.get(['skywardDarkTheme'], function(data){
 		newElem1.rel = "STYLESHEET"
 		newElem1.href = chrome.extension.getURL("css/qsfmain001.css");
 		document.head.appendChild(newElem1);
-		
-		let newElem2 = document.createElement("link")
-		newElem2.rel = "STYLESHEET"
-		newElem2.href = chrome.extension.getURL("css/sfhome001.css");
-		document.head.appendChild(newElem2);
-		
+
+		if(page != "seplog01.w") {
+			let newElem2 = document.createElement("link")
+			newElem2.rel = "STYLESHEET"
+			newElem2.href = chrome.extension.getURL("css/sfhome001.css");
+			document.head.appendChild(newElem2);
+		} else {
+			let newElem3 = document.createElement("link")
+			newElem3.rel = "STYLESHEET"
+			newElem3.href = chrome.extension.getURL("css/qclssbase001.css");
+			document.head.appendChild(newElem3);
+
+			let newElem4 = document.createElement("link")
+			newElem4.rel = "STYLESHEET"
+			newElem4.href = chrome.extension.getURL("css/qclsslogin001.css");
+			document.head.appendChild(newElem4);
+
+			var children = document.getElementById("loginBrading").children
+			console.log(children)
+			for(child in children) {
+				if(children[child].src) children[child].src = "https://www.wccsonline.com/cms/lib/IN01806574/Centricity/Domain/317/SkyLogoBlue.png"
+			}
+		}
+
 		let oldCSS = document.getElementsByTagName("link");
-		
+			
 		for (let i = 0; i < oldCSS.length; i++) {
 			const element = oldCSS[i];
 			if(element.href.includes("qcssloader.p?file=qsfmain001.css")) {
 				element.remove();
 			}
 			if(element.href.includes("qcssloader.p?file=sfhome001.cs")) {
+				element.remove();
+			}
+			if(element.href.includes("qcssloader.p?file=qclssbase001.css")) {
+				element.remove();
+			}
+			if(element.href.includes("qcssloader.p?file=qclsslogin001.css")) {
 				element.remove();
 			}
 		}
