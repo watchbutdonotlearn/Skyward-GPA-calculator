@@ -51,8 +51,8 @@ body {
 }
 #Calendar li{
     padding:3px;
-    border-bottom:1px solid #bfbfbf;
-    color: var(--lighter-text-color);
+    border-bottom:1px solid var(--lighter-text-color);
+    color: var(--main-text-color);
     font-size:12px;
     padding:3px 2px 7px
 }
@@ -108,7 +108,7 @@ body {
     padding-left:68px
 }
 .home_MessageFeed div.messageWrap{
-    border:1px solid #c3d0dd;
+    border:1px solid var(--darker-bg-color);
     clear:both;
     background-color: var(--main-bg-color);
 }
@@ -147,7 +147,7 @@ body {
     position:relative
 }
 .home_MessageFeed div.messageWrap>div.userIcon{
-    border:1px solid #d5d5d5;
+    border:1px solid var(--darker-bg-color);
     float:left;
     margin-left:5px;
     margin-top:-22px;
@@ -206,8 +206,8 @@ body {
     z-index:1;
     width:15px;
     background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -125px -99px transparent;
-    border-left:1px solid #c3d0dd;
-    border-bottom:1px solid #c3d0dd;
+    border-left:1px solid var(--darker-bg-color);
+    border-bottom:1px solid var(--darker-bg-color);
     padding-right:2px
 }
 .messageOptions .sf_menuContainer{
@@ -456,7 +456,7 @@ body {
     background:-ms-linear-gradient(top,var(--lighter-bg-color) 0,#b8d3eb 100%);
     background:linear-gradient(top,var(--lighter-bg-color) 0,#b8d3eb 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=var(--lighter-bg-color),endColorstr='#b8d3eb',GradientType=0);
-    border-bottom:1px solid #c3d0dd
+    border-bottom:1px solid var(--darker-bg-color)
 }
 .home_MessageFeed div.message_general div.messageHead div.icon{
     background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -106px 3px #7395b2;
@@ -479,7 +479,7 @@ body {
 }
 .home_MessageFeed li div.stuName{
     background-color:#f8f8f8;
-    border-color:#c3d0dd;
+    border-color:var(--darker-bg-color);
     border-radius:0 8px 0 0;
     border-style:solid;
     border-width:1px 1px 0;
@@ -492,7 +492,7 @@ body {
 }
 .home_MessageFeed li div.rightTag{
     background-color:#f8f8f8;
-    border-color:#c3d0dd;
+    border-color:var(--darker-bg-color);
     border-style:solid;
     border-width:1px 1px 0;
     color:var(--main-text-color);
@@ -519,7 +519,7 @@ body {
     top:100px
 }
 .home_MessageFeed li.feedItem div.message_warning,.home_MessageFeed li.feedItem div.message_warning_ok,.home_MessageFeed li.feedItem div.message_warning,.home_MessageFeed li.feedItem div.message_warning_blue{
-    border:1px solid #c3d0dd
+    border:1px solid var(--darker-bg-color)
 }
 .home_MessageFeed div.message_warning div.messageHead{
     background:var(--lighter-bg-color);
@@ -530,7 +530,7 @@ body {
     background:-ms-linear-gradient(top,#fcf4f4 0,#ebb8ba 100%);
     background:linear-gradient(top,#fcf4f4 0,#ebb8ba 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcf4f4',endColorstr='#ebb8ba',GradientType=0);
-    border-bottom:1px solid #c3d0dd;
+    border-bottom:1px solid var(--darker-bg-color);
     padding-left:5px
 }
 .home_MessageFeed div.message_warning_ok div.messageHead{
@@ -542,7 +542,7 @@ body {
     background:-ms-linear-gradient(top,#eff9e8 0,#cadcbf 100%);
     background:linear-gradient(top,#eff9e8 0,#cadcbf 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eff9e8',endColorstr='#cadcbf',GradientType=0);
-    border-bottom:1px solid #c3d0dd;
+    border-bottom:1px solid var(--darker-bg-color);
     padding-left:5px
 }
 .home_MessageFeed div.message_warning_blue div.messageHead{
@@ -795,7 +795,7 @@ div.msgDetail{
 }
 #home_menuTable{
     background: var(--main-bg-color);
-    border:1px solid var(--main-text-color);
+    border:1px solid var(--darker-bg-color);
     -webkit-border-bottom-right-radius:4px;
     -webkit-border-bottom-left-radius:4px;
     -moz-border-radius-bottomright:4px;
