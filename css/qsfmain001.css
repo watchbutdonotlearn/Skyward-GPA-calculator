@@ -5,6 +5,8 @@
     --more-orange-bg-color: #200d00; /* #ffc096 */
     --blue-bg-color: #62788f; /* #82a1be */
     --other-blue-bg-color: #50667a; /* #8eaecb */
+    --yellow-bg-color: #74726b; /* #ffff82 */
+    --other-yellow-bg-color: #5c5c55; /* #ffffa9 */
 
     --slightly-slightly-slightly-darker-bg-color: #313131; /* #f8f8f8 */
     --slightly-slightly-darker-bg-color: #292929; /* #f8f8f8 */
@@ -15,6 +17,7 @@
 
     --main-text-color: rgb(228, 228, 228); /* black */
     --link-text-color: rgb(61, 200, 255); /* #1b63aa */
+    --darker-link-text-color: rgb(34, 174, 230); /* #1b63aa */
     --blue-text-color: #7aaddf; /* var(--blue-text-color) */
     --lighter-text-color: rgb(207, 207, 207); /* #4040 */
     --red-text-color: #f39287; /* #a80707 */
@@ -97,6 +100,9 @@ a{
     text-decoration:none;
     font-size:12px
 }
+/* .sf_highlightYellow a {
+    color: var(--darker-link-text-color);
+} */
 a:hover, a:focus{
     text-decoration:underline
 }
@@ -1264,18 +1270,25 @@ div[grid-theme=default] table[grid-table=default]>tbody>tr.even>td.sf_highlightB
     color:var(--main-text-color);
 }
 div[grid-theme=default] table[grid-table=default]>thead>tr>th.sf_highlightYellow{
-    background-color:#ffff82 !important
+    background-color:var(--other-yellow-bg-color) !important;
+    color: var(--main-text-color);
 }
 div[grid-theme=default] table[grid-table=default]>tbody>tr>td.sf_highlightYellow{
-    background-color:#ffff82 !important
+    background-color:var(--yellow-bg-color) !important
 }
 div[grid-theme=default] table[grid-table=default]>tbody>tr.even>td.sf_highlightYellow{
-    background-color:#ffffa9 !important
+    background-color:var(--other-yellow-bg-color) !important
+}
+div[grid-theme=default] table[grid-table=default]>tbody>tr>td.sf_highlightYellow td{
+    color:var(--main-text-color);
 }
 div[grid-theme=default] table[grid-table=default]>tbody>tr>td.sf_highlightYellow label{
     color:var(--main-text-color);
 }
 div[grid-theme=default] table[grid-table=default]>tbody>tr.even>td.sf_highlightYellow label{
+    color:var(--main-text-color);
+}
+div[grid-theme=default] table[grid-table=default]>tbody>tr.even>td.sf_highlightYellow td {
     color:var(--main-text-color);
 }
 div[grid-theme=default] table[grid-table=default]>thead>tr>th.sf_highlightGreen{
