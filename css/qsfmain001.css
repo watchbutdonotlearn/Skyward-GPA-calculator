@@ -1264,7 +1264,8 @@ div[grid-theme=default] table[grid-table=default]>tbody>tr.even>td.sf_highlightB
     color:var(--main-text-color);
 }
 div[grid-theme=default] table[grid-table=default]>thead>tr>th.sf_highlightYellow{
-    background-color:#ffff82 !important
+    background-color:#ffff82 !important;
+    color: var(--main-bg-color);
 }
 div[grid-theme=default] table[grid-table=default]>tbody>tr>td.sf_highlightYellow{
     background-color:#ffff82 !important
@@ -1272,11 +1273,17 @@ div[grid-theme=default] table[grid-table=default]>tbody>tr>td.sf_highlightYellow
 div[grid-theme=default] table[grid-table=default]>tbody>tr.even>td.sf_highlightYellow{
     background-color:#ffffa9 !important
 }
+div[grid-theme=default] table[grid-table=default]>tbody>tr>td.sf_highlightYellow td{
+    color:var(--main-bg-color);
+}
 div[grid-theme=default] table[grid-table=default]>tbody>tr>td.sf_highlightYellow label{
-    color:var(--main-text-color);
+    color:var(--main-bg-color);
 }
 div[grid-theme=default] table[grid-table=default]>tbody>tr.even>td.sf_highlightYellow label{
-    color:var(--main-text-color);
+    color:var(--main-bg-color);
+}
+div[grid-theme=default] table[grid-table=default]>tbody>tr.even>td.sf_highlightYellow td {
+    color:var(--main-bg-color);
 }
 div[grid-theme=default] table[grid-table=default]>thead>tr>th.sf_highlightGreen{
     background-color:#64cd10 !important
