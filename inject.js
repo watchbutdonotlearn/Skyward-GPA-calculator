@@ -12,10 +12,15 @@ console.log("[DEBUG] page = " + page);
 chrome.storage.local.get(['skywardDarkTheme'], function(data){
 	console.log(data);
 	if(data.skywardDarkTheme == true) {
-		let newElem1 = document.createElement("link")
-		newElem1.rel = "STYLESHEET"
-		newElem1.href = chrome.extension.getURL("css/qsfmain001.css");
-		document.head.appendChild(newElem1);
+		let variablesCSS = document.createElement("link")
+		variablesCSS.rel = "STYLESHEET"
+		variablesCSS.href = chrome.extension.getURL("css/variables.css");
+		document.head.appendChild(variablesCSS);
+
+		let qsfmainCSS = document.createElement("link")
+		qsfmainCSS.rel = "STYLESHEET"
+		qsfmainCSS.href = chrome.extension.getURL("css/qsfmain001.css");
+		document.head.appendChild(qsfmainCSS);
 
 		if(page != "seplog01.w") {
 			let newElem2 = document.createElement("link")
@@ -114,9 +119,14 @@ chrome.storage.local.get(['skywardDarkTheme'], function(data){
 			
 		for (let i = 0; i < oldCSS.length; i++) {
 			const element = oldCSS[i];
+			if(element.href.includes("qcssloader.p?file=sfgradebook.css")) {
+				element.remove();
+			}
+			/* // Has to stay commented for some reason bc it breaks gradebook without it.
 			if(element.href.includes("qcssloader.p?file=qsfmain001.css")) {
 				element.remove();
 			}
+			*/
 			if(element.href.includes("qcssloader.p?file=sfhome001.cs")) {
 				element.remove();
 			}

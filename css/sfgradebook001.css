@@ -6,7 +6,7 @@
 .tblPad td        {padding:4px 5px}
 .tblPadAlt td     {padding:6px 5px}
 .tblBdr td        {border-top:1px solid #D4D4D4;border-right:1px solid #D4D4D4}
-.cat td           {padding-bottom:1px !important;padding-top:1px !important;background-color:var(--main-bg-color) !important;font-weight:bold !important}
+.cat td           {padding-bottom:1px !important;padding-top:1px !important;background-color:var(--main-bg-color) !important;font-weight:bold !important; color:var(--main-bg-color) !important}
 .dspTxt           {position:relative;text-indent:17px}
 .dspTxtSp         {padding-left:21px}
 .dspTxtChx        {position:absolute;left:3px;top:3px}
@@ -119,9 +119,9 @@ h2.gb_heading {color: var(--lighter-text-color);font-size: 15px;font-weight: bol
 @media print{
   #gradeInfoDialog{max-width:none !important}
   #gradeInfoDialog div.sf_DialogDataWrap{border:none}
-  .cat > td{border-top:1px solid #C9D6E4 !important; border-bottom:1px solid #C9D6E4 !important}  
-  .noRBdr{border-right:1px solid #C9D6E4 !important}  /* Need borders for printing */
-  .noLBdr{border-left:1px solid #C9D6E4 !important}   /* Need borders for printing */
+  .cat > td{border-top:1px solid var(--link-text-color) !important; border-bottom:1px solid var(--link-text-color) !important}  
+  .noRBdr{border-right:1px solid var(--link-text-color) !important}  /* Need borders for printing */
+  .noLBdr{border-left:1px solid var(--link-text-color) !important}   /* Need borders for printing */
   #gradeInfoPrint, #gradeInfoHelp, .sf_DialogClose{display:none !important}
   .sf_DialogWrap{background-color:#ffffff !important}
   table.shrinkMe{margin:0 !important}

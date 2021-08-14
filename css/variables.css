@@ -1,0 +1,24 @@
+:root {
+    --main-bg-color: #353535; /* #fff */
+    --yellow-bg-color: #13130e; /* #ffffda */
+    --orange-bg-color: #181513; /* #ffe4c4 */
+    --more-orange-bg-color: #200d00; /* #ffc096 */
+    --blue-bg-color: #62788f; /* #82a1be */
+    --other-blue-bg-color: #50667a; /* #8eaecb */
+    --yellow-bg-color: #74726b; /* #ffff82 */
+    --other-yellow-bg-color: #5c5c55; /* #ffffa9 */
+
+    --slightly-slightly-slightly-darker-bg-color: #313131; /* #f8f8f8 */
+    --slightly-slightly-darker-bg-color: #292929; /* #f8f8f8 */
+    --slightly-darker-bg-color: #161616; /* #f7f7f7 */
+    --slightly-more-darker-bg-color: #0e0e0e; /* #dadada */
+    --darker-bg-color: #000000 ; /* #444 */
+    --lighter-bg-color: #3d3d38 ; /* #0f0f0e */
+
+    --main-text-color: rgb(228, 228, 228); /* black */
+    --link-text-color: rgb(61, 200, 255); /* #1b63aa */
+    --darker-link-text-color: rgb(34, 174, 230); /* #1b63aa */
+    --blue-text-color: #7aaddf; /* var(--blue-text-color) */
+    --lighter-text-color: rgb(207, 207, 207); /* #4040 */
+    --red-text-color: #f39287; /* #a80707 */
+}
