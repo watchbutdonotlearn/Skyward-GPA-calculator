@@ -118,14 +118,14 @@ a[disabled]:hover{
     cursor:default
 }
 a.button{
-    background:#fbfdff;
-    background:-moz-linear-gradient(top,#fbfdff 0,#e4e7e9 100%);
-    background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#fbfdff),color-stop(100%,#e4e7e9));
-    background:-webkit-linear-gradient(top,#fbfdff 0,#e4e7e9 100%);
-    background:-o-linear-gradient(top,#fbfdff 0,#e4e7e9 100%);
-    background:-ms-linear-gradient(top,#fbfdff 0,#e4e7e9 100%);
-    background:linear-gradient(top,#fbfdff 0,#e4e7e9 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfdff',endColorstr='#e4e7e9',GradientType=0);
+    background:var(--slightly-slightly-darker-bg-color);
+    background:-moz-linear-gradient(top,var(--slightly-slightly-darker-bg-color) 0,var(--slightly-darker-bg-color) 100%);
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0,var(--slightly-slightly-darker-bg-color)),color-stop(100%,var(--slightly-darker-bg-color)));
+    background:-webkit-linear-gradient(top,var(--slightly-slightly-darker-bg-color) 0,var(--slightly-darker-bg-color) 100%);
+    background:-o-linear-gradient(top,var(--slightly-slightly-darker-bg-color) 0,var(--slightly-darker-bg-color) 100%);
+    background:-ms-linear-gradient(top,var(--slightly-slightly-darker-bg-color) 0,var(--slightly-darker-bg-color) 100%);
+    background:linear-gradient(top,var(--slightly-slightly-darker-bg-color) 0,var(--slightly-darker-bg-color) 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=var(--slightly-slightly-darker-bg-color),endColorstr=var(--slightly-darker-bg-color),GradientType=0);
     border-color:#9bbee0 #86a4c1 #708aa3;
     border-style:solid;
     -moz-box-shadow:0 1px 0 #c4c4c4;
@@ -1957,7 +1957,7 @@ body.sf_narrow #sf_OuterWrap #sf_ContentLeftWrap #sf_ContentLeft{
     position:relative
 }
 .error{
-    background:#fbfdff;
+    background:var(--main-bg-color) ;
     background:-moz-linear-gradient(top,var(--main-bg-color) 0,var(--slighly-darker-bg-color) 100%);
     background:-webkit-gradient(linear,left top,left bottom,color-stop(0,var(--main-bg-color)),color-stop(100%,var(--slighly-darker-bg-color)));
     background:-webkit-linear-gradient(top,var(--main-bg-color) 0,var(--slighly-darker-bg-color) 100%);
@@ -2496,7 +2496,7 @@ div[grid-theme] div.fixedWrap div.fixedRows>table>tbody>tr>td:last-child{
     background-position:-130px -163px
 }
 .jspContainer{
-    overflow:hidden;
+    overflow:hidden hidden;
     position:relative
 }
 .jspPane{
