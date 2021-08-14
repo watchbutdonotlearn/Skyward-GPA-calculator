@@ -1,28 +1,3 @@
-:root {
-    --main-bg-color: #353535; /* #fff */
-    --yellow-bg-color: #13130e; /* #ffffda */
-    --orange-bg-color: #181513; /* #ffe4c4 */
-    --more-orange-bg-color: #200d00; /* #ffc096 */
-    --blue-bg-color: #62788f; /* #82a1be */
-    --other-blue-bg-color: #50667a; /* #8eaecb */
-    --yellow-bg-color: #74726b; /* #ffff82 */
-    --other-yellow-bg-color: #5c5c55; /* #ffffa9 */
-
-    --slightly-slightly-slightly-darker-bg-color: #313131; /* #f8f8f8 */
-    --slightly-slightly-darker-bg-color: #292929; /* #f8f8f8 */
-    --slightly-darker-bg-color: #161616; /* #f7f7f7 */
-    --slightly-more-darker-bg-color: #0e0e0e; /* #dadada */
-    --darker-bg-color: #000000 ; /* #444 */
-    --lighter-bg-color: #3d3d38 ; /* #0f0f0e */
-
-    --main-text-color: rgb(228, 228, 228); /* black */
-    --link-text-color: rgb(61, 200, 255); /* #1b63aa */
-    --darker-link-text-color: rgb(34, 174, 230); /* #1b63aa */
-    --blue-text-color: #7aaddf; /* var(--blue-text-color) */
-    --lighter-text-color: rgb(207, 207, 207); /* #4040 */
-    --red-text-color: #f39287; /* #a80707 */
-}
-
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{
     margin:0;
     padding:0;
@@ -118,14 +93,14 @@ a[disabled]:hover{
     cursor:default
 }
 a.button{
-    background:#fbfdff;
-    background:-moz-linear-gradient(top,#fbfdff 0,#e4e7e9 100%);
-    background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#fbfdff),color-stop(100%,#e4e7e9));
-    background:-webkit-linear-gradient(top,#fbfdff 0,#e4e7e9 100%);
-    background:-o-linear-gradient(top,#fbfdff 0,#e4e7e9 100%);
-    background:-ms-linear-gradient(top,#fbfdff 0,#e4e7e9 100%);
-    background:linear-gradient(top,#fbfdff 0,#e4e7e9 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfdff',endColorstr='#e4e7e9',GradientType=0);
+    background:var(--slightly-slightly-darker-bg-color);
+    background:-moz-linear-gradient(top,var(--slightly-slightly-darker-bg-color) 0,var(--slightly-darker-bg-color) 100%);
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0,var(--slightly-slightly-darker-bg-color)),color-stop(100%,var(--slightly-darker-bg-color)));
+    background:-webkit-linear-gradient(top,var(--slightly-slightly-darker-bg-color) 0,var(--slightly-darker-bg-color) 100%);
+    background:-o-linear-gradient(top,var(--slightly-slightly-darker-bg-color) 0,var(--slightly-darker-bg-color) 100%);
+    background:-ms-linear-gradient(top,var(--slightly-slightly-darker-bg-color) 0,var(--slightly-darker-bg-color) 100%);
+    background:linear-gradient(top,var(--slightly-slightly-darker-bg-color) 0,var(--slightly-darker-bg-color) 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=var(--slightly-slightly-darker-bg-color),endColorstr=var(--slightly-darker-bg-color),GradientType=0);
     border-color:#9bbee0 #86a4c1 #708aa3;
     border-style:solid;
     -moz-box-shadow:0 1px 0 #c4c4c4;
@@ -1740,7 +1715,7 @@ div.sfLinks{
     text-decoration:none !important
 }
 .sf_DialogPrint{
-    background:url("qfileloader.p?file=printer1.png&rev=0101940521020009") no-repeat scroll 0 0 transparent;
+    background:url("../sprite/printer1.png") no-repeat scroll 0 0 transparent;
     height:18px;
     position:absolute;
     right:4px;
@@ -1957,7 +1932,7 @@ body.sf_narrow #sf_OuterWrap #sf_ContentLeftWrap #sf_ContentLeft{
     position:relative
 }
 .error{
-    background:#fbfdff;
+    background:var(--main-bg-color) ;
     background:-moz-linear-gradient(top,var(--main-bg-color) 0,var(--slighly-darker-bg-color) 100%);
     background:-webkit-gradient(linear,left top,left bottom,color-stop(0,var(--main-bg-color)),color-stop(100%,var(--slighly-darker-bg-color)));
     background:-webkit-linear-gradient(top,var(--main-bg-color) 0,var(--slighly-darker-bg-color) 100%);
@@ -2496,7 +2471,7 @@ div[grid-theme] div.fixedWrap div.fixedRows>table>tbody>tr>td:last-child{
     background-position:-130px -163px
 }
 .jspContainer{
-    overflow:hidden;
+    overflow: hidden;
     position:relative
 }
 .jspPane{
@@ -2768,7 +2743,7 @@ a.groupLink{
     width:13px;
     display:inline-block;
     margin:0 4px;
-    background:url("qfileloader.p?file=arrows_sprite.png&rev=0101940521020009") no-repeat scroll 2px -29px transparent;
+    background:url("../sprite/arrows_sprite.png") no-repeat scroll 2px -29px transparent;
     vertical-align:sub
 }
 .sf_expandIcon.sf_expanded{
