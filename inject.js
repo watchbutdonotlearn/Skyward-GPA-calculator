@@ -194,6 +194,7 @@ function calculateGPA() {
     let gpa_sub = 0;
     let gpa_cnt = 0;
 	let classSum = 0;
+	let isSemester1 = false;
     for(let i = 0; i < inner_grades.children.length; i++){
         let child = inner_grades.children[i];
         if(child.hasAttribute("group-parent")){
@@ -204,17 +205,21 @@ function calculateGPA() {
                 final_grade = parseInt(c_child.children[0].children[0].innerHTML);
             }
             //console.log(final_grade);
-			if(final_grade === -1) continue;
+			if(final_grade === -1) {
+				isSemester1 = true;
+				continue;
+			}
             gpa_sub += 0.05 * (100 - final_grade);
             gpa_cnt++;
 			if(gpa_cnt % 2 == 0){
 				//gpa_cnt is even
 				classSum += final_grade;
-				let pushClassArray = classSumArray.push(classSum / 2);
+				classSumArray.push(classSum / 2);
 				classSum = 0;
-			}else{
+			} else{
 				//gpa_cnt is an odd number
 				classSum += final_grade;
+				if(isSemester1) classSumArray.push(classSum / 2);
 			}
         }
     }

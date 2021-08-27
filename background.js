@@ -1,9 +1,3 @@
-function getDarkTheme() {
-	chrome.storage.local.get(['skywardDarkTheme'], function(data){
-		return data.skywardDarkTheme;
-	});
-}
-
 function myFunction() {
 	var x = document.getElementById("weightselectordiv");
 	var GPAForms = document.getElementsByClassName("GPAForm");
@@ -175,9 +169,7 @@ window.onload=function(){
 
 	function returnDivDarkMode(){
 		chrome.storage.local.get(['skywardDarkTheme'] , function(items) {
-			console.log(items.skywardDarkTheme);
 			let enabled = items.skywardDarkTheme;
-			console.log(enabled);
 			if(enabled === undefined || enabled === null || enabled === 0 || typeof enabled != "boolean"){
 				chrome.storage.local.set({skywardDarkTheme: false});
 				console.log("changing stored skyward Dark Theme blank to default value of false")
@@ -264,12 +256,42 @@ function storeDivNumberGrades(){
 
 function storeDarkMode(){
 	let value = document.forms.divdarkmodeForm.darkModeRadio.value;
-	if(value == 1) {
-		console.log("Set Skyward Dark Mode to true")
-		chrome.storage.local.set({skywardDarkTheme: true});
-	}
-	else {
-		console.log("Set Skyward Dark Mode to false")
-		chrome.storage.local.set({skywardDarkTheme: false});
-	}
+	chrome.storage.local.get(['skywardDarkTheme'], function(data){
+		let darkTheme = data.skywardDarkTheme;
+		let newValue;
+
+		if(value == 1 && darkTheme != true) {
+			newValue = true;
+		}
+		else if(value == 2 && darkTheme != false) {
+			newValue = false;
+		}
+
+		if(newValue != undefined) {
+			chrome.tabs.query({url: "https://*/scripts/wsisa.dll/WService=wsEAplus/*"}, function(tab) {
+				tab.forEach((t) => {
+					if(t.url.toString().includes('seplog01.w')) {
+						chrome.tabs.reload(t.id);
+					} else {
+						// chrome.tabs.executeScript(t.id, {code: `
+						// 	children = document.getElementById("sf_navMenu").children;
+						// 	for(let c = 0; c < children.length; c++) {
+						// 		let datan = children[c].firstChild.getAttribute('data-nav');
+						// 		// console.log(datan)
+						// 		let url = '${t.url.split("/scripts/wsisa.dll/WService=wsEAplus/")[1]}';
+						// 		// console.log(url)
+						// 		if(datan && datan == url) {
+						// 			children[c].click();
+						// 			console.log('clicked!')
+						// 			console.log(children[c])
+						// 		}
+						// 	}
+						// `})
+					}
+				})
+			})
+			chrome.storage.local.set({skywardDarkTheme: newValue});
+		}
+		
+	});
 }
