@@ -145,7 +145,7 @@ chrome.storage.local.get(['skywardDarkTheme'], function(data){
 
 var weightaverage = 4.0;
 var algNumber = 1;
-var classSumArray = [];
+// var classSumArray = [];
 var weightArray = [];
 
 function calculateGPA() {
@@ -194,7 +194,16 @@ function calculateGPA() {
     let gpa_sub = 0;
     let gpa_cnt = 0;
 	let classSum = 0;
-	let isSemester1 = false;
+
+	// let classNamesArray = [];
+	// let classNames = document.getElementsByClassName('bld classDesc') // Class Names:
+	// for (let l = 0; l < classNames.length; l++) {
+	// 	classNamesArray.push(classNames[l].firstChild.innerText)
+	// }
+
+	// let currentClass = 0;
+	let tempGrades = [];
+
     for(let i = 0; i < inner_grades.children.length; i++){
         let child = inner_grades.children[i];
         if(child.hasAttribute("group-parent")){
@@ -204,31 +213,60 @@ function calculateGPA() {
                 if(c_child.children[0].innerHTML.length < 10) continue;
                 final_grade = parseInt(c_child.children[0].children[0].innerHTML);
             }
-            //console.log(final_grade);
-			if(final_grade === -1) {
-				isSemester1 = true;
-				continue;
+
+			if(final_grade !== -1) {
+				gpa_sub += 0.05 * (100 - final_grade);
+				gpa_cnt++;
 			}
-            gpa_sub += 0.05 * (100 - final_grade);
-            gpa_cnt++;
-			if(gpa_cnt % 2 == 0){
-				//gpa_cnt is even
-				classSum += final_grade;
-				classSumArray.push(classSum / 2);
+			
+			console.log("final_grade: "+final_grade)
+
+			tempGrades.push(final_grade)
+
+			/*
+
+			if(classNamesArray[currentClass] == classNamesArray[currentClass + 1]) {
+				// then this is the first semester of a year long class
 				classSum = 0;
-			} else{
-				//gpa_cnt is an odd number
-				classSum += final_grade;
-				if(isSemester1) classSumArray.push(classSum / 2);
+				
 			}
-        }
+
+			if(classNamesArray[currentClass] == classNamesArray[currentClass - 1]) {
+				// then this is the second semester of a year-long class.
+				if(final_grade === -1) {
+					continue;
+				}
+				gpa_sub += 0.05 * (100 - final_grade);
+				gpa_cnt++;
+				classSum += final_grade;
+				if(gpa_cnt % 2 == 0){
+					//gpa_cnt is even
+					classSum += final_grade;
+					classSumArray.push(classSum / 2);
+					classSum = 0;
+				} else {
+					//gpa_cnt is an odd number
+					classSum += final_grade;
+					classSumArray.push(classSum);
+				}
+			}
+
+			*/
+
+		}
     }
+
+	console.log(tempGrades)
+	if(tempGrades.includes(-1)) { // it is the first semester or not all grades are in.	
+		tempGrades = tempGrades.filter(a=>a!==-1)
+	}
+
     let finalerrormessage = 0;
 	//average formula weighted
 	let preGPAw = 0;
 	let preGPAsum = 0;
-	let numberOfGrades = classSumArray.length;
-	let numberOfGrades1 = classSumArray.length;
+	let numberOfGrades = tempGrades.length;
+	let numberOfGrades1 = tempGrades.length;
 	if(numberOfGrades > numberOfWeights){
 		console.log(numberOfGrades.toString() + 'grades found, but only' + numberOfWeights.toString() + 'weights selected.');
 		finalerrormessage = 2;
@@ -239,7 +277,7 @@ function calculateGPA() {
 		console.log(numberOfGrades.toString() + ' grades found, but ' + numberOfWeights.toString() + ' weights selected');
 	}
 	for(let i=0; i < numberOfGrades1; i++){
-		preGPAw = weightArray[i] * classSumArray[i] * 0.01;
+		preGPAw = weightArray[i] * tempGrades[i] * 0.01;
 		preGPAsum = preGPAsum + preGPAw;
 		preGPAw = 0;
 	}
@@ -248,13 +286,13 @@ function calculateGPA() {
 	let preGPAu = 0;
 	preGPAsum = 0
 	for(let i=0; i < numberOfGrades; i++){
-		preGPAu = 4 * classSumArray[i] * 0.01;
+		preGPAu = 4 * tempGrades[i] * 0.01;
 		preGPAsum = preGPAsum + preGPAu;
 		preGPAu = 0;
 	}
 	var gpaAverageU = preGPAsum / numberOfGrades;
 	console.log("gpaAverageU: "+gpaAverageU);
-	console.log("classSumArray: "+classSumArray);
+	console.log("tempGrades: "+tempGrades);
 	//subtraction formula
 	console.log(gpa_sub + " " + gpa_cnt);
     let unweighted = 4.0 - gpa_sub / gpa_cnt;
@@ -279,7 +317,7 @@ function calculateGPA() {
     let GPAstr = "<h2 class=\"sf_heading\">Unweighted GPA: " + (Math.round(finalUnweightedNumber * 1000) / 1000).toString() + " || ";
     let detectNaN = weightaverage;
     detectNaN = +detectNaN || 0;
-    /* if(numberOfWeights != classSumArray.length){
+    /* if(numberOfWeights != tempGrades.length){
 		weighted = NaN;
 	} */
 	if(detectNaN === 0){
