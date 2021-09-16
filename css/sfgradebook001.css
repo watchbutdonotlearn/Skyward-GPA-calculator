@@ -1,135 +1,18 @@
-.hiddenItem       {display:none !important}
-.noBdr *          {border-width:0px !important}
-.aTop             {vertical-align:text-top !important}  
-.bdrBtmWhite      {border-bottom:1px solid white}
-.blk              {color:black}
-.tblPad td        {padding:4px 5px}
-.tblPadAlt td     {padding:6px 5px}
-.tblBdr td        {border-top:1px solid #D4D4D4;border-right:1px solid #D4D4D4}
-.cat td           {padding-bottom:1px !important;padding-top:1px !important;background-color:var(--main-bg-color) !important;font-weight:bold !important; color:var(--main-bg-color) !important}
-.dspTxt           {position:relative;text-indent:17px}
-.dspTxtSp         {padding-left:21px}
-.dspTxtChx        {position:absolute;left:3px;top:3px}
-.dspTxtIndent     {position:relative;text-indent:39px}
-.dspTxtIndentChx  {position:absolute;left:25px;top:3px}
-.dspTxt2Indent    {position:relative;text-indent:61px}
-.dspTxt2IndentChx {position:absolute;left:47px;top:3px}
-.noBotBdr         {border-bottom:0px !important}
-.noRBdr           {border-right:0px !important}
-.noLBdr           {border-left:0px !important}
-.wSn              {white-space:normal !important}
-tr.pdTB2 td       {padding-top:2px !important;padding-bottom:0px !important}
-tr.gHd th         {height:13px !important}
-tr.gDt3R > td     {height:37px !important}
-tr.gDt2R > td     {height:30px !important}
-.height26         {height:26px !important}
-.height12         {height:12px !important}
-.cMwS{width:270px !important; max-width:270px !important}
-.cMw {width:276px !important; max-width:276px !important}
-.fPw {width:130px !important}
-.fSw {width:65px !important}
-label.nwr, td.nwr, div[grid-theme=default] table[grid-table=default]>thead>tr>th.nwr {white-space:nowrap !important;text-align:right !important}
-.fGw {width:45px !important}
-span.classDesc{display:inline-block;max-width:260px;vertical-align:top;overflow:hidden;text-overflow:ellipsis}
+.cat td           {
+  background-color:var(--main-bg-color) !important;
+  color:var(--main-bg-color) !important
+}
 
-body .aRt, #sf_OuterWrap .aRt, .dialog .aRt, div.aRt, span.aRt, td.aRt, div[grid-theme=default] table[grid-table=default]>thead>tr>th.aRt {text-align:right !important}
-body .aLt, #sf_OuterWrap .aLt, .dialog .aLt, div.aLt, span.aLt, td.aLt                                                          {text-align:left !important} 
-body .aCt, #sf_OuterWrap .aCt, .dialog .aCt, span.aCt, div.aCt, td.aCt                                                          {text-align:center !important} 
-body .vAm > td, #sf_OuterWrap .vAm > td, .dialog .vAm > td, span.vAm, div.vAm, tr.vAm td > div > div, td.vAm                    {vertical-align:middle !important}
-body .vAb > td, #sf_OuterWrap .vAb > td, .dialog .vAb > td, span.vAb, div.vAb, td.vAb                                           {vertical-align:bottom !important}
-body .h25px, #sf_OuterWrap .h25px, .dialog .h25px, span.h25px, div.h25px, td.h25px                                              {height:25px !important}
-body .nWp, #sf_OuterWrap .nWp, .dialog .nWp, span.nWp, div.nWp, td.nWp                                                          {white-space:nowrap !important}
-body .nPt, #sf_OuterWrap .nPt, .dialog .nPt, span.nPt, div.nPt, td.nPt                                                          {padding-top:0px !important}
-body .nPtb, #sf_OuterWrap .nPtb, .dialog .nPtb, tr.nPtb > th                                                                    {padding-top:0px !important;padding-bottom:0px !important}
-body .cPd > td, #sf_OuterWrap .cPd > td, .dialog .cPd > td, td.cPd, th.cPd, tr.cPd > th                                         {padding:3px 4px !important}
-body .bZe > td, #sf_OuterWrap .bZe > td, .dialog .bZe > td, td.bZe                                                              {border-bottom:1px solid #D4D4D4 !important}
-body .fXs > td, #sf_OuterWrap .fXs > td, .dialog .fXs > td, td.fXs, div.fXs, span.fXs, label.fXs, font.fXs, th.fXs, tr.fXs > th {font-size:10px !important}
-body .fIl > td, #sf_OuterWrap .fIl > td, .dialog .fIl > td, td.fIl, div.fIl, span.fIl, label.fIl, font.fIl, th.fIl, tr.fIl > th {font-style:italic !important}
-body .fSn > td, #sf_OuterWrap .fSn > td, .dialog .fSn > td, td.fSn, div.fSn, span.fSn, label.fSn, font.fSn, th.fSn, tr.fSn > th {font-style:normal !important}
-body .fWn > td, #sf_OuterWrap .fWn > td, .dialog .fWn > td, td.fWn, div.fWn, span.fWn, label.fWn, font.fWn, th.fWn, tr.fWn > th {font-weight:normal !important}
-body .bld, #sf_OuterWrap .bld, .dialog .bld                                                                                     {font-weight:bold !important;}
-body .nPd, #sf_OuterWrap .nPd, .dialog .nPd, tr.nPd > td                                                                        {padding:0px !important;}
-body .vAt, #sf_OuterWrap .vAt, .dialog .vAt, span.vAt, div.vAt, td.vAt                                                          {vertical-align:top !important;}
-body .bBb, #sf_OuterWrap .bBb, .dialog .bBb, tr.bBb > td                                                                        {border-style:solid !important; border-bottom: 1px solid black !important;}
-body .mWd, #sf_OuterWrap .mWd                                                                                                   {min-width:28px !important}
+.eWs{background-color:var(--main-bg-color) !important;}
 
-td.cPd > div.height26{line-height:26px /*;text-align:center*/}
-
-.oEc{position:relative !important;width:100% !important;max-width:300px !important}
-.eWs{position:absolute !important;background-color:var(--main-bg-color) !important;left:0px !important;width:18px !important;border-right:1px solid #D4D4D4 !important;top:-4px;bottom:-3px}
-
-/* Width for subject expanders - subject colors */
-.sjSB, .sjB, .sjV, .sjM, .sjP, .sjR, .sjO, .sjY, .sjYG, .sjG, .sjT, .sjPB{
-position:absolute !important;left:19px !important;width:18px !important;border-right:1px solid #D4D4D4 !important;top:-4px;bottom:-3px}
-
-/* Width for skill expanders - subject colors */
-.skSB, .skB, .skV, .skM, .skP, .skR, .skO, .skY, .skYG, .skG, .skT, .skPB{
-position:absolute !important;background-image:url(/webspeed/white_60.png) !important;left:38px !important;width:18px !important;border-right:1px solid #D4D4D4 !important;top:-4px;bottom:-3px}
-
-.sjSB,.skSB,.seSB,.jSB,.kSB,.eSB{background-color:#99CCFF !important}
-.sjB, .skB, .seB, .jB, .kB ,.eB {background-color:#CCCCFF !important}
-.sjV, .skV, .seV, .jV, .kV ,.eV {background-color:#CC99FF !important}
-.sjM, .skM, .seM, .jM, .kM ,.eM {background-color:#FFCCFF !important}
-.sjP, .skP, .seP, .jP, .kP ,.eP {background-color:#FF99CC !important}
-.sjR, .skR, .seR, .jR, .kR ,.eR {background-color:#FFCCCC !important}
-.sjO, .skO, .seO, .jO, .kO ,.eO {background-color:#FFCC99 !important}
-.sjY, .skY, .seY, .jY, .kY ,.eY {background-color:#FFFFCC !important}
-.sjYG,.skYG,.seYG,.jYG,.kYG,.eYG{background-color:#CCFF99 !important}
-.sjG, .skG, .seG, .jG, .kG ,.eG {background-color:#CCFFCC !important}
-.sjT, .skT, .seT, .jT, .kT ,.eT {background-color:#99FFCC !important}
-.sjPB,.skPB,.sePB,.jPB,.kPB,.ePB{background-color:#CCFFFF !important}
-
-/* Width for skill element expander/background - subject colors */
-.seSB, .seB, .seV, .seM, .seP, .seR, .seO, .seY, .seYG, .seG, .seT, .sePB{
-position:absolute !important;background-image:url(/webspeed/white_60.png) !important;left:38px !important;width:238px !important;z-index:10;top:-1px !important;bottom:0px !important} 
-
-/* Skill Element Content */
-.seC {position:relative;z-index:11}
-
-/* Position for a subject/skill under an expander */
-.pE21,.pE36,.pE40,.pE56{display:table-cell !important;overflow:hidden !important; text-overflow:ellipsis !important; padding-top:3px;padding-bottom:3px;padding-right:2px !important; cursor:help !important} /*  */
-
-.pE21 {padding-left:21px !important;width:253px !important; max-width:253px !important}
-.pE36 {padding-left:36px !important;width:238px !important; max-width:238px !important}
-.pE40 {padding-left:40px !important;width:234px !important; max-width:234px !important}
-.pE56 {padding-left:56px !important;width:218px !important; max-width:218px !important}
-
-/* Position for event under an expander */
-.aEw    {padding-left:59px !important;overflow:hidden;text-overflow:ellipsis}
-.tb3, body .tb3, #sf_OuterWrap .tb3 {padding-top:3px !important;padding-bottom:3px !important}
-
-/* Position for assignment under an expander */
-.bEw {padding-left:20px !important;overflow:hidden;text-overflow:ellipsis}
-
-/*Skill*/
-.kSB,.kB,.kV,.kM,.kP,.kR,.kO,.kY,.kYG,.kG,.kT,.kPB {background-image:url(/webspeed/white_60.png) !important}
-/* Event cell on class grades screen */
-.eSB,.eB,.eV,.eM,.eP,.eR,.eO,.eY,.eYG,.eG,.eT,.ePB {background-image:url(/webspeed/white_90.png) !important}
-
-/* Assignment/event(when not showing subjects/skill) cell on class grades screen */
 .aC {background-color:var(--slightly-slightly-slightly-darker-bg-color) !important;}
 
-/* Assignment/event description on class grades screen */
-.aD {width:auto !important;padding-right:2px !important}
-
-h2.gb_heading {color: var(--lighter-text-color);font-size: 15px;font-weight: bold}
-
-.staticTag div.sfTag {position:static;margin-bottom:1px}
+h2.gb_heading {color: var(--lighter-text-color);}
 
 @media print{
-  #gradeInfoDialog{max-width:none !important}
-  #gradeInfoDialog div.sf_DialogDataWrap{border:none}
   .cat > td{border-top:1px solid var(--link-text-color) !important; border-bottom:1px solid var(--link-text-color) !important}  
-  .noRBdr{border-right:1px solid var(--link-text-color) !important}  /* Need borders for printing */
-  .noLBdr{border-left:1px solid var(--link-text-color) !important}   /* Need borders for printing */
-  #gradeInfoPrint, #gradeInfoHelp, .sf_DialogClose{display:none !important}
-  .sf_DialogWrap{background-color:#ffffff !important}
-  table.shrinkMe{margin:0 !important}
-  .sf_DialogHtml{max-height:none !important;overflow:visible !important;padding-left:0 !important;padding-right:0 !important}  /* show all the content in the dialog */
-  .sf_DialogHtml div[grid-theme="theme2"]{margin-left:0 !important;margin-right:0 !important}
-  rect[stroke-width="0.000001"]{stroke-width:0}     /* Force no border around chart when printing in Chrome */
-  #gradeInfoDialog * {overflow:visible !important}  /* Fix scrollbars from showing up in IE and Chrome */
-  .sf_DialogTitle    {padding-left:0px !important}
+  .noRBdr{border-right:1px solid var(--link-text-color) !important}
+  .noLBdr{border-left:1px solid var(--link-text-color) !important}
 }
 
 @page {margin:.5in}

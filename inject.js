@@ -117,29 +117,29 @@ chrome.storage.local.get(['skywardDarkTheme'], function(data){
 
 		let oldCSS = document.getElementsByTagName("link");
 			
-		for (let i = 0; i < oldCSS.length; i++) {
-			const element = oldCSS[i];
-			if(element.href.includes("qcssloader.p?file=sfgradebook.css")) {
-				element.remove();
-			}
-			/* // Has to stay commented for some reason bc it breaks gradebook without it.
-			if(element.href.includes("qcssloader.p?file=qsfmain001.css")) {
-				element.remove();
-			}
-			*/
-			if(element.href.includes("qcssloader.p?file=sfhome001.cs")) {
-				element.remove();
-			}
-			if(element.href.includes("qcssloader.p?file=qclssbase001.css")) {
-				element.remove();
-			}
-			if(element.href.includes("qcssloader.p?file=qclsslogin001.css")) {
-				element.remove();
-			}
-			if(element.href.includes("qcssloader.p?file=jquery.cluetip.css")) {
-				element.remove();
-			}
-		}
+		// for (let i = 0; i < oldCSS.length; i++) {
+		// 	const element = oldCSS[i];
+		// 	if(element.href.includes("qcssloader.p?file=sfgradebook.css")) {
+		// 		element.remove();
+		// 	}
+		// 	/* // Has to stay commented for some reason bc it breaks gradebook without it.
+		// 	if(element.href.includes("qcssloader.p?file=qsfmain001.css")) {
+		// 		element.remove();
+		// 	}
+		// 	*/
+		// 	if(element.href.includes("qcssloader.p?file=sfhome001.cs")) {
+		// 		element.remove();
+		// 	}
+		// 	if(element.href.includes("qcssloader.p?file=qclssbase001.css")) {
+		// 		element.remove();
+		// 	}
+		// 	if(element.href.includes("qcssloader.p?file=qclsslogin001.css")) {
+		// 		element.remove();
+		// 	}
+		// 	if(element.href.includes("qcssloader.p?file=jquery.cluetip.css")) {
+		// 		element.remove();
+		// 	}
+		// }
 	}
 });
 

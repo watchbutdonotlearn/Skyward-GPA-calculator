@@ -2,389 +2,63 @@
 body {
     color: var(--main-text-color);
 }
-
-#sf_ContentBody{
-    padding-top:0
-}
-#sf_menuWrap_home_setup{
-    text-align:left
-}
-#sf_menuWrap_home_setup>ul.sf_menuList>li.sf_menuItem>a{
-    padding-left:6px
-}
-#home_hiddenMessage{
-    color:#666;
-    font-style:italic;
-    font-size:11px
-}
-#home_markAllAsRead{
-    display:block;
-    text-align:right;
-    margin-top:-9px;
-    padding:0 4px 4px 0
-}
-#grid_homeSettingsGrid_gridWrap,#grid_filterGrid_gridWrap{
-    background-color:inherit !important;
-    border:none !important;
-    margin-top:0 !important
-}
-#grid_homeSettingsGrid,#grid_filterGrid{
-    border:none !important
-}
-#MessageFeed{
-    margin:7px 20px 0
-}
-#MessageFeed>li{
-    padding-bottom:12px
-}
-#individualPost .sf_DialogHtml{
-    padding-top:0
-}
-#individualPost .home_MessageFeed{
-    margin-right:4px
-}
-#sf_DialogTitle_individualPost{
-    padding-bottom:0
-}
-#Calendar{
-    margin:7px 1px
-}
 #Calendar li{
-    padding:3px;
     border-bottom:1px solid var(--lighter-text-color);
     color: var(--main-text-color);
-    font-size:12px;
-    padding:3px 2px 7px
-}
-#Calendar li div{
-    padding:2px 0
 }
 #Calendar li.calendarTitle{
     border-bottom:2px solid var(--blue-text-color);
-    height:21px;
-    padding:0;
-    position:relative
-}
-#Calendar li.calendarTitle div.icon{
-    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll 0 0 transparent;
-    height:16px;
-    left:3px;
-    position:absolute;
-    top:0;
-    width:16px;
-    padding:0
 }
 #Calendar li.calendarTitle div.title{
     color:var(--blue-text-color);
-    font-size:14px;
-    left:25px;
-    position:absolute;
-    text-shadow:0 1px 0 var(--main-bg-color);
-    top:1px;
-    padding:0
 }
-#Calendar li.calendarTitle a{
-    position:absolute;
-    right:1px;
-    top:3px
-}
-#Calendar li div.calEventDate{
-    padding:9px 0
-}
-#Calendar li div.calEventName{
-    font-weight:bold
-}
-#Calendar li td{
-    padding:2px 4px
-}
-#Calendar li div.priority{
-    float:right
-}
-.home_MessageFeed div.icon img{
-    width:100%
-}
-.home_MessageFeed div.messageHead{
-    position:relative;
-    padding-left:68px
+#Calendar li.calendarTitle div.icon{
+    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll 0 0 transparent;
 }
 .home_MessageFeed div.messageWrap{
     border:1px solid var(--darker-bg-color);
-    clear:both;
     background-color: var(--main-bg-color);
 }
 .home_MessageFeed div.messageWrap div.showArea{
     background-color: var(--main-bg-color);
-    border-top:1px dotted #c8c8c8;
-    height:20px;
-    position:relative;
-    text-align:right
-}
-.home_MessageFeed div.messageWrap div.showArea div.showGradient{
-    background: transparent !important;
-    height:20px;
-    margin-top:-21px
 }
 .home_MessageFeed div.date{
-    float:right;
-    clear:right;
-    font-size:11px;
-    padding-top:2px;
-    padding-right:15px;
     color: var(--main-text-color)
-}
-.home_MessageFeed div.replyLinkArea div.date{
-    padding-top:0;
-    padding-right:0;
-    margin-top:-1px
-}
-.home_MessageFeed a.reply{
-    display:inline;
-    font-size:13px
-}
-.home_MessageFeed li.feedItem div.messageWrap div.messageBody{
-    overflow:hidden;
-    padding:0 8px 1px;
-    position:relative
 }
 .home_MessageFeed div.messageWrap>div.userIcon{
     border:1px solid var(--darker-bg-color);
-    float:left;
-    margin-left:5px;
-    margin-top:-22px;
-    position:relative;
-    width:55px;
     background-color:var(--main-bg-color)
-}
-.home_MessageFeed div.messageWrap div.messageHead{
-    padding-left:68px;
-    height:28px
-}
-.home_MessageFeed div.messageWrap div.floatBreak{
-    clear:both;
-    display:block;
-    height:5px;
-    overflow:hidden
 }
 .home_MessageFeed div.messageWrap div.messageHead div.text{
     border-right:1px solid var(--main-bg-color);
     color:var(--main-text-color);
-    font-size:13px;
-    font-weight:bold;
-    height:19px;
-    padding-top:9px;
-    position:relative;
     text-shadow:0 1px 0 var(--main-bg-color);
-    white-space:nowrap;
-    width:443px
-}
-.sf_DialogHtml .home_MessageFeed{
-    width:787px
-}
-.sf_DialogHtml .home_MessageFeed div.messageWrap>div.messageHead>div.text:first-child{
-    width:685px
-}
-.sf_DialogHtml .home_MessageFeed div.msgDetail{
-    max-width:695px
-}
-.home_MessageFeed div.messageWrap div.messageHead div.text div.priority{
-    position:absolute;
-    right:7px;
-    top:5px
-}
-.home_MessageFeed div.messageHead div.icon{
-    height:28px;
-    position:absolute;
-    right:0;
-    top:0;
-    width:30px
 }
 .home_MessageFeed .messageOptions{
-    cursor:pointer;
-    height:17px;
-    position:absolute;
-    right:21px;
-    z-index:1;
-    width:15px;
     background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -125px -99px transparent;
     border-left:1px solid var(--darker-bg-color);
     border-bottom:1px solid var(--darker-bg-color);
-    padding-right:2px
-}
-.messageOptions .sf_menuContainer{
-    height:17px;
-    display:inline-block;
-    top:17px
-}
-.home_MessageFeed div.messageWrap div.messageBody div.text{
-    font-size:13px;
-    padding-bottom:4px;
-    padding-top:7px;
-    padding-right:12px;
-    line-height:1.25em
 }
 .home_MessageFeed div.messageWrap div.messageBody div.Subject{
-    border-bottom:1px solid #c2d3da;
     color:var(--main-text-color);
-    font-weight:bold;
-    margin-bottom:5px;
-    padding-bottom:3px
-}
-.home_MessageFeed div.messageWrap div.messageBody div.Subject.hasAttachments{
-    border-bottom:0;
-    margin-bottom:0
-}
-.home_MessageFeed div.messageWrap div.messageBody div.NoHeader{
-    height:10px
 }
 .home_MessageFeed div.messageWrap div.messageBody div.Attachments{
-    border-bottom:1px solid #c2d3da;
     color:var(--main-text-color);
-    margin-bottom:5px;
-    padding-bottom:3px;
-    font-size:12px
-}
-.home_MessageFeed div.messageWrap div.messageBody div.text a{
-    font-size:inherit
-}
-.home_MessageFeed div.messageWrap div.messageBody div.text a.userName{
-    margin-right:5px
-}
-.home_MessageFeed div.messageHead a{
-    font-size:13px
-}
-.home_MessageFeed div.replyLinkArea{
-    padding-top:3px;
-    padding-bottom:4px
-}
-.home_MessageFeed div.messageBody div.replyWrap{
-    background-color:#e9eff6;
-    margin:4px 0;
-    padding:0 8px 1px 53px;
-    position:relative
-}
-.home_MessageFeed div.messageWrap div.replyWrap div.icon{
-    border:1px solid #d1e1db;
-    float:left;
-    margin-bottom:7px;
-    margin-left:-43px;
-    margin-top:9px;
-    position:relative;
-    width:35px
-}
-.home_MessageFeed div.messageWrap div.replyWrap div.text{
-    padding:9px 0
-}
-#MessagePost{
-    background:#fcfdfe;
-    background:-moz-linear-gradient(top,#fcfdfe 0,#e5e5e5 100%);
-    background:--webkit-gradient(linear,left top,left bottom,color-stop(0,#fcfdfe),color-stop(100%,#e5e5e5));
-    background:-webkit-linear-gradient(top,#fcfdfe 0,#e5e5e5 100%);
-    background:-o-linear-gradient(top,#fcfdfe 0,#e5e5e5 100%);
-    background:-ms-linear-gradient(top,#fcfdfe 0,#e5e5e5 100%);
-    background:linear-gradient(top,#fcfdfe 0,#e5e5e5 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCFDFE',endColorstr='#e5e5e5',GradientType=0);
-    border:1px solid #a7a7a7
 }
 #MessagePost div.innerWrap{
     border-color:var(--main-bg-color);
-    border-style:solid;
-    border-width:1px 1px 0;
-    padding-bottom:2px;
-    padding-left:2px;
-    padding-right:4px
 }
 #MessagePost div.messageHead{
-    background:#dee7ee;
-    background:-moz-linear-gradient(top,#dee7ee 0,#f1f5f8 100%);
-    background:--webkit-gradient(linear,left top,left bottom,color-stop(0,#dee7ee),color-stop(100%,#f1f5f8));
-    background:-webkit-linear-gradient(top,#dee7ee 0,#f1f5f8 100%);
-    background:-o-linear-gradient(top,#dee7ee 0,#f1f5f8 100%);
-    background:-ms-linear-gradient(top,#dee7ee 0,#f1f5f8 100%);
-    background:linear-gradient(top,#dee7ee 0,#f1f5f8 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#DEE7EE',endColorstr='#F1F5F8',GradientType=0);
-    border-color:#ccc;
-    border-style:solid;
-    border-width:0 1px;
     color:var(--main-text-color);
-    height:28px;
-    padding-left:27px;
-    width:105px;
-    margin-top:-1px;
-    position:relative;
-    z-index:1
+}
+.home_MessageFeed textarea{
+    color:var(--main-text-color);
 }
 #MessagePost div.messageHead div.icon{
     background:url("../sprite/sf_icons_sprite.png") no-repeat scroll 0 -29px transparent;
-    height:17px;
-    left:6px;
-    position:absolute;
-    top:6px;
-    width:17px
-}
-#MessagePost div.messageHead div.text{
-    font-size:13px;
-    padding-top:9px;
-    white-space:nowrap
-}
-#MessagePost div.messageBody{
-    margin-top:-1px;
-    position:relative;
-    z-index:2
-}
-.home_MessageFeed textarea{
-    background:#f6f6f6;
-    background:-moz-linear-gradient(top,#f6f6f6 0,var(--main-bg-color) 20%,var(--main-bg-color) 100%);
-    background:--webkit-gradient(linear,left top,left bottom,color-stop(0,#f6f6f6),color-stop(20%,var(--main-bg-color)),color-stop(100%,var(--main-bg-color)));
-    background:-webkit-linear-gradient(top,#f6f6f6 0,var(--main-bg-color) 20%,var(--main-bg-color) 100%);
-    background:-o-linear-gradient(top,#f6f6f6 0,var(--main-bg-color) 20%,var(--main-bg-color) 100%);
-    background:-ms-linear-gradient(top,#f6f6f6 0,var(--main-bg-color) 20%,var(--main-bg-color) 100%);
-    background:linear-gradient(top,#f6f6f6 0,var(--main-bg-color) 20%,var(--main-bg-color) 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6',endColorstr='var(--main-bg-color)',GradientType=0);
-    border:1px solid #b7b7b7;
-    color:var(--main-text-color);
-    font-size:13px;
-    height:15px;
-    padding:6px;
-    resize:none;
-    overflow:hidden;
-    font-family:arial;
-    line-height:1.15em
-}
-#MessagePost div.messageBody textarea{
-    width:513px
-}
-.home_MessageFeed div.messageBody div.replyWrap textarea{
-    margin-top:8px;
-    width:387px;
-    padding:3px
-}
-.home_MessageFeed div.messageBody div.replyWrap div.buttonsWrap{
-    float:right;
-    padding:6px 0
-}
-#MessagePost div.messageFoot{
-    height:73px;
-    position:relative
-}
-#MessagePost div.messageFoot div.postInputsWrap{
-    left:0;
-    position:absolute;
-    bottom:3px;
-    width:365px
-}
-#MessagePost div.messageFoot div.postInputsWrap div.section{
-    padding:7px 0 3px
 }
 #MessagePost div.messageFoot div.postInputsWrap div.label{
     color:var(--main-text-color);
-    display:inline-block;
-    font-size:13px;
-    text-align:right;
-    width:68px
-}
-#MessagePost div.messageFoot div.postInputsWrap div.data{
-    display:inline-block;
-    position:relative
 }
 #MessagePost div.messageFoot div.postInputsWrap div.inputWrap{
     background:#f6f6f6;
@@ -395,42 +69,6 @@ body {
     background:-ms-linear-gradient(top,#f6f6f6 0,var(--main-bg-color) 20%,var(--main-bg-color) 100%);
     background:linear-gradient(top,#f6f6f6 0,var(--main-bg-color) 20%,var(--main-bg-color) 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6',endColorstr='var(--main-bg-color)',GradientType=0);
-    border:1px solid #b7b7b7;
-    -webkit-border-radius:2px;
-    -moz-border-radius:2px;
-    border-radius:2px;
-    height:23px;
-    width:280px;
-    padding:0 3px;
-    position:relative
-}
-#MessagePost div.messageFoot div.postInputsWrap div.inputWrap input{
-    border-width:0;
-    background-color:transparent;
-    outline:none !important;
-    height:21px;
-    width:100%
-}
-#MessagePost div.messageFoot div.buttonsWrap{
-    bottom:8px;
-    position:absolute;
-    right:0;
-    width:170px
-}
-.home_MessageFeed div.message_grades div.messageHead{
-    background:#eff9e8;
-    background:-moz-linear-gradient(top,#eff9e8 0,#cadcbf 100%);
-    background:--webkit-gradient(linear,left top,left bottom,color-stop(0,#eff9e8),color-stop(100%,#cadcbf));
-    background:-webkit-linear-gradient(top,#eff9e8 0,#cadcbf 100%);
-    background:-o-linear-gradient(top,#eff9e8 0,#cadcbf 100%);
-    background:-ms-linear-gradient(top,#eff9e8 0,#cadcbf 100%);
-    background:linear-gradient(top,#eff9e8 0,#cadcbf 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eff9e8',endColorstr='#cadcbf',GradientType=0);
-    border-bottom:1px solid #aabaa0
-}
-.home_MessageFeed div.message_grades div.messageHead div.icon{
-    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -28px 2px #87a676;
-    border-left:1px solid #809673
 }
 .home_MessageFeed div.message_other div.messageHead{
     background: var(--yellow-bg-color);
@@ -441,11 +79,6 @@ body {
     background:-ms-linear-gradient(top,var(--yellow-bg-color) 0,var(--orange-bg-color) 100%);
     background:linear-gradient(top,var(--yellow-bg-color) 0,var(--orange-bg-color) 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=var(--yellow-bg-color),endColorstr=var(--orange-bg-color),GradientType=0);
-    border-bottom:1px solid #dac899
-}
-.home_MessageFeed div.message_other div.messageHead div.icon{
-    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -147px 3px #dcb95f;
-    border-left:1px solid #c1ae7c
 }
 .home_MessageFeed div.message_general div.messageHead,.home_MessageFeed div.message_warning_blue div.messageHead{
     background:var(--lighter-bg-color);
@@ -458,10 +91,6 @@ body {
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=var(--lighter-bg-color),endColorstr='#b8d3eb',GradientType=0);
     border-bottom:1px solid var(--darker-bg-color)
 }
-.home_MessageFeed div.message_general div.messageHead div.icon{
-    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -106px 3px #7395b2;
-    border-left:1px solid #7b91a5
-}
 .home_MessageFeed div.message_class div.messageHead{
     background:var(--lighter-bg-color);
     background:-moz-linear-gradient(top,var(--lighter-bg-color) 0,var(--more-orange-bg-color) 100%);
@@ -471,389 +100,75 @@ body {
     background:-ms-linear-gradient(top,var(--lighter-bg-color) 0,var(--more-orange-bg-color) 100%);
     background:linear-gradient(top,var(--lighter-bg-color) 0,var(--more-orange-bg-color) 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=var(--lighter-bg-color),endColorstr=var(--more-orange-bg-color),GradientType=0);
-    border-bottom:1px solid #daa684
-}
-.home_MessageFeed div.message_class div.messageHead div.icon{
-    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -65px 1px #f18e4c;
-    border-left:1px solid #da8045
 }
 .home_MessageFeed li div.stuName{
-    background-color:#f8f8f8;
     border-color:var(--darker-bg-color);
-    border-radius:0 8px 0 0;
-    border-style:solid;
-    border-width:1px 1px 0;
     color:var(--main-text-color);
-    float:left;
-    font-size:12px;
-    padding:3px 9px;
-    overflow:hidden;
-    position:relative
 }
 .home_MessageFeed li div.rightTag{
-    background-color:#f8f8f8;
     border-color:var(--darker-bg-color);
-    border-style:solid;
-    border-width:1px 1px 0;
     color:var(--main-text-color);
-    float:right;
-    font-size:12px;
-    padding:3px 9px;
-    overflow:hidden;
-    position:relative;
-    height:12px
-}
-.home_MessageFeed li div.rightTag *{
-    vertical-align:middle
 }
 .home_MessageFeed li div.rightTag span{
     color:var(--main-text-color);
-    font-style:italic;
-    font-size:10px;
-    padding-right:9px;
-    display:inline-block;
-    padding-bottom:1px
-}
-.home_MessageFeed li div.stuName span.forScreenReader{
-    position:absolute;
-    top:100px
 }
 .home_MessageFeed li.feedItem div.message_warning,.home_MessageFeed li.feedItem div.message_warning_ok,.home_MessageFeed li.feedItem div.message_warning,.home_MessageFeed li.feedItem div.message_warning_blue{
     border:1px solid var(--darker-bg-color)
 }
+.home_MessageFeed div.message_grades div.messageHead div.icon{
+    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -28px 2px #87a676;
+}
+.home_MessageFeed div.message_other div.messageHead div.icon{
+    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -147px 3px #dcb95f;
+}
+.home_MessageFeed div.message_general div.messageHead div.icon{
+    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -106px 3px #7395b2;
+}
+.home_MessageFeed div.message_class div.messageHead div.icon{
+    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -65px 1px #f18e4c;
+}
 .home_MessageFeed div.message_warning div.messageHead{
     background:var(--lighter-bg-color);
-    background:-moz-linear-gradient(top,#fcf4f4 0,#ebb8ba 100%);
-    background:--webkit-gradient(linear,left top,left bottom,color-stop(0,#fcf4f4),color-stop(100%,#ebb8ba));
-    background:-webkit-linear-gradient(top,#fcf4f4 0,#ebb8ba 100%);
-    background:-o-linear-gradient(top,#fcf4f4 0,#ebb8ba 100%);
-    background:-ms-linear-gradient(top,#fcf4f4 0,#ebb8ba 100%);
-    background:linear-gradient(top,#fcf4f4 0,#ebb8ba 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcf4f4',endColorstr='#ebb8ba',GradientType=0);
     border-bottom:1px solid var(--darker-bg-color);
-    padding-left:5px
 }
 .home_MessageFeed div.message_warning_ok div.messageHead{
-    background:#eff9e8;
-    background:-moz-linear-gradient(top,#eff9e8 0,#cadcbf 100%);
-    background:--webkit-gradient(linear,left top,left bottom,color-stop(0,#eff9e8),color-stop(100%,#cadcbf));
-    background:-webkit-linear-gradient(top,#eff9e8 0,#cadcbf 100%);
-    background:-o-linear-gradient(top,#eff9e8 0,#cadcbf 100%);
-    background:-ms-linear-gradient(top,#eff9e8 0,#cadcbf 100%);
-    background:linear-gradient(top,#eff9e8 0,#cadcbf 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eff9e8',endColorstr='#cadcbf',GradientType=0);
     border-bottom:1px solid var(--darker-bg-color);
-    padding-left:5px
-}
-.home_MessageFeed div.message_warning_blue div.messageHead{
-    padding-left:5px
-}
-.home_MessageFeed li.feedItem div.message_warning div.messageBody,.home_MessageFeed li.feedItem div.message_warning_ok div.messageBody,.home_MessageFeed li.feedItem div.message_warning_blue div.messageBody{
-    padding-left:5px
-}
-.home_MessageFeed li.feedItem div.message_warning div.text,.home_MessageFeed li.feedItem div.message_warning_ok div.text,.home_MessageFeed li.feedItem div.message_warning_blue div.text{
-    border-right:0;
-    width:auto
-}
-div.inputWrap{
-    position:relative;
-    z-index:2
 }
 div.autoListWrap{
-    background-color:#f7f7f7;
     border:1px solid var(--blue-text-color);
-    display:none;
-    left:-3px;
-    padding-top:30px;
-    position:absolute;
-    top:-3px;
-    width:292px;
-    z-index:1;
-    -webkit-border-radius:2px;
-    -moz-border-radius:2px;
-    border-radius:2px
-}
-#MessagePost ul.autoList{
-    overflow:auto;
-    max-height:350px;
-    clear:both
-}
-#MessagePost ul.autoList li{
-    position:relative;
-    padding:3px 2px 3px 30px;
-    border-top:1px solid #b8c8c2;
-    cursor:pointer
-}
-#MessagePost ul.autoList li.first{
-    border-top-width:0
-}
-#MessagePost ul.autoList li div{
-    white-space:nowrap;
-    overflow:hidden;
-    text-decoration:none !important
-}
-#MessagePost ul.autoList li div.icon{
-    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -33px -33px transparent;
-    height:18px;
-    left:5px;
-    position:absolute;
-    top:2px;
-    width:18px
-}
-#MessagePost ul.autoList li div.fullName{
-    color:#1a5da0;
-    font-size:13px;
-    line-height:18px
-}
-#MessagePost ul.autoList li a:hover{
-    text-decoration:none
-}
-#MessagePost ul.autoList li a:hover div.fullName{
-    text-decoration:underline !important
 }
 #MessagePost ul.autoList li div.className,#MessagePost ul.autoList li div.schoolName,#MessagePost ul.autoList li div.studentName{
     color:var(--blue-text-color);
-    font-size:11px;
-    padding:1px 0
 }
-#MessagePost ul[student] li div.studentName{
-    display:none
-}
-#MessagePost ul.autoList li.noResults{
-    color:#3d434a;
-    display:list-item;
-    font-size:13px;
-    font-style:italic;
-    padding:5px;
-    cursor:default;
-    border-top-width:0
-}
-#MessagePost ul.autoList li.selected{
-    background-color:#ededed
-}
-#MessagePost ul.autoList li.selected div.fullName{
-    text-decoration:underline !important
+#MessagePost ul.autoList li div.icon{ 
+    background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -33px -33px transparent;
 }
 .To,.Stu{
-    background-color:#dee7ee;
-    border:1px solid #96b9dc;
     color: var(--main-text-color);
-    display:inline-block;
-    font-size:13px;
-    padding:2px 17px 2px 2px;
-    position:absolute;
-    top:2px;
-    left:2px
-}
-.To{
-    position:relative;
-    margin-right:4px;
-    margin-bottom:2px;
-    margin-top:2px
 }
 .To a,.Stu a{
     background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -63px -61px transparent;
-    height:10px;
-    position:absolute;
-    right:2px;
-    text-decoration:none !important;
-    top:2px;
-    width:10px
 }
-.To a[disabled],.Stu a[disabled]{
-    zoom:1;
-    filter:alpha(opacity=50);
-    opacity:.15
-}
-#toSection{
-    padding:0 !important;
-    margin-top:-2px
-}
-#toList{
-    padding:0;
-    width:290px
-}
-.sf_studentAccess #regardingWrap{
-    display:none
-}
-table.gridTable,table.gridTable table{
-    width:100%
-}
-table.gridTable a{
-    font-size:13px
-}
-table.gridTable td{
-    padding:4px 0;
-    font-size:13px;
-    color:#292d31;
-    white-space:nowrap
-}
-table.gridTable td.column1{
-    text-align:right
-}
-table.gridTable hr{
-    background-color:#c0c2c3;
-    height:1px;
-    border-width:0;
-    padding:0;
-    margin:2px 0
-}
-table.gridTable td.column2{
-    text-align:left;
-    padding-left:6px;
-    width:60%;
-    color:#474d53
-}
-table.gridTable td.buttonCell{
-    text-align:center;
-    padding:5px
-}
-table.gridTable td.buttonCell a.button{
-    font-size:12px;
-    font-weight:normal
+#home_menuTable>li{
+    background:url("../sprite/sf_bg_sprite001.png") no-repeat scroll right -25px transparent
 }
 #RecipientsTerms{
     border-bottom:1px solid var(--blue-text-color);
-    display:block;
-    height:19px;
-    margin-top:-3px;
-    padding-top:3px
 }
 #RecipientsWrap #RecipientsTerms div.selected{
-    background:none repeat scroll 0 0 #f7f7f7;
-    filter:none;
     border-color:var(--blue-text-color) var(--blue-text-color) #f7f7f7;
     color:var(--darker-bg-color)
 }
 #RecipientsTerms div.current{
-    border-left-width:1px;
     border-right:1px solid var(--blue-text-color);
-    margin-left:4px
 }
 #RecipientsTerms div{
-    background:#e1e1e1;
-    background:-moz-linear-gradient(top,#f7f7f7 0,#e1e1e1 100%);
-    background:--webkit-gradient(linear,left top,left bottom,color-stop(0,#f7f7f7),color-stop(100%,#e1e1e1));
-    background:-webkit-linear-gradient(top,#f7f7f7 0,#e1e1e1 100%);
-    background:-o-linear-gradient(top,#f7f7f7 0,#e1e1e1 100%);
-    background:-ms-linear-gradient(top,#f7f7f7 0,#e1e1e1 100%);
-    background:linear-gradient(top,#f7f7f7 0,#e1e1e1 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7',endColorstr='#E1E1E1',GradientType=0);
     border-color:#a6b3bf #a6b3bf var(--blue-text-color);
-    border-style:solid;
-    border-width:1px 1px 1px 0;
-    color:#666;
-    float:left;
-    font-size:13px;
-    margin:0;
-    padding:3px 16px 2px;
-    height:13px;
-    cursor:pointer
-}
-#RecipientsTerms div:hover{
-    text-decoration:underline
-}
-#bRecipientSelectAll{
-    display:none;
-    padding:1px 10px;
-    position:absolute;
-    right:14px;
-    top:29px
-}
-.sf_DialogHtml td{
-    padding:2px 4px
-}
-.sf_DialogHtml>div{
-    padding:1px
-}
-#cancelPost{
-    float:right;
-    margin-right:11px;
-    margin-top:5px;
-    text-decoration:underline
-}
-.postMessageRedirect{
-    height:1px;
-    opacity:0;
-    outline:medium none !important;
-    overflow:hidden;
-    position:absolute;
-    text-decoration:none !important;
-    width:1px;
-    z-index:-999
-}
-div.msgDetail{
-    max-width:453px
-}
-#home_menuArea{
-    height:30px;
-    margin-right:2px
-}
-#home_menuTable>li>a{
-    font-size:11px;
-    font-style:italic
 }
 #home_menuTable{
     background: var(--main-bg-color);
     border:1px solid var(--darker-bg-color);
-    -webkit-border-bottom-right-radius:4px;
-    -webkit-border-bottom-left-radius:4px;
-    -moz-border-radius-bottomright:4px;
-    -moz-border-radius-bottomleft:4px;
-    border-bottom-right-radius:4px;
-    border-bottom-left-radius:4px;
-    -moz-box-shadow:0 1px 2px #9f9f9f;
-    -webkit-box-shadow:0 1px 2px #9f9f9f;
-    box-shadow:0 1px 2px #9f9f9f;
-    list-style:none outside none;
-    margin:0 2px 0 0;
-    padding:0;
-    white-space:nowrap;
-    float:right;
-    height:22px
-}
-#home_menuTable>li{
-    display:inline-block;
-    font-size:11px;
-    font-weight:normal;
-    height:20px;
-    line-height:20px;
-    padding:0 10px;
-    vertical-align:middle;
-    background:url("../sprite/sf_bg_sprite001.png") no-repeat scroll right -25px transparent
-}
-#home_menuTable>li.last{
-    background:none repeat scroll 0 0 transparent;
-    padding:0 6px 0 8px
-}
-.sf_DialogWrap.loading{
-    visibility:hidden !important
 }
 #home_setup{
-    display:inline-block;
-    height:19px;
-    width:29px;
     background:url("../sprite/sf_icons_sprite.png") no-repeat scroll -97px -98px transparent;
-    text-decoration:none !important
-}
-#toggleHidden{
-    position:relative;
-    text-indent:17px
-}
-#toggleHidden .showHidden{
-    position:absolute;
-    left:3px;
-    top:3px;
-}
-div.Attachments .sf_paperclip{
-    vertical-align:sub
-}
-.wellnessTable td{
-    padding:1px 2px
-}
-#wellnessScreenText ul{
-    list-style:disc inside
-}
-#wellnessScreenText ol{
-    list-style:decimal inside
 }
