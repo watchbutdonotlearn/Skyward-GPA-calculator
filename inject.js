@@ -148,6 +148,21 @@ var algNumber = 1;
 // var classSumArray = [];
 var weightArray = [];
 
+var currentGPAJSON = {
+	"Current Skyward Grades": {
+		classNames: [
+
+		], 
+		inputtedGPAValues: [
+
+		],
+		inputtedGradeValues: [
+
+		],
+		setNumberOfClasses: ""
+	}
+};
+
 function calculateGPA() {
 
 	setNumberOfClasses()
@@ -281,6 +296,11 @@ function calculateGPA() {
 		preGPAsum = preGPAsum + preGPAw;
 		preGPAw = 0;
 	}
+
+	currentGPAJSON["Current Skyward Grades"].setNumberOfClasses = numberOfGrades.toString();
+	currentGPAJSON["Current Skyward Grades"].inputtedGPAValues = weightArray
+	currentGPAJSON["Current Skyward Grades"].inputtedGradeValues = tempGrades
+
 	var gpaAverageW = preGPAsum / numberOfGrades1;
 	console.log("gpaAverageW: "+gpaAverageW);
 	let preGPAu = 0;
@@ -334,6 +354,10 @@ function calculateGPA() {
 	else{
         GPAstr += "Weighted GPA: " + (Math.round(finalWeightedNumber * 1000) / 1000).toString() + "</h2>"   
     }
+
+	var currentGPAStr = JSON.stringify(currentGPAJSON).replace(/\"/g, "'");
+	GPAstr += `<a target="_blank" href="http://captainbboy.github.io?import=${currentGPAStr}">Export to captainbboy.github.io</a>`
+
     gpa_container.innerHTML = GPAstr;
     console.log("detectNaN: "+detectNaN);
     console.log(gpa_container.innerHTML);
