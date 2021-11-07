@@ -347,9 +347,9 @@ function calculateGPA() {
 	if(finalerrormessage === 1){
         GPAstr += "Select class weights to see weighted GPA </h2>";
     }else if(finalerrormessage === 2){
-		GPAstr += numberOfGrades.toString() + ' grades found, but only ' + numberOfWeights.toString() + ' weights selected'
+		GPAstr += numberOfGrades.toString() + ' grades found, but only ' + numberOfWeights.toString() + ' weights selected</h2>'
 	}else if(finalerrormessage === 3){
-		GPAstr += numberOfGrades.toString() + ' grades found, but ' + numberOfWeights.toString() + ' weights selected'
+		GPAstr += numberOfGrades.toString() + ' grades found, but ' + numberOfWeights.toString() + ' weights selected</h2>'
 	}
 	else{
         GPAstr += "Weighted GPA: " + (Math.round(finalWeightedNumber * 1000) / 1000).toString() + "</h2>"   
