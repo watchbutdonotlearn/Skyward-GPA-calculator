@@ -68,7 +68,7 @@ function myFunction2() {
 }
 
 var y = document.getElementById("weightselectordiv");
-y.style.display = "none";
+if(y) y.style.display = "none";
 
 var z = document.getElementById("settingsdiv");
 z.style.display = "none";
