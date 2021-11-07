@@ -296,7 +296,9 @@ function calculateGPA() {
 		preGPAsum = preGPAsum + preGPAw;
 		preGPAw = 0;
 	}
-
+	for(let i=0; i<weightArray.length; i++){
+		weightArray[i]=weightArray[i].toFixed(1)
+	}
 	currentGPAJSON["Current Skyward Grades"].setNumberOfClasses = numberOfGrades.toString();
 	currentGPAJSON["Current Skyward Grades"].inputtedGPAValues = weightArray
 	currentGPAJSON["Current Skyward Grades"].inputtedGradeValues = tempGrades
