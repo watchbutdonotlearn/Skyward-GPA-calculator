@@ -15,7 +15,7 @@
 		"128": "icon128.png"  
 	},    
 	"browser_action": {
-        "default_title": "Reee",
+        "default_title": "Skyward GPA Calculator",
         "default_popup": "popup.html",
 		"default_icon": {                   
 			"16": "icon16.png",
