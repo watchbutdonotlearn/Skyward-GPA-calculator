@@ -6,7 +6,7 @@ scriptTag.innerHTML = myJavaScript;
 document.head.appendChild(scriptTag); 
 
 let url = location.href;
-let page = url.split("/scripts/wsisa.dll/WService=wsEAplus/")[1];
+let page = url.split("/scripts/wsisa.dll/WService=")[1].split("/")[1];
 console.log("[DEBUG] page = " + page);
 
 chrome.storage.local.get(['skywardDarkTheme'], function(data){
