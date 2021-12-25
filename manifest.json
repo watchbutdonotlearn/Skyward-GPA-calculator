@@ -35,7 +35,8 @@
         "sprite/arrows_sprite.png",
         "sprite/printer1.png",
         "sprite/sf_bg_sprite001.png",
-        "sprite/sf_icons_sprite.png"
+        "sprite/sf_icons_sprite.png",
+        "SkyLogoBlue.png"
     ],
     "content_scripts": [
         {

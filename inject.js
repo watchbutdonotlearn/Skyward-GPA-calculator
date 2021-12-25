@@ -46,7 +46,7 @@ chrome.storage.local.get(['skywardDarkTheme'], function(data){
 			var children = document.getElementById("loginBrading").children
 			console.log(children)
 			for(child in children) {
-				if(children[child].src) children[child].src = "https://www.wccsonline.com/cms/lib/IN01806574/Centricity/Domain/317/SkyLogoBlue.png"
+				if(children[child].src) children[child].src = chrome.extension.getURL("SkyLogoBlue.png");
 			}
 		}
 
