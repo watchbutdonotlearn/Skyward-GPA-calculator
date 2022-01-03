@@ -193,7 +193,7 @@ function saveGPAtoGraph(){
                 console.log('repeated value')
                 graphHasSet = 2
             }
-            if(GPAGraphArray[GPAGraphArray.length-1].timestamp > timestamp + 864000){
+            if(GPAGraphArray[GPAGraphArray.length-1].timestamp + 864000> timestamp){
                 graphHasSet = 0
             }
         }
