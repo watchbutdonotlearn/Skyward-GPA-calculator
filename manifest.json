@@ -36,6 +36,7 @@
         "sprite/printer1.png",
         "sprite/sf_bg_sprite001.png",
         "sprite/sf_icons_sprite.png",
+        "gpachart.html",
         "SkyLogoBlue.png"
     ],
     "content_scripts": [

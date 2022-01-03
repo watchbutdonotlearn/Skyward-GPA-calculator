@@ -163,6 +163,52 @@ var currentGPAJSON = {
 	}
 };
 
+var finalWeightedNumber;
+var finalUnweightedNumber;
+var timestamp;
+
+function saveGPAtoGraph(){
+    chrome.storage.local.get(['GPAGraphArray'], function(data){
+        let graphHasSet = 0
+        let GPAGraphArray = data.GPAGraphArray;
+        console.log(GPAGraphArray)
+        if(GPAGraphArray == undefined){
+            console.log('GPA graph JSON value is not yet set')
+            graphHasSet = 1
+        }
+        if(GPAGraphArray.length == 0){
+            console.log('GPA graph JSON value is not yet set')
+            graphHasSet = 1
+        }
+        timestamp = Math.round(Date.now()/10000);
+        if(graphHasSet == 0){
+            console.log('graphHasSet is 0, checking for repeat')
+            if(GPAGraphArray[GPAGraphArray.length - 1].weighted == finalWeightedNumber){
+                console.log('repeated value')
+                graphHasSet = 2
+            }
+            else if(GPAGraphArray[GPAGraphArray.length - 1].unweighted == finalUnweightedNumber){
+                console.log('repeated value')
+                graphHasSet = 2
+            }
+        }
+        if(graphHasSet == 0){
+            GPAGraphArray.push({unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp})
+            chrome.storage.local.set({GPAGraphArray: GPAGraphArray});
+            document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>Save to graph</button>'
+        }
+        else if(graphHasSet == 1){
+            let GPAGraphTempValues = [{unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp}]
+            chrome.storage.local.set({GPAGraphArray: GPAGraphTempValues});
+            document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>Save to graph</button>'
+        }
+        else{
+            console.log('not saving GPA value due to repeat')
+            document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>cannot save duplicate GPA</button>'
+        }
+    })
+}
+
 function calculateGPA() {
 
 	setNumberOfClasses()
@@ -321,8 +367,7 @@ function calculateGPA() {
     let weighted = weightaverage - gpa_sub / gpa_cnt;
     console.log("weighted: "+weighted);
     //use algorithm value to see which GPA value to use
-	var finalWeightedNumber;
-	var finalUnweightedNumber;
+    
 	console.log("algNumber: "+algNumber)
 	if(algNumber == 1){
 		finalWeightedNumber = weighted;
@@ -356,17 +401,21 @@ function calculateGPA() {
 	else{
         GPAstr += "Weighted GPA: " + (Math.round(finalWeightedNumber * 1000) / 1000).toString() + "</h2>"   
     }
-
+    
 	var currentGPAStr = JSON.stringify(currentGPAJSON).replace(/\"/g, "'");
 	GPAstr += `<a target="_blank" href="http://captainbboy.github.io?import=${currentGPAStr}">Export to captainbboy.github.io</a>`
-
+	
+	GPAstr += '<button type="button" style="float: right;" id="saveGraphBtn">Save to graph</button><p><a target="_blank" style="text-align: right;" href=' + chrome.extension.getURL('gpachart.html') + '>See GPA graph</a></p>'
+	
     gpa_container.innerHTML = GPAstr;
     console.log("detectNaN: "+detectNaN);
     console.log(gpa_container.innerHTML);
     container.prepend(gpa_container);
+    
+    document.getElementById('saveGraphBtn').addEventListener('click', saveGPAtoGraph);
 };
 
-function something(){
+function delayStorageGet(){
 	chrome.storage.local.get(['storedAlgorithm'], function(data){
 		console.log(data);
 		algNumber = data.storedAlgorithm;
@@ -377,10 +426,10 @@ function something(){
 		}
 	});
 }
-something();
+delayStorageGet();
 
 var numberOfGradeDivs;
-function something2(){
+function delayStorageGet2(){
 	chrome.storage.local.get(['storedGradesDivNum'], function(data){
 		console.log(data);
 		numberOfGradeDivs = data.storedGradesDivNum;
@@ -392,7 +441,7 @@ function something2(){
 		console.log(numberOfGradeDivs)
 	});
 }
-something2();
+delayStorageGet2();
 
 //get weights
 var numberOfWeights;

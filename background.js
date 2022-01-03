@@ -1,4 +1,4 @@
-function myFunction() {
+function togglevisibility() {
 	var x = document.getElementById("weightselectordiv");
 	var GPAForms = document.getElementsByClassName("GPAForm");
 	var openSkyward = document.getElementById("openSkyward");
@@ -49,7 +49,7 @@ function myFunction() {
 	})
 }
 
-function myFunction3() {
+function togglevisibility3() {
 	var x = document.getElementById("settingsdiv");
 	if (x.style.display === "none") {
 		x.style.display = "block";
@@ -58,7 +58,7 @@ function myFunction3() {
 	}
 }
 
-function myFunction2() {
+function togglevisibility2() {
 	var z = document.getElementById("mainPage");
 	if (z.style.display === "none") {
 		z.style.display = "block";
@@ -189,14 +189,14 @@ window.onload=function(){
 }
 function showhide(){
     console.log("ok this works i guess lol");
-	myFunction();
-	myFunction2();
+	togglevisibility();
+	togglevisibility2();
 }
 
 function showhide2(){
 	console.log("ok this works i guess lol");
-	myFunction2();
-	myFunction3();
+	togglevisibility2();
+	togglevisibility3();
 }
 
 
