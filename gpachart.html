@@ -16,6 +16,15 @@
 <div id=chartdiv>
     <canvas id="GPAChart" style="width:100%;max-width:700px"></canvas>
 </div>
-<button type="button" id="clearGraphBtn">Clear all values</button>
+<button type="button" id="clearGraphBtn">Clear all values</button><br>
+<form id="divdarkmodesetting" name="divdarkmodeForm">
+    <div class="divdarkmode">
+        <strong>Autosave to graph:</strong>
+        <input type="radio" id="autosavetrue" name="autosaveRadio" value="1">
+        <label for="1">Enabled</label> 
+        <input type="radio" id="autosavefalse" name="autosaveRadio" value="2">
+        <label for="2">Disabled</label>
+    </div>
+</form>
 </body>
 </html>

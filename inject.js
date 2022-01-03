@@ -167,6 +167,8 @@ var finalWeightedNumber;
 var finalUnweightedNumber;
 var timestamp;
 
+var autosaveSetting;
+
 function saveGPAtoGraph(){
     chrome.storage.local.get(['GPAGraphArray'], function(data){
         let graphHasSet = 0
@@ -191,6 +193,12 @@ function saveGPAtoGraph(){
                 console.log('repeated value')
                 graphHasSet = 2
             }
+            if(GPAGraphArray[GPAGraphArray.length-1].timestamp > timestamp + 864000){
+                graphHasSet = 0
+            }
+        }
+        if(autosaveSetting == true){
+            graphHasSet = 3
         }
         if(graphHasSet == 0){
             GPAGraphArray.push({unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp})
@@ -201,6 +209,10 @@ function saveGPAtoGraph(){
             let GPAGraphTempValues = [{unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp}]
             chrome.storage.local.set({GPAGraphArray: GPAGraphTempValues});
             document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>Save to graph</button>'
+        }
+        else if(graphHasSet == 3){
+            console.log('autosave is enabled')
+            document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>autosave enabled</button>'
         }
         else{
             console.log('not saving GPA value due to repeat')
@@ -413,6 +425,22 @@ function calculateGPA() {
     container.prepend(gpa_container);
     
     document.getElementById('saveGraphBtn').addEventListener('click', saveGPAtoGraph);
+    
+    chrome.storage.local.get(['autosaveSetting'], function(data){
+        autosaveSetting = data.autosaveSetting;
+        console.log(autosaveSetting)
+        if(autosaveSetting == undefined){
+            console.log('GPA graph autosave setting value is not yet set')
+        }
+        else{
+            if(autosaveSetting == true){
+                saveGPAtoGraph()
+            }
+            if(autosaveSetting == false){
+                console.log('Setting to automatically save GPA to graph has been disabled')
+            }
+        }
+    });
 };
 
 function delayStorageGet(){
