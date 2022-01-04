@@ -193,12 +193,14 @@ function saveGPAtoGraph(){
                 console.log('repeated value')
                 graphHasSet = 2
             }
-            if(GPAGraphArray[GPAGraphArray.length-1].timestamp + 864000> timestamp){
+            if(GPAGraphArray[GPAGraphArray.length-1].timestamp + 864000 < timestamp){
+                console.log('1 day has passed since last repeat value')
                 graphHasSet = 0
             }
         }
         if(autosaveSetting == true){
-            graphHasSet = 3
+            console.log('autosave is enabled')
+            document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>autosave enabled</button>'
         }
         if(graphHasSet == 0){
             GPAGraphArray.push({unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp})
@@ -209,10 +211,6 @@ function saveGPAtoGraph(){
             let GPAGraphTempValues = [{unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp}]
             chrome.storage.local.set({GPAGraphArray: GPAGraphTempValues});
             document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>Save to graph</button>'
-        }
-        else if(graphHasSet == 3){
-            console.log('autosave is enabled')
-            document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>autosave enabled</button>'
         }
         else{
             console.log('not saving GPA value due to repeat')
