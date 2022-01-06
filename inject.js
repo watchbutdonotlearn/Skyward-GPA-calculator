@@ -193,7 +193,9 @@ function saveGPAtoGraph(){
                 console.log('repeated value')
                 graphHasSet = 2
             }
-            if(GPAGraphArray[GPAGraphArray.length-1].timestamp > timestamp + 864000){
+            console.log(GPAGraphArray[GPAGraphArray.length-1].timestamp)
+            console.log(timestamp)
+            if(GPAGraphArray[GPAGraphArray.length-1].timestamp + 8600> timestamp){
                 graphHasSet = 0
             }
         }
@@ -286,11 +288,14 @@ function calculateGPA() {
                 if(c_child.children[0].innerHTML.length < 10) continue;
                 final_grade = parseInt(c_child.children[0].children[0].innerHTML);
             }
-
+            
 			if(final_grade !== -1) {
 				gpa_sub += 0.05 * (100 - final_grade);
 				gpa_cnt++;
 			}
+			
+            //gpa_sub += 0.05 * (100 - final_grade);
+            //gpa_cnt++;
 			
 			console.log("final_grade: "+final_grade)
 
@@ -330,37 +335,67 @@ function calculateGPA() {
     }
 
 	console.log(tempGrades)
-	if(tempGrades.includes(-1)) { // it is the first semester or not all grades are in.	
+	
+    let tempGrades1 = tempGrades;
+    
+	if(tempGrades.includes(-1)) { // it is the first semester or not all grades are in.
 		tempGrades = tempGrades.filter(a=>a!==-1)
 	}
-
+    
+    console.log(tempGrades)
+    
     let finalerrormessage = 0;
 	//average formula weighted
 	let preGPAw = 0;
 	let preGPAsum = 0;
-	let numberOfGrades = tempGrades.length;
-	let numberOfGrades1 = tempGrades.length;
-	if(numberOfGrades > numberOfWeights){
+	let numberOfGrades = tempGrades1.length;
+	let numberOfGrades1 = tempGrades1.length;
+	/*
+    if(numberOfGrades > numberOfWeights){
 		console.log(numberOfGrades.toString() + 'grades found, but only' + numberOfWeights.toString() + 'weights selected.');
 		finalerrormessage = 2;
 		numberOfGrades1 = numberOfWeights;
 	}
-	if(numberOfGrades < numberOfWeights){
+    if(numberOfGrades < numberOfWeights){
 		finalerrormessage = 3;
 		console.log(numberOfGrades.toString() + ' grades found, but ' + numberOfWeights.toString() + ' weights selected');
 	}
+	*/
+	if(numberOfGrades / 2 != numberOfWeights){
+        finalerrormessage = 2;
+        console.log((numberOfGrades/2).toString() + 'grades found, but ' + numberOfWeights.toString() + ' weights selected.');
+    }
+	
+	let weightArrayTemporary = [];
+	let weightArrayOriginal = weightArray
+    
+	for(let i=0; i < weightArray.length; i++){
+        weightArrayTemporary.push(weightArray[i])
+        weightArrayTemporary.push(weightArray[i])
+    }
+    
+    weightArray = weightArrayTemporary;
+	
+    console.log(weightArray)
+    let debugcounter = 0
 	for(let i=0; i < numberOfGrades1; i++){
-		preGPAw = weightArray[i] * tempGrades[i] * 0.01;
-		preGPAsum = preGPAsum + preGPAw;
-		preGPAw = 0;
+        preGPAw = weightArray[i] * tempGrades[i] * 0.01;
+        if(preGPAw > 0){
+            preGPAsum = preGPAsum + preGPAw;
+            debugcounter++;
+            console.log(preGPAsum)
+        }
+        preGPAw = 0;
 	}
+	console.log(debugcounter)
+	
 	for(let i=0; i<weightArray.length; i++){
 		weightArray[i]=weightArray[i].toFixed(1)
 	}
 	currentGPAJSON["Current Skyward Grades"].setNumberOfClasses = numberOfGrades.toString();
-	currentGPAJSON["Current Skyward Grades"].inputtedGPAValues = weightArray
+	currentGPAJSON["Current Skyward Grades"].inputtedGPAValues = weightArrayOriginal
 	currentGPAJSON["Current Skyward Grades"].inputtedGradeValues = tempGrades
-
+	
 	var gpaAverageW = preGPAsum / numberOfGrades1;
 	console.log("gpaAverageW: "+gpaAverageW);
 	let preGPAu = 0;
