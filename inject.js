@@ -173,6 +173,8 @@ function saveGPAtoGraph(){
     chrome.storage.local.get(['GPAGraphArray'], function(data){
         let graphHasSet = 0
         let GPAGraphArray = data.GPAGraphArray;
+        let hasbeen24hours = 0;
+        let isrepeatvalue = 0;
         console.log(GPAGraphArray)
         if(GPAGraphArray == undefined){
             console.log('GPA graph JSON value is not yet set')
@@ -188,26 +190,33 @@ function saveGPAtoGraph(){
             if(GPAGraphArray[GPAGraphArray.length - 1].weighted == finalWeightedNumber){
                 console.log('repeated value')
                 graphHasSet = 2
+                isrepeatvalue = 1
             }
             else if(GPAGraphArray[GPAGraphArray.length - 1].unweighted == finalUnweightedNumber){
                 console.log('repeated value')
                 graphHasSet = 2
+                isrepeatvalue = 1
             }
             console.log(GPAGraphArray[GPAGraphArray.length-1].timestamp)
             console.log(timestamp)
-            if(GPAGraphArray[GPAGraphArray.length-1].timestamp + 8600> timestamp){
+            if(GPAGraphArray[GPAGraphArray.length-1].timestamp + 8600 < timestamp){
                 graphHasSet = 0
+                hasbeen24hours = 1
+                console.log('last date is 24 hours before')
             }
         }
         if(autosaveSetting == true){
+            originalGraphHasSet = graphHasSet
             graphHasSet = 3
         }
         if(graphHasSet == 0){
+            console.log('appending GPA to array and saving')
             GPAGraphArray.push({unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp})
             chrome.storage.local.set({GPAGraphArray: GPAGraphArray});
             document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>Save to graph</button>'
         }
         else if(graphHasSet == 1){
+            console.log('saving GPA for first time')
             let GPAGraphTempValues = [{unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp}]
             chrome.storage.local.set({GPAGraphArray: GPAGraphTempValues});
             document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>Save to graph</button>'
@@ -215,6 +224,16 @@ function saveGPAtoGraph(){
         else if(graphHasSet == 3){
             console.log('autosave is enabled')
             document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>autosave enabled</button>'
+            if(hasbeen24hours == 1){
+                console.log('appending GPA to array and saving')
+                GPAGraphArray.push({unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp})
+                chrome.storage.local.set({GPAGraphArray: GPAGraphArray});
+            }
+            if(originalGraphHasSet == 1){
+                console.log('saving GPA for first time')
+                let GPAGraphTempValues = [{unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp}]
+                chrome.storage.local.set({GPAGraphArray: GPAGraphTempValues});
+            }
         }
         else{
             console.log('not saving GPA value due to repeat')
