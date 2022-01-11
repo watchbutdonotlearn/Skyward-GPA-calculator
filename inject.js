@@ -224,12 +224,12 @@ function saveGPAtoGraph(){
         else if(graphHasSet == 3){
             console.log('autosave is enabled')
             document.getElementById('saveGraphBtn').outerHTML = '<button type="button" style="float: right;" id="saveGraphBtn" disabled>autosave enabled</button>'
-            if(hasbeen24hours == 1){
+            if(hasbeen24hours == 1 || originalGraphHasSet == 0){
                 console.log('appending GPA to array and saving')
                 GPAGraphArray.push({unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp})
                 chrome.storage.local.set({GPAGraphArray: GPAGraphArray});
             }
-            if(originalGraphHasSet == 1){
+            else if(originalGraphHasSet == 1){
                 console.log('saving GPA for first time')
                 let GPAGraphTempValues = [{unweighted:finalUnweightedNumber, weighted:finalWeightedNumber, timestamp:timestamp}]
                 chrome.storage.local.set({GPAGraphArray: GPAGraphTempValues});
