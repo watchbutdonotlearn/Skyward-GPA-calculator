@@ -180,10 +180,14 @@ function saveGPAtoGraph(){
             console.log('GPA graph JSON value is not yet set')
             graphHasSet = 1
         }
-        if(GPAGraphArray.length == 0){
+        else if(GPAGraphArray == []){
             console.log('GPA graph JSON value is not yet set')
             graphHasSet = 1
         }
+        /*if(GPAGraphArray.length == 0){
+            console.log('GPA graph JSON value is not yet set')
+            graphHasSet = 1
+        }*/
         timestamp = Math.round(Date.now()/10000);
         if(graphHasSet == 0){
             console.log('graphHasSet is 0, checking for repeat')
