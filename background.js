@@ -84,6 +84,7 @@ window.onload=function(){
 	document.getElementById('closeSettings').addEventListener('click', getAlgorithm);
 	document.getElementById('closeSettings').addEventListener('click', storeDivNumberGrades);
 	document.getElementById('closeSettings').addEventListener('click', storeDarkMode);
+    document.getElementById('closeSettings').addEventListener('click', savePreviousSemesterGrades);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', showhide2);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', returndivgrades);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', returnAlgorithm);
@@ -186,6 +187,11 @@ window.onload=function(){
 	}
 	returnDivDarkMode();
 	
+    //return values of import json box
+    chrome.storage.local.get(['storedCumulativeGrades'], function(data){
+		console.log(data);
+		document.getElementById('cumulativeSaveBox').value = data.storedCumulativeGrades;
+	});
 }
 function showhide(){
     console.log("ok this works i guess lol");
@@ -252,6 +258,11 @@ function storeDivNumberGrades(){
 	let gradesDivNumberValue = document.forms.divnumberForm.gradeDivNumber.value;
 	console.log(gradesDivNumberValue);
 	chrome.storage.local.set({storedGradesDivNum: gradesDivNumberValue});
+}
+
+function savePreviousSemesterGrades(){
+    let previousSemesterGrades = document.getElementById('cumulativeSaveBox').value;
+    chrome.storage.local.set({storedCumulativeGrades: previousSemesterGrades});
 }
 
 function storeDarkMode(){

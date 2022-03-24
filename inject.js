@@ -169,6 +169,37 @@ var timestamp;
 
 var autosaveSetting;
 
+var prevSemesterGrades = [];
+var prevSemesterWeights = [];
+
+
+let myPromise = new Promise(function(myResolve, myReject) {
+    // "Producing Code" (May take some time)
+    
+    chrome.storage.local.get(['storedCumulativeGrades'], function(data){
+        console.log(JSON.parse(data.storedCumulativeGrades))
+        if(typeof data != undefined){
+            isPrevGradesSet = 1
+        }
+        if(isPrevGradesSet == 1){
+            let tempPrevSemesterGrades = data.storedCumulativeGrades;
+            let PrevSemesterGradesJSON = JSON.parse(tempPrevSemesterGrades);
+            for(i in PrevSemesterGradesJSON){
+                console.log(PrevSemesterGradesJSON[i].inputtedGradeValues);
+                prevSemesterGrades = prevSemesterGrades.concat(PrevSemesterGradesJSON[i].inputtedGradeValues);
+                console.log(prevSemesterGrades);
+                prevSemesterWeights = prevSemesterWeights.concat(PrevSemesterGradesJSON[i].inputtedGPAValues);
+            }
+        }
+        
+        prevSemesterWeights = prevSemesterWeights.map(Number);
+        prevSemesterGrades = prevSemesterGrades.map(Number);
+    });
+    
+    myResolve(); // when successful
+});
+
+
 function saveGPAtoGraph(){
     chrome.storage.local.get(['GPAGraphArray'], function(data){
         let graphHasSet = 0
@@ -184,10 +215,10 @@ function saveGPAtoGraph(){
             console.log('GPA graph JSON value is not yet set')
             graphHasSet = 1
         }
-        /*if(GPAGraphArray.length == 0){
+        else if(GPAGraphArray.length == 0){
             console.log('GPA graph JSON value is not yet set')
             graphHasSet = 1
-        }*/
+        }
         timestamp = Math.round(Date.now()/10000);
         if(graphHasSet == 0){
             console.log('graphHasSet is 0, checking for repeat')
@@ -358,14 +389,39 @@ function calculateGPA() {
     }
 
 	console.log(tempGrades)
-	
-    let tempGrades1 = tempGrades;
     
 	if(tempGrades.includes(-1)) { // it is the first semester or not all grades are in.
 		tempGrades = tempGrades.filter(a=>a!==-1)
 	}
     
-    console.log(tempGrades)
+	var numberOfSelectedWeights = numberOfWeights;
+    
+    let weightArrayTemporary = [];
+	let weightArrayOriginal = weightArray
+    
+    if(tempGrades.length > numberOfSelectedWeights){
+        for(let i=0; i < weightArray.length; i++){
+            weightArrayTemporary.push(weightArray[i])
+            weightArrayTemporary.push(weightArray[i])
+        }
+    }
+    
+    weightArray = weightArrayTemporary;
+    
+    console.log("isprevgradesSet:")
+    console.log(isPrevGradesSet)
+    
+    if(isPrevGradesSet == 1){
+        console.log('concatenating previous grades to current ones')
+        console.log(prevSemesterGrades)
+        weightArray = weightArray.concat(prevSemesterWeights)
+        console.log(weightArray)
+        tempGrades = tempGrades.concat(prevSemesterGrades)
+    }
+    
+    //console.log(tempGrades)
+    
+    let tempGrades1 = tempGrades;
     
     let finalerrormessage = 0;
 	//average formula weighted
@@ -373,7 +429,11 @@ function calculateGPA() {
 	let preGPAsum = 0;
 	let numberOfGrades = tempGrades1.length;
 	let numberOfGrades1 = tempGrades1.length;
-	/*
+	
+    numberOfWeights = weightArray.length;
+    console.log(numberOfWeights)
+    
+    /*
     if(numberOfGrades > numberOfWeights){
 		console.log(numberOfGrades.toString() + 'grades found, but only' + numberOfWeights.toString() + 'weights selected.');
 		finalerrormessage = 2;
@@ -383,23 +443,13 @@ function calculateGPA() {
 		finalerrormessage = 3;
 		console.log(numberOfGrades.toString() + ' grades found, but ' + numberOfWeights.toString() + ' weights selected');
 	}
-	*/
 	if(numberOfGrades / 2 != numberOfWeights){
         finalerrormessage = 2;
         console.log((numberOfGrades/2).toString() + 'grades found, but ' + numberOfWeights.toString() + ' weights selected.');
-    }
-	
-	let weightArrayTemporary = [];
-	let weightArrayOriginal = weightArray
-    
-	for(let i=0; i < weightArray.length; i++){
-        weightArrayTemporary.push(weightArray[i])
-        weightArrayTemporary.push(weightArray[i])
-    }
-    
-    weightArray = weightArrayTemporary;
+    }*/
 	
     console.log(weightArray)
+    //console.log(numberOfGrades1)
     let debugcounter = 0
 	for(let i=0; i < numberOfGrades1; i++){
         preGPAw = weightArray[i] * tempGrades[i] * 0.01;
@@ -410,7 +460,7 @@ function calculateGPA() {
         }
         preGPAw = 0;
 	}
-	console.log(debugcounter)
+	//console.log(debugcounter)
 	
 	for(let i=0; i<weightArray.length; i++){
 		weightArray[i]=weightArray[i].toFixed(1)
@@ -431,13 +481,42 @@ function calculateGPA() {
 	var gpaAverageU = preGPAsum / numberOfGrades;
 	console.log("gpaAverageU: "+gpaAverageU);
 	console.log("tempGrades: "+tempGrades);
-	//subtraction formula
-	console.log(gpa_sub + " " + gpa_cnt);
-    let unweighted = 4.0 - gpa_sub / gpa_cnt;
-    let weighted = weightaverage - gpa_sub / gpa_cnt;
-    console.log("weighted: "+weighted);
-    //use algorithm value to see which GPA value to use
+	
+    //subtraction formula
+	var tempWeightAverage = 0
+    var tempsubtotal = 0
     
+    for(let i=0; i < numberOfGrades1; i++){
+//         preGPAw = 0.05*(100-weightArray[i]) * tempGrades[i] * 0.01;
+//         if(preGPAw > 0){
+//             preGPAsum = preGPAsum + preGPAw;
+//             console.log(preGPAsum)
+//         }
+//         preGPAw = 0;
+        console.log('grade ' + tempGrades[i] + " gpa " + weightArray[i] + " i " + i)
+        tempWeightAverage += parseFloat(weightArray[i]);
+        tempsubtotal += 0.05*(100 - tempGrades[i]);
+	}
+    //tempWeightAverage = parseInt(weightArray => weightArray.reduce((a,b) => a + b, 0))
+    
+    var weightaverage2 = tempWeightAverage / weightArray.length;
+    
+    let unweighted = 0
+    let weighted = 0
+    console.log(tempWeightAverage)
+    if(isPrevGradesSet == 1){
+        console.log('calculating cumulative')
+        unweighted = 4.0 - tempsubtotal / numberOfGrades1
+        weighted = weightaverage2 - tempsubtotal / numberOfGrades1
+    }
+    else{
+        console.log(gpa_sub + " " + gpa_cnt);
+        unweighted = 4.0 - gpa_sub / gpa_cnt;
+        weighted = weightaverage - gpa_sub / gpa_cnt;
+    }
+    console.log("weighted: "+weighted);
+    
+    //use algorithm value to see which GPA value to use
 	console.log("algNumber: "+algNumber)
 	if(algNumber == 1){
 		finalWeightedNumber = weighted;
@@ -463,11 +542,12 @@ function calculateGPA() {
 	
 	if(finalerrormessage === 1){
         GPAstr += "Select class weights to see weighted GPA </h2>";
-    }else if(finalerrormessage === 2){
+    }
+    /*else if(finalerrormessage === 2){
 		GPAstr += numberOfGrades.toString() + ' grades found, but only ' + numberOfWeights.toString() + ' weights selected</h2>'
 	}else if(finalerrormessage === 3){
 		GPAstr += numberOfGrades.toString() + ' grades found, but ' + numberOfWeights.toString() + ' weights selected</h2>'
-	}
+	}*/
 	else{
         GPAstr += "Weighted GPA: " + (Math.round(finalWeightedNumber * 1000) / 1000).toString() + "</h2>"   
     }
@@ -529,6 +609,16 @@ function delayStorageGet2(){
 }
 delayStorageGet2();
 
+var isPrevGradesSet = 0
+function delayStorageGet3(){
+    
+    chrome.storage.local.get(['storedCumulativeGrades'], function(data){
+        
+	});
+}
+delayStorageGet3()
+console.log(isPrevGradesSet)
+
 //get weights
 var numberOfWeights;
 if(page == "sfgradebook001.w"){
@@ -557,7 +647,11 @@ if(page == "sfgradebook001.w"){
         weightaverage = weightsum / numberOfWeights;
         console.log(weightaverage);
         
-		calculateGPA();
+        myPromise.then(
+            function(value) {console.log('success ig'); calculateGPA();},
+        );
+        
+		
     });
 }
 
