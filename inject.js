@@ -1,12 +1,23 @@
 console.log("Attempting to inject script")
 
-// var myJavaScript = "console.log('injected script successfully');setInterval(function(){gUsrIdle.clearIdle();console.log('cleared idle');}, 10000);";
-// var scriptTag = document.createElement("script");
-// scriptTag.innerHTML = myJavaScript;
-// document.head.appendChild(scriptTag); 
+var sLoad = document.createElement('script2');
+sLoad.src = chrome.runtime.getURL('script2.js');
+(document.head || document.documentElement).appendChild(sLoad);
+
+//var myJavaScript = "console.log('injected script successfully');setInterval(function(){gUsrIdle.clearIdle();console.log('cleared idle');}, 10000);";
+var scriptTag = document.createElement("script");
+scriptTag.src = chrome.runtime.getURL('script2.js');
+document.head.appendChild(scriptTag);
+
+/*
+function refreshLogin() {
+	console.log('injected script successfully');setInterval(function(){gUsrIdle.clearIdle();console.log('cleared idle');}, 10000);
+}
+
+ */
 
 //I REALLY REALLY HATE MANIFEST V3
-console.log('injected script successfully');setInterval(function(){gUsrIdle.clearIdle();console.log('cleared idle');}, 10000);
+//console.log('injected script successfully');setInterval(function(){gUsrIdle.clearIdle();console.log('cleared idle');}, 10000);
 
 let url = location.href;
 let page = url.split("/scripts/wsisa.dll/WService=")[1].split("/")[1];

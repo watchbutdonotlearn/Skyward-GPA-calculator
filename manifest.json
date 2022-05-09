@@ -4,6 +4,7 @@
     "version": "0.4",
     "permissions": [
         "tabs",
+        "scripting",
 	    "storage"
     ],
     "host_permissions": [
@@ -40,7 +41,8 @@
             "sprite/sf_bg_sprite001.png",
             "sprite/sf_icons_sprite.png",
             "gpachart.html",
-            "SkyLogoBlue.png"
+            "SkyLogoBlue.png",
+            "script2.js"
         ],
         "matches": ["https://skyward.iscorp.com/*", "http://skyward.iscorp.com/*"],
         "comment_that_doesnt_matter": "I HATE MANIFEST V3"
