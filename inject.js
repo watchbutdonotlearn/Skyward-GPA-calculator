@@ -14,39 +14,39 @@ chrome.storage.local.get(['skywardDarkTheme'], function(data){
 	if(data.skywardDarkTheme == true) {
 		let variablesCSS = document.createElement("link")
 		variablesCSS.rel = "STYLESHEET"
-		variablesCSS.href = chrome.extension.getURL("css/variables.css");
+		variablesCSS.href = chrome.runtime.getURL("css/variables.css");
 		document.head.appendChild(variablesCSS);
 
 		let qsfmainCSS = document.createElement("link")
 		qsfmainCSS.rel = "STYLESHEET"
-		qsfmainCSS.href = chrome.extension.getURL("css/qsfmain001.css");
+		qsfmainCSS.href = chrome.runtime.getURL("css/qsfmain001.css");
 		document.head.appendChild(qsfmainCSS);
 
 		if(page != "seplog01.w") {
 			let newElem2 = document.createElement("link")
 			newElem2.rel = "STYLESHEET"
-			newElem2.href = chrome.extension.getURL("css/sfhome001.css");
+			newElem2.href = chrome.runtime.getURL("css/sfhome001.css");
 			document.head.appendChild(newElem2);
 
 			let newElem4 = document.createElement("link")
 			newElem4.rel = "STYLESHEET"
-			newElem4.href = chrome.extension.getURL("css/sfgradebook001.css");
+			newElem4.href = chrome.runtime.getURL("css/sfgradebook001.css");
 			document.head.appendChild(newElem4);
 		} else {
 			let newElem3 = document.createElement("link")
 			newElem3.rel = "STYLESHEET"
-			newElem3.href = chrome.extension.getURL("css/qclssbase001.css");
+			newElem3.href = chrome.runtime.getURL("css/qclssbase001.css");
 			document.head.appendChild(newElem3);
 
 			let newElem4 = document.createElement("link")
 			newElem4.rel = "STYLESHEET"
-			newElem4.href = chrome.extension.getURL("css/qclsslogin001.css");
+			newElem4.href = chrome.runtime.getURL("css/qclsslogin001.css");
 			document.head.appendChild(newElem4);
 
 			var children = document.getElementById("loginBrading").children
 			console.log(children)
 			for(child in children) {
-				if(children[child].src) children[child].src = chrome.extension.getURL("SkyLogoBlue.png");
+				if(children[child].src) children[child].src = chrome.runtime.getURL("SkyLogoBlue.png");
 			}
 		}
 
@@ -72,7 +72,7 @@ chrome.storage.local.get(['skywardDarkTheme'], function(data){
 		if(page == "sfcalendar002.w") {
 			let calenderJQueryCSS = document.createElement("link")
 			calenderJQueryCSS.rel = "STYLESHEET"
-			calenderJQueryCSS.href = chrome.extension.getURL("css/jquery.cluetip.css");
+			calenderJQueryCSS.href = chrome.runtime.getURL("css/jquery.cluetip.css");
 			document.head.appendChild(calenderJQueryCSS);
 
 			let styleElements = document.getElementsByTagName("style");
@@ -555,7 +555,7 @@ function calculateGPA() {
 	var currentGPAStr = JSON.stringify(currentGPAJSON).replace(/\"/g, "'");
 	GPAstr += `<a target="_blank" href="http://captainbboy.github.io?import=${currentGPAStr}">Export to captainbboy.github.io</a>`
 	
-	GPAstr += '<button type="button" style="float: right;" id="saveGraphBtn">Save to graph</button><p><a target="_blank" style="text-align: right;" href=' + chrome.extension.getURL('gpachart.html') + '>See GPA graph</a></p>'
+	GPAstr += '<button type="button" style="float: right;" id="saveGraphBtn">Save to graph</button><p><a target="_blank" style="text-align: right;" href=' + chrome.runtime.getURL('gpachart.html') + '>See GPA graph</a></p>'
 	
     gpa_container.innerHTML = GPAstr;
     console.log("detectNaN: "+detectNaN);
