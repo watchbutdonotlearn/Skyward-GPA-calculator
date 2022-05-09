@@ -1,9 +1,12 @@
 console.log("Attempting to inject script")
 
-var myJavaScript = "console.log('injected script successfully');setInterval(function(){gUsrIdle.clearIdle();console.log('cleared idle');}, 10000);";
-var scriptTag = document.createElement("script");
-scriptTag.innerHTML = myJavaScript;
-document.head.appendChild(scriptTag); 
+// var myJavaScript = "console.log('injected script successfully');setInterval(function(){gUsrIdle.clearIdle();console.log('cleared idle');}, 10000);";
+// var scriptTag = document.createElement("script");
+// scriptTag.innerHTML = myJavaScript;
+// document.head.appendChild(scriptTag); 
+
+//I REALLY REALLY HATE MANIFEST V3
+console.log('injected script successfully');setInterval(function(){gUsrIdle.clearIdle();console.log('cleared idle');}, 10000);
 
 let url = location.href;
 let page = url.split("/scripts/wsisa.dll/WService=")[1].split("/")[1];

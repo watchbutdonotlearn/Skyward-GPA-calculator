@@ -16,7 +16,7 @@
 		"48": "icon48.png",
 		"128": "icon128.png"  
 	},    
-	"browser_action": {
+	"action": {
         "default_title": "Skyward GPA Calculator",
         "default_popup": "popup.html",
 		"default_icon": {                   
