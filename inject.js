@@ -413,14 +413,19 @@ function calculateGPA() {
     let weightArrayTemporary = [];
 	let weightArrayOriginal = weightArray
     
+    console.log(tempGrades)
+    
     if(tempGrades.length > numberOfSelectedWeights){
         for(let i=0; i < weightArray.length; i++){
             weightArrayTemporary.push(weightArray[i])
             weightArrayTemporary.push(weightArray[i])
         }
+        weightArray = weightArrayTemporary;
     }
     
-    weightArray = weightArrayTemporary;
+    
+    
+    console.log(weightArray);
     
     console.log("isprevgradesSet:")
     console.log(isPrevGradesSet)
@@ -433,7 +438,7 @@ function calculateGPA() {
         tempGrades = tempGrades.concat(prevSemesterGrades)
     }
     
-    //console.log(tempGrades)
+    console.log(tempGrades)
     
     let tempGrades1 = tempGrades;
     
@@ -507,7 +512,7 @@ function calculateGPA() {
 //             console.log(preGPAsum)
 //         }
 //         preGPAw = 0;
-        console.log('grade ' + tempGrades[i] + " gpa " + weightArray[i] + " i " + i)
+        console.log('grade: ' + tempGrades[i] + " gpaWeight: " + weightArray[i] + " index: " + i)
         tempWeightAverage += parseFloat(weightArray[i]);
         tempsubtotal += 0.05*(100 - tempGrades[i]);
 	}
