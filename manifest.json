@@ -57,5 +57,10 @@
         "run_at": "document_end"
         }
     ],
+    "applications": {
+        "gecko": {
+            "id": "YOUR_ADDON_ID"
+        }
+    },
     "manifest_version": 3
 }
