@@ -39,12 +39,21 @@ function initChart(){
                 label: "unweighted",
                 pointRadius: 4,
                 backgroundColor: "rgb(0,30,255)",
-                data: unweightedValues
+                pointBackgroundColor: "rgb(0,30,255)",
+                pointBorderColor: "rgb(0,30,255)",
+                BorderColor: "rgb(0,30,255)",
+                data: unweightedValues,
+                fill: false,
+                tension: 0,
+                showLine: true
             },{
                 pointRadius: 4,
                 label: "weighted",
                 backgroundColor: "rgb(0,170,90)",
-                data: weightedValues
+                data: weightedValues,
+                fill: false,
+                tension: 0,
+                showLine: true
             }]
         },
         options: {
@@ -53,7 +62,19 @@ function initChart(){
                 //yAxes: [{ticks: {max:5}}],
                 //xAxes: {ticks: {min: (GPAGraphArray[0].timestamp-0.2)}/*, type:'time', time: {tooltipFormat: 'DD T'}*/}
             }
-        }
+        },
+        plugins: [{
+            beforeDraw: function(c) {
+                var legends = c.legend.legendItems;
+                //console.log(c.legend.legendItems);
+                c.legend.legendItems[0].fillStyle = "blue";
+                c.legend.legendItems[1].fillStyle = "rgb(0,170,90)";
+                /*legends.forEach(function(e) {
+                    e.fillStyle = 'red';
+                });*/
+                //console.log(c.legend.legendItems);
+            }
+        }]
     })
 }
 
