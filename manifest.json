@@ -1,7 +1,7 @@
 {
     "name": "Skyward GPA Calculator - And More",
     "description": "This is an extension which injects various scripts into Skyward to calculate GPA and perform other tasks.",
-    "version": "0.4",
+    "version": "0.11",
     "permissions": [
         "tabs",
         "scripting",

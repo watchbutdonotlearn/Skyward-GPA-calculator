@@ -32,7 +32,7 @@ function initChart(){
         weightedValues.push({x:GPAGraphArray[i].timestamp, y:GPAGraphArray[i].weighted})
     }
     
-    new Chart("GPAChart", {
+    var chart = new Chart("GPAChart", {
         type: "scatter",
         data: {
             datasets: [{
@@ -65,6 +65,8 @@ function initChart(){
         },
         plugins: [{
             beforeDraw: function(c) {
+                //c.getDatasetMeta(0).hidden=true;
+                //c.update();
                 var legends = c.legend.legendItems;
                 //console.log(c.legend.legendItems);
                 c.legend.legendItems[0].fillStyle = "blue";
@@ -76,6 +78,8 @@ function initChart(){
             }
         }]
     })
+    chart.getDatasetMeta(0).hidden=true;
+    chart.update();
 }
 
 function clearValues(){
