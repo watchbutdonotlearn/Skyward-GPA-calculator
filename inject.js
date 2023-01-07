@@ -404,7 +404,25 @@ function calculateGPA() {
 
 	console.log(tempGrades)
     
-	if(tempGrades.includes(-1)) { // it is the first semester or not all grades are in.
+    var numberOfUngradedClasses = 0
+    //this finds how many classes show up as -1, meaning the grades are not in yet
+    for(let i=0; i < tempGrades.length; i++){
+        if(tempGrades[i]== -1){
+            numberOfUngradedClasses++;
+        }
+    }
+    console.log(numberOfUngradedClasses)
+    
+    //this finds the index number of ungraded classes in tempGrades, so those indexes can be removed from weightArray later
+    let ungradedIndexNumber = []
+    for(let i=0; i < tempGrades.length; i++){
+        if(tempGrades[i]== -1){
+            ungradedIndexNumber.push(i)
+        }
+    }
+    console.log("ungraded index numbers:" + ungradedIndexNumber)
+    
+	if(tempGrades.includes(-1)) { // it is the first semester or not all grades are in, this just removes all elements that show up as -1, which would mean that the grades arent in yet.
 		tempGrades = tempGrades.filter(a=>a!==-1)
 	}
     
@@ -415,6 +433,7 @@ function calculateGPA() {
     
     console.log(tempGrades)
     
+    //if its the second semester, duplicate the weights selected in the GUI
     if(tempGrades.length > numberOfSelectedWeights){
         for(let i=0; i < weightArray.length; i++){
             weightArrayTemporary.push(weightArray[i])
@@ -423,6 +442,10 @@ function calculateGPA() {
         weightArray = weightArrayTemporary;
     }
     
+    //now remove the problematic indexes in weightArray where the weights are for ungraded classes
+    for(let i=ungradedIndexNumber.length -1; i >=0; i--){ //go in reverse order here to not mess up item indexes https://stackoverflow.com/questions/9425009/remove-multiple-elements-from-array-in-javascript-jquery
+        console.log(weightArray.splice(ungradedIndexNumber[i], 1))
+    }
     
     
     console.log(weightArray);
