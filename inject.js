@@ -504,6 +504,7 @@ function calculateGPA() {
     //subtraction formula
 	var tempWeightAverage = 0
     var tempsubtotal = 0
+    var tempMinus = 0
     
     for(let i=0; i < numberOfGrades1; i++){
 //         preGPAw = 0.05*(100-weightArray[i]) * tempGrades[i] * 0.01;
@@ -512,19 +513,22 @@ function calculateGPA() {
 //             console.log(preGPAsum)
 //         }
 //         preGPAw = 0;
-        console.log('grade: ' + tempGrades[i] + " gpaWeight: " + weightArray[i] + " index: " + i)
+        
         tempWeightAverage += parseFloat(weightArray[i]);
-        tempsubtotal += 0.05*(100 - tempGrades[i]);
+        tempMinus = 0.05*(100 - tempGrades[i]);
+        tempsubtotal += tempMinus //0.05*(100 - tempGrades[i]);
+        console.log('grade: ' + tempGrades[i] + " gpaWeight: " + weightArray[i] + " index: " + i + " tempMinus: " + tempMinus + " tempsubtotal: " + tempsubtotal + " tempWeightAverage: " + tempWeightAverage)
 	}
     //tempWeightAverage = parseInt(weightArray => weightArray.reduce((a,b) => a + b, 0))
     
-    var weightaverage2 = tempWeightAverage / weightArray.length;
+    //var weightaverage2 = tempWeightAverage / weightArray.length;
+    var weightaverage2 = tempWeightAverage / numberOfGrades1;
     
     let unweighted = 0
     let weighted = 0
     console.log(tempWeightAverage)
     if(isPrevGradesSet == 1){
-        console.log('calculating cumulative')
+        console.log('calculating cumulative: weightaverage2 (' + weightaverage2 + ') ' + "- tempsubtotal (" + tempsubtotal + ") " + "/ numberOfGrades1 (" + numberOfGrades1 + ")")
         unweighted = 4.0 - tempsubtotal / numberOfGrades1
         weighted = weightaverage2 - tempsubtotal / numberOfGrades1
     }
@@ -533,7 +537,7 @@ function calculateGPA() {
         unweighted = 4.0 - gpa_sub / gpa_cnt;
         weighted = weightaverage - gpa_sub / gpa_cnt;
     }
-    console.log("weighted: "+weighted);
+    console.log("weighted: "+weighted + " unweighted:" + unweighted);
     
     //use algorithm value to see which GPA value to use
 	console.log("algNumber: "+algNumber)
