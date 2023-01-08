@@ -100,6 +100,8 @@ function saveAutosaveSetting(){
 }
 
 
+
+
 window.onload=function(){
     document.getElementById('clearGraphBtn').addEventListener('click', clearValues);
     document.getElementById('autosavetrue').addEventListener('click', saveAutosaveSetting);
@@ -126,3 +128,10 @@ window.onload=function(){
 	}
 	returnAutosaveSetting();
 }
+
+
+console.log("note for later development:")
+console.log("to modify the gpa chart list:")
+console.log('GPAGraphArray.splice(10, 1, {"timestamp": 167306616,"unweighted": 3.7800000000000002,"weighted": 4.465714285714286})\nwhere the first argument in the .slice() means index of GPAGraphArray starting from 0')
+console.log("then after you are done with modifying GPAGraphArray, use: \nchrome.storage.local.set({GPAGraphArray: GPAGraphArray});")
+
