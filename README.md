@@ -1,4 +1,6 @@
 # Skyward-GPA-calculator
+> [!IMPORTANT]
+> This extension has entered into maintainence mode, and maintainership has passed over to [Mahid Sheikh](https://github.com/StandingPadAnimations/) 
 This is an extension which injects various scripts into Skyward, to calculate GPA and perform other tasks, such as disabling the idle logout prompt.
 
 
