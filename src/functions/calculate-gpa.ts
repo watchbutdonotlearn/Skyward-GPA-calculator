@@ -4,13 +4,22 @@ import { saveGPAtoGraph } from "./graph-functions";
 
 const GET_GRADES_FAIL: [number, number, number[]] = [-1, -1, []];
 
+type GPAJSONDictonary = {
+    [key: string]: {
+      classNames: string[],
+      inputtedGPAValues: number[],
+      inputtedGradeValues: number[],
+      setNumberOfClasses: string
+    };
+};
+
 export interface calculateGPAParams {
   numberOfWeights: number;
   weightArray: number[];
   isPrevGradesSet: boolean;
   prevSemesterGrades: number[];
   prevSemesterWeights: number[];
-  currentGPAJSON: any;
+  currentGPAJSON: GPAJSONDictonary;
   weightAverage: number;
   algNumber: number;
   numberOfGradeDivs: number;
@@ -115,7 +124,7 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
 
   // this finds the index number of ungraded classes in tempGrades,
   // so those indexes can be removed from weightArray later
-  const ungradedIndexNumber = [];
+  const ungradedIndexNumber: number[] = [];
   for (let i = 0; i < tempGrades.length; i++) {
     if (tempGrades[i] == -1) {
       ungradedIndexNumber.push(i);
@@ -132,7 +141,7 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
 
   const numberOfSelectedWeights = params.numberOfWeights;
 
-  const weightArrayTemporary = [];
+  const weightArrayTemporary: number[] = [];
   const weightArrayOriginal = params.weightArray;
 
   console.log(tempGrades);
