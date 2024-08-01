@@ -91,6 +91,8 @@ function getGrades(numberOfGradeDivs: number): [number, number, number[]] {
 /**
  * Calculate GPA
  *
+ * TODO: Update this because of how horrifying it is
+ *
  * @param {calculateGPAParams} params - An object that contains all of the parameters used
  * */
 export function calculateGPA(params: calculateGPAParams): [number, number] {
