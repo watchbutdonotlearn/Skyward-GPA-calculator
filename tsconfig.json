@@ -3,6 +3,7 @@
     "noImplicitAny": true,
     "compilerOptions": {
         "target": "es2016",
+        "strict": true,
         "types": [
             "chrome"
         ],
