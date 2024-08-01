@@ -18,10 +18,7 @@ export interface calculateGPAParams {
 /**
  * Get a list of grades for each individual class.
  *
- * This returns a tuple of 3 things:
- * - gpa_sub
- * - gpa_cnt
- * - list of final grades for classes
+ * @param {number} numberOfGradeDivs - The number of grade divs in Skyward
  * */
 function getGrades(numberOfGradeDivs: number): [number, number, number[]] {
   let container = document.getElementById("printGradesContainer"); // Get main node
@@ -90,6 +87,11 @@ function getGrades(numberOfGradeDivs: number): [number, number, number[]] {
   return [gpa_sub, gpa_cnt, tempGrades];
 }
 
+/**
+ * Calculate GPA
+ *
+ * @param {calculateGPAParams} params - An object that contains all of the parameters used
+ * */
 export function calculateGPA(params: calculateGPAParams): [number, number] {
   setNumberOfClasses();
   setClassNames();
@@ -274,6 +276,14 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
   return [finalUnweightedNumber, finalWeightedNumber];
 }
 
+/**
+ * Display the final GPA on Skyward
+ *
+ * @param {number} unweighted - Unweighted GPA
+ * @param {number} weighted - Weighted GPA
+ * @param {calculateGPAParams} params - Object containing some parameters
+ * @param {Settings} settings - Extension settings
+ */
 export function displayGPA(
   unweighted: number,
   weighted: number,
