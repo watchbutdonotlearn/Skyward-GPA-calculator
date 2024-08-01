@@ -1,1 +1,1 @@
-module.exports = require('../dist/helpers.cjs');
+module.exports = require("../dist/helpers.cjs");

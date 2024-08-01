@@ -1,5 +1,5 @@
-const chartjs = require('../dist/chart.cjs');
-const {Chart, registerables} = chartjs;
+const chartjs = require("../dist/chart.cjs");
+const { Chart, registerables } = chartjs;
 
 Chart.register(...registerables);
 

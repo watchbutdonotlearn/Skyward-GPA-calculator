@@ -1,31 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GPA chart</title>
-<style>
-</style>
-<script type="module" src="./chartjs/dist/chart.umd.js"></script>
-<script src="./gpachart.ts"></script>
-</head>
-<body>
-<h1>GPA chart over time</h1>
-<p>This is an experimental feature.</p><p>Because of limitations in the graphing library, currently timestamps are only available in unix time.</p>
-<!--<p>In addition, the only kind of graph available right now is a scatterplot. This is also due to limitations in the graphing library.</p>-->
-<p>To only show or hide either weighted or unweighted GPA, click on one of the items in the legend.</p>
-<div id=chartdiv>
-    <canvas id="GPAChart" style="width:70%;max-width:950px"></canvas>
-</div>
-<button type="button" id="clearGraphBtn">Clear all values</button><br>
-<form id="divdarkmodesetting" name="divdarkmodeForm">
-    <div class="divdarkmode">
-        <strong>Autosave to graph:</strong>
-        <input type="radio" id="autosavetrue" name="autosaveRadio" value="1">
-        <label for="1">Enabled</label> 
-        <input type="radio" id="autosavefalse" name="autosaveRadio" value="2">
-        <label for="2">Disabled</label>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GPA chart</title>
+    <style></style>
+    <script type="module" src="./chartjs/dist/chart.umd.js"></script>
+    <script src="./gpachart.ts"></script>
+  </head>
+  <body>
+    <h1>GPA chart over time</h1>
+    <p>This is an experimental feature.</p>
+    <p>
+      Because of limitations in the graphing library, currently timestamps are
+      only available in unix time.
+    </p>
+    <!--<p>In addition, the only kind of graph available right now is a scatterplot. This is also due to limitations in the graphing library.</p>-->
+    <p>
+      To only show or hide either weighted or unweighted GPA, click on one of
+      the items in the legend.
+    </p>
+    <div id="chartdiv">
+      <canvas id="GPAChart" style="width: 70%; max-width: 950px"></canvas>
     </div>
-</form>
-</body>
+    <button type="button" id="clearGraphBtn">Clear all values</button><br />
+    <form id="divdarkmodesetting" name="divdarkmodeForm">
+      <div class="divdarkmode">
+        <strong>Autosave to graph:</strong>
+        <input type="radio" id="autosavetrue" name="autosaveRadio" value="1" />
+        <label for="1">Enabled</label>
+        <input type="radio" id="autosavefalse" name="autosaveRadio" value="2" />
+        <label for="2">Disabled</label>
+      </div>
+    </form>
+  </body>
 </html>
