@@ -1,6 +1,10 @@
 import { Settings } from "../settings";
 
-export function saveGPAtoGraph(unweighted: number, weighted: number, settings: Settings) {
+export function saveGPAtoGraph(
+  unweighted: number,
+  weighted: number,
+  settings: Settings,
+) {
   chrome.storage.local.get(["GPAGraphArray"], function (data) {
     let graphHasSet = 0;
     let GPAGraphArray = data.GPAGraphArray;
@@ -17,15 +21,12 @@ export function saveGPAtoGraph(unweighted: number, weighted: number, settings: S
     const timestamp = Math.round(Date.now() / 10000);
     if (graphHasSet == 0) {
       console.log("graphHasSet is 0, checking for repeat");
-      if (
-        GPAGraphArray[GPAGraphArray.length - 1].weighted == weighted
-      ) {
+      if (GPAGraphArray[GPAGraphArray.length - 1].weighted == weighted) {
         console.log("repeated value");
         graphHasSet = 2;
         isrepeatvalue = 1;
       } else if (
-        GPAGraphArray[GPAGraphArray.length - 1].unweighted ==
-	unweighted 
+        GPAGraphArray[GPAGraphArray.length - 1].unweighted == unweighted
       ) {
         console.log("repeated value");
         graphHasSet = 2;

@@ -4,15 +4,15 @@ import { setNumberOfClasses, setClassNames } from "./class-functions";
 const GET_GRADES_FAIL: [number, number, number[]] = [-1, -1, []];
 
 export interface calculateGPAParams {
-  numberOfWeights: number,
-  weightArray: number[]
-  isPrevGradesSet: boolean,
-  prevSemesterGrades: number[],
-  prevSemesterWeights: number[],
-  currentGPAJSON: any,
-  weightAverage: number,
-  algNumber: number,
-  numberOfGradeDivs: number,
+  numberOfWeights: number;
+  weightArray: number[];
+  isPrevGradesSet: boolean;
+  prevSemesterGrades: number[];
+  prevSemesterWeights: number[];
+  currentGPAJSON: any;
+  weightAverage: number;
+  algNumber: number;
+  numberOfGradeDivs: number;
 }
 
 /**
@@ -93,8 +93,8 @@ function getGrades(numberOfGradeDivs: number): [number, number, number[]] {
 export function calculateGPA(params: calculateGPAParams): [number, number] {
   setNumberOfClasses();
   setClassNames();
-  let [gpa_sub, gpa_cnt, tempGrades] = getGrades(params.numberOfGradeDivs) 
-  
+  let [gpa_sub, gpa_cnt, tempGrades] = getGrades(params.numberOfGradeDivs);
+
   // Error occurred
   if (tempGrades === GET_GRADES_FAIL) {
     return;
@@ -108,7 +108,7 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
   }
   console.log(numberOfUngradedClasses);
 
-  // this finds the index number of ungraded classes in tempGrades, 
+  // this finds the index number of ungraded classes in tempGrades,
   // so those indexes can be removed from weightArray later
   let ungradedIndexNumber = [];
   for (let i = 0; i < tempGrades.length; i++) {
@@ -119,8 +119,8 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
   console.log("ungraded index numbers:" + ungradedIndexNumber);
 
   if (tempGrades.includes(-1)) {
-    // it is the first semester or not all grades are in, this just 
-    // removes all elements that show up as -1, which would mean 
+    // it is the first semester or not all grades are in, this just
+    // removes all elements that show up as -1, which would mean
     // that the grades aren't in yet.
     tempGrades = tempGrades.filter((a) => a !== -1);
   }
@@ -143,7 +143,7 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
 
   // now remove the problematic indexes in weightArray where the weights are for ungraded classes
   for (let i = ungradedIndexNumber.length - 1; i >= 0; i--) {
-    // go in reverse order here to not mess up item indexes 
+    // go in reverse order here to not mess up item indexes
     // https://stackoverflow.com/questions/9425009/remove-multiple-elements-from-array-in-javascript-jquery
     console.log(params.weightArray.splice(ungradedIndexNumber[i], 1));
   }
@@ -192,7 +192,8 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
     numberOfGrades.toString();
   params.currentGPAJSON["Current Skyward Grades"].inputtedGPAValues =
     weightArrayOriginal;
-  params.currentGPAJSON["Current Skyward Grades"].inputtedGradeValues = tempGrades;
+  params.currentGPAJSON["Current Skyward Grades"].inputtedGradeValues =
+    tempGrades;
 
   var gpaAverageW = preGPAsum / numberOfGrades1;
   console.log("gpaAverageW: " + gpaAverageW);
@@ -273,7 +274,12 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
   return [finalUnweightedNumber, finalWeightedNumber];
 }
 
-export function displayGPA(unweighted: number, weighted: number, params: calculateGPAParams, settings: Settings) {
+export function displayGPA(
+  unweighted: number,
+  weighted: number,
+  params: calculateGPAParams,
+  settings: Settings,
+) {
   let gpa_container = document.createElement("div");
   gpa_container.setAttribute("style", "float:right; margin-right:5px;");
   let GPAstr =
@@ -316,7 +322,8 @@ export function displayGPA(unweighted: number, weighted: number, params: calcula
     .addEventListener("click", saveGPAtoGraph);
 
   chrome.storage.local.get(["autosaveSetting"], function (data) {
-    settings.autosaveSetting = data.autosaveSetting == undefined ? false : data.autosaveSetting;
+    settings.autosaveSetting =
+      data.autosaveSetting == undefined ? false : data.autosaveSetting;
     if (settings.autosaveSetting == true) {
       saveGPAtoGraph();
     }

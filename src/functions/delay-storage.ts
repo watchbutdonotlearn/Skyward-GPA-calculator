@@ -33,4 +33,3 @@ export function delayStorageGet2(): number {
 export function delayStorageGet3() {
   chrome.storage.local.get(["storedCumulativeGrades"], function (data) {});
 }
-

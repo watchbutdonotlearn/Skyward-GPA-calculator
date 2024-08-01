@@ -1,5 +1,13 @@
-import { calculateGPA, calculateGPAParams, displayGPA } from "./functions/calculate-gpa";
-import { delayStorageGet, delayStorageGet2, delayStorageGet3 } from "./functions/delay-storage";
+import {
+  calculateGPA,
+  calculateGPAParams,
+  displayGPA,
+} from "./functions/calculate-gpa";
+import {
+  delayStorageGet,
+  delayStorageGet2,
+  delayStorageGet3,
+} from "./functions/delay-storage";
 import { Settings } from "./settings";
 
 console.log("Attempting to inject script");
@@ -8,7 +16,7 @@ const settings: Settings = {
   autosaveSetting: false,
   originalGraphHasSet: 0,
   graphHasSet: graphHasSet,
-}
+};
 const scriptTag = document.createElement("script");
 scriptTag.src = chrome.runtime.getURL("script2.js");
 document.head.appendChild(scriptTag);
@@ -55,8 +63,11 @@ chrome.storage.local.get(["skywardDarkTheme"], function (data) {
       console.log(children);
       for (let child in children) {
         if (children[child].getAttribute("src")) {
-          children[child].setAttribute("src", chrome.runtime.getURL("SkyLogoBlue.png"));
-	}
+          children[child].setAttribute(
+            "src",
+            chrome.runtime.getURL("SkyLogoBlue.png"),
+          );
+        }
       }
     }
 
@@ -147,7 +158,6 @@ var currentGPAJSON = {
   },
 };
 
-
 var prevSemesterGrades = [];
 var prevSemesterWeights = [];
 
@@ -229,22 +239,20 @@ if (page == "sfgradebook001.w") {
 
       myPromise.then(function (_value) {
         console.log("success ig");
-	const params: calculateGPAParams = {
-	  numberOfWeights: numberOfWeights,
-	  weightArray: weightArray,
-	  isPrevGradesSet: isPrevGradesSet == 1,
-	  prevSemesterGrades: prevSemesterGrades,
-	  prevSemesterWeights: prevSemesterWeights,
-	  currentGPAJSON: currentGPAJSON,
-	  weightAverage: weightaverage,
-	  algNumber: algNumber,
-	  numberOfGradeDivs: numberOfgradeDivs
-	}
+        const params: calculateGPAParams = {
+          numberOfWeights: numberOfWeights,
+          weightArray: weightArray,
+          isPrevGradesSet: isPrevGradesSet == 1,
+          prevSemesterGrades: prevSemesterGrades,
+          prevSemesterWeights: prevSemesterWeights,
+          currentGPAJSON: currentGPAJSON,
+          weightAverage: weightaverage,
+          algNumber: algNumber,
+          numberOfGradeDivs: numberOfgradeDivs,
+        };
         const [unweighted, weighted] = calculateGPA(params);
-	displayGPA(unweighted, weighted, params, settings);
+        displayGPA(unweighted, weighted, params, settings);
       });
     },
   );
 }
-
-
