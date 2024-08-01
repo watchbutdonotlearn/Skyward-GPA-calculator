@@ -1,5 +1,6 @@
 import { Settings } from "../settings";
 import { setNumberOfClasses, setClassNames } from "./class-functions";
+import { saveGPAtoGraph } from "./graph-functions";
 
 const GET_GRADES_FAIL: [number, number, number[]] = [-1, -1, []];
 
@@ -21,12 +22,12 @@ export interface calculateGPAParams {
  * @param {number} numberOfGradeDivs - The number of grade divs in Skyward
  * */
 function getGrades(numberOfGradeDivs: number): [number, number, number[]] {
-  let container = document.getElementById("printGradesContainer"); // Get main node
+  const container = document.getElementById("printGradesContainer"); // Get main node
   // Find grade node
   let counterthing = 1;
   let grade_container = null;
   for (let i = 0; i < container.children.length; i++) {
-    let child = container.children[i];
+    const child = container.children[i];
     if (numberOfGradeDivs == 1) {
       console.log("number of grade divs is 1");
       if (child.id.substring(0, 18) === "grid_stuGradesGrid") {
@@ -50,26 +51,26 @@ function getGrades(numberOfGradeDivs: number): [number, number, number[]] {
     console.log("[ERROR] Grades not found");
     return GET_GRADES_FAIL;
   }
-  let detectUndefined = grade_container;
+  const detectUndefined = grade_container;
   if (detectUndefined === undefined) {
     console.log("[ERROR] Grades not found");
     return GET_GRADES_FAIL;
   }
   // Get grades
-  let inner_grades =
+  const inner_grades =
     grade_container.children[2].children[0].children[0].children[0].children[1]
       .children[0].children[0];
   console.log(inner_grades);
   let gpa_sub = 0;
   let gpa_cnt = 0;
 
-  let tempGrades = [];
+  const tempGrades = [];
   for (let i = 0; i < inner_grades.children.length; i++) {
-    let child = inner_grades.children[i];
+    const child = inner_grades.children[i];
     if (child.hasAttribute("group-parent")) {
       let final_grade = -1;
       for (let j = 0; j < child.children.length; j++) {
-        let c_child = child.children[j];
+        const c_child = child.children[j];
         if (c_child.children[0].innerHTML.length < 10) continue;
         final_grade = parseInt(c_child.children[0].children[0].innerHTML);
       }
@@ -101,7 +102,7 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
   if (tempGrades === GET_GRADES_FAIL) {
     return;
   }
-  var numberOfUngradedClasses = 0;
+  let numberOfUngradedClasses = 0;
   //this finds how many classes show up as -1, meaning the grades are not in yet
   for (let i = 0; i < tempGrades.length; i++) {
     if (tempGrades[i] == -1) {
@@ -112,7 +113,7 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
 
   // this finds the index number of ungraded classes in tempGrades,
   // so those indexes can be removed from weightArray later
-  let ungradedIndexNumber = [];
+  const ungradedIndexNumber = [];
   for (let i = 0; i < tempGrades.length; i++) {
     if (tempGrades[i] == -1) {
       ungradedIndexNumber.push(i);
@@ -127,10 +128,10 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
     tempGrades = tempGrades.filter((a) => a !== -1);
   }
 
-  var numberOfSelectedWeights = params.numberOfWeights;
+  const numberOfSelectedWeights = params.numberOfWeights;
 
-  let weightArrayTemporary = [];
-  let weightArrayOriginal = params.weightArray;
+  const weightArrayTemporary = [];
+  const weightArrayOriginal = params.weightArray;
 
   console.log(tempGrades);
 
@@ -165,23 +166,21 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
 
   console.log(tempGrades);
 
-  let tempGrades1 = tempGrades;
+  const tempGrades1 = tempGrades;
 
   // average formula weighted
   let preGPAw = 0;
   let preGPAsum = 0;
-  let numberOfGrades = tempGrades1.length;
-  let numberOfGrades1 = tempGrades1.length;
+  const numberOfGrades = tempGrades1.length;
+  const numberOfGrades1 = tempGrades1.length;
 
   params.numberOfWeights = params.weightArray.length;
   console.log(params.numberOfWeights);
   console.log(params.weightArray);
-  let debugcounter = 0;
   for (let i = 0; i < numberOfGrades1; i++) {
     preGPAw = params.weightArray[i] * tempGrades[i] * 0.01;
     if (preGPAw > 0) {
       preGPAsum = preGPAsum + preGPAw;
-      debugcounter++;
       console.log(preGPAsum);
     }
     preGPAw = 0;
@@ -197,7 +196,7 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
   params.currentGPAJSON["Current Skyward Grades"].inputtedGradeValues =
     tempGrades;
 
-  var gpaAverageW = preGPAsum / numberOfGrades1;
+  const gpaAverageW = preGPAsum / numberOfGrades1;
   console.log("gpaAverageW: " + gpaAverageW);
   let preGPAu = 0;
   preGPAsum = 0;
@@ -206,14 +205,14 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
     preGPAsum = preGPAsum + preGPAu;
     preGPAu = 0;
   }
-  var gpaAverageU = preGPAsum / numberOfGrades;
+  const gpaAverageU = preGPAsum / numberOfGrades;
   console.log("gpaAverageU: " + gpaAverageU);
   console.log("tempGrades: " + tempGrades);
 
   //subtraction formula
-  var tempWeightAverage = 0;
-  var tempsubtotal = 0;
-  var tempMinus = 0;
+  let tempWeightAverage = 0;
+  let tempsubtotal = 0;
+  let tempMinus = 0;
 
   for (let i = 0; i < numberOfGrades1; i++) {
     tempWeightAverage += params.weightArray[i];
@@ -234,7 +233,7 @@ export function calculateGPA(params: calculateGPAParams): [number, number] {
         tempWeightAverage,
     );
   }
-  var weightaverage2 = tempWeightAverage / numberOfGrades1;
+  const weightaverage2 = tempWeightAverage / numberOfGrades1;
 
   let unweighted = 0;
   let weighted = 0;
@@ -290,7 +289,7 @@ export function displayGPA(
   params: calculateGPAParams,
   settings: Settings,
 ) {
-  let gpa_container = document.createElement("div");
+  const gpa_container = document.createElement("div");
   gpa_container.setAttribute("style", "float:right; margin-right:5px;");
   let GPAstr =
     '<h2 class="sf_heading">Unweighted GPA: ' +
@@ -312,7 +311,7 @@ export function displayGPA(
       "</h2>";
   }
 
-  var currentGPAStr = JSON.stringify(params.currentGPAJSON).replace(/\"/g, "'");
+  const currentGPAStr = JSON.stringify(params.currentGPAJSON).replace(/"/g, "'");
   GPAstr += `<a target="_blank" href="http://captainbboy.github.io?import=${currentGPAStr}">Export to captainbboy.github.io</a>`;
 
   GPAstr +=
@@ -324,18 +323,18 @@ export function displayGPA(
   console.log("detectNaN: " + detectNaN);
   console.log(gpa_container.innerHTML);
 
-  let container = document.getElementById("printGradesContainer");
+  const container = document.getElementById("printGradesContainer");
   container.prepend(gpa_container);
 
   document
     .getElementById("saveGraphBtn")
-    .addEventListener("click", saveGPAtoGraph);
+    .addEventListener("click", function(){saveGPAtoGraph(unweighted, weighted, settings)});
 
   chrome.storage.local.get(["autosaveSetting"], function (data) {
     settings.autosaveSetting =
       data.autosaveSetting == undefined ? false : data.autosaveSetting;
     if (settings.autosaveSetting == true) {
-      saveGPAtoGraph();
+      saveGPAtoGraph(unweighted, weighted, settings);
     }
     if (settings.autosaveSetting == false) {
       console.log(
