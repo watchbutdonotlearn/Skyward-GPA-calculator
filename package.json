@@ -5,10 +5,11 @@
   "author": "Mahid Sheikh <mahid@standingpad.org>",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel watch src/**/*.html --public-url=./",
-    "build": "parcel build src/**/*.html --public-url=./"
+    "dev": "parcel watch src/manifest.json --public-url=./",
+    "build": "parcel build src/manifest.json --public-url=./"
   },
   "devDependencies": {
+    "@parcel/config-webextension": "^2.12.0",
     "@parcel/transformer-typescript-tsc": "^2.12.0",
     "@types/chrome": "^0.0.269",
     "parcel": "^2.12.0",
