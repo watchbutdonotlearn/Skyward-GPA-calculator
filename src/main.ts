@@ -29,16 +29,16 @@ console.log("[DEBUG] page = " + page);
 
 chrome.storage.local.get(["skywardDarkTheme"], function (data) {
   console.log(data);
-  settings.skywardDarkTheme = data.skywardDarkTheme;
+  settings.skywardDarkTheme = data.skywardDarkTheme as boolean;
   if (settings.skywardDarkTheme) {
     setDarkMode(page);
   }
 });
 
-var weightaverage = 4.0;
-var weightArray = [];
+let weightaverage = 4.0;
+let weightArray: number[] = [];
 
-var currentGPAJSON = {
+const currentGPAJSON = {
   "Current Skyward Grades": {
     classNames: [],
     inputtedGPAValues: [],
@@ -47,21 +47,19 @@ var currentGPAJSON = {
   },
 };
 
-var prevSemesterGrades = [];
-var prevSemesterWeights = [];
+let prevSemesterGrades: number[] = [];
+let prevSemesterWeights: number[] = [];
 
-let myPromise = new Promise(function (myResolve, myReject) {
-  // "Producing Code" (May take some time)
-
+const myPromise = new Promise<void>(function (myResolve, _myReject) {
   chrome.storage.local.get(["storedCumulativeGrades"], function (data) {
-    console.log(JSON.parse(data.storedCumulativeGrades));
-    if (typeof data != undefined) {
+    console.log(JSON.parse(data.storedCumulativeGrades as string));
+    if (data != undefined) {
       isPrevGradesSet = 1;
     }
     if (isPrevGradesSet == 1) {
-      let tempPrevSemesterGrades = data.storedCumulativeGrades;
-      let PrevSemesterGradesJSON = JSON.parse(tempPrevSemesterGrades);
-      for (let i in PrevSemesterGradesJSON) {
+      const tempPrevSemesterGrades = data.storedCumulativeGrades as string;
+      const PrevSemesterGradesJSON = JSON.parse(tempPrevSemesterGrades);
+      for (const i in PrevSemesterGradesJSON) {
         console.log(PrevSemesterGradesJSON[i].inputtedGradeValues);
         prevSemesterGrades = prevSemesterGrades.concat(
           PrevSemesterGradesJSON[i].inputtedGradeValues,
@@ -83,12 +81,12 @@ let myPromise = new Promise(function (myResolve, myReject) {
 const algNumber = delayStorageGet();
 const numberOfgradeDivs = delayStorageGet2();
 
-var isPrevGradesSet = 0;
+let isPrevGradesSet = 0;
 delayStorageGet3();
 console.log(isPrevGradesSet);
 
 // get weights
-var numberOfWeights: number;
+let numberOfWeights: number;
 if (page == "sfgradebook001.w") {
   chrome.storage.local.get(
     [
@@ -104,14 +102,14 @@ if (page == "sfgradebook001.w") {
     function (data) {
       let weightsum = 0.0;
       let data_len = 0;
-      for (let [_key, value] of Object.entries(data)) {
+      for (const [_key, value] of Object.entries(data)) {
         data_len++;
-        let value1 = value;
+        let value1 = value as string;
         if (!!value == false) {
-          value1 = 0;
+          value1 = "0";
         }
         weightsum += parseFloat(value1);
-        weightArray.push(parseFloat(value));
+        weightArray.push(parseFloat(value as string));
       }
       console.log(weightArray);
       weightArray = weightArray.filter((e) => e === 0 || e);
@@ -141,7 +139,7 @@ if (page == "sfgradebook001.w") {
         };
         const [unweighted, weighted] = calculateGPA(params);
         displayGPA(unweighted, weighted, params, settings);
-      });
+      }).catch(() => "Required catch");
     },
   );
 }

@@ -1,4 +1,4 @@
-var graphHasSet;
+let graphHasSet: boolean;
 var GPAGraphArray;
 
 function getChartStorage() {
