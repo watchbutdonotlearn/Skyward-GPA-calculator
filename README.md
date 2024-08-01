@@ -38,5 +38,6 @@ yarn install
 ```
 yarn build
 ```
+Type errors are to be expected, as this was ported from a JavaScript project with strictness with types.
 
 The outputted extension (including `manifest.json`) will be in `dist`
