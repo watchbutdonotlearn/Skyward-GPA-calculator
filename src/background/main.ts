@@ -74,7 +74,7 @@ var z = document.getElementById("settingsdiv");
 z.style.display = "none";
 
 window.onload=function(){
-    document.getElementById('popupBtn').addEventListener('click', showhide);
+	document.getElementById('popupBtn').addEventListener('click', showhide);
 	document.getElementById('closeWeight').addEventListener('click', showhide);
 	document.getElementById('closeWeight').addEventListener('click', getGPAValues);
 	document.getElementById('closeNoSave').addEventListener('click', showhide);
@@ -84,7 +84,7 @@ window.onload=function(){
 	document.getElementById('closeSettings').addEventListener('click', getAlgorithm);
 	document.getElementById('closeSettings').addEventListener('click', storeDivNumberGrades);
 	document.getElementById('closeSettings').addEventListener('click', storeDarkMode);
-    document.getElementById('closeSettings').addEventListener('click', savePreviousSemesterGrades);
+	document.getElementById('closeSettings').addEventListener('click', savePreviousSemesterGrades);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', showhide2);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', returndivgrades);
 	document.getElementById('closeSettingsNoSave').addEventListener('click', returnAlgorithm);
