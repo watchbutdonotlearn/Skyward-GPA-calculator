@@ -1,0 +1,14 @@
+{
+    "include": ["src/**/*"],
+    "noImplicitAny": true,
+    "compilerOptions": {
+        "target": "es2016",
+        "types": [
+            "chrome"
+        ],
+        "lib": [
+            "es2021",
+            "dom"
+        ]
+    }
+}
