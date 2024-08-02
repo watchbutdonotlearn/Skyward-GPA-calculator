@@ -1,6 +1,6 @@
 # Skyward-GPA-calculator
 > [!IMPORTANT]
-> This extension has entered into maintainence mode, and maintainership has passed over to [Mahid Sheikh](https://github.com/StandingPadAnimations/). PRs will be reviewed and accepted, but 
+> This extension has entered into maintainence mode, and maintainership has passed over to [Mahid Sheikh](https://github.com/StandingPadAnimations/). PRs will be reviewed and accepted, but new features won't be a priority 
 > 
 > A rewrite to TypeScript is also in progress to make this more maintainable for future developers. Check the `rewrite` branch for progress on the rewrite.
 
@@ -38,6 +38,6 @@ yarn install
 ```
 yarn build
 ```
-Type errors are to be expected, as this was ported from a JavaScript project with strictness with types.
+Type errors are to be expected, as this was ported from a JavaScript project with relaxed use of types.
 
 The outputted extension (including `manifest.json`) will be in `dist`
