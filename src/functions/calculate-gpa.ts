@@ -4,7 +4,7 @@ import { saveGPAtoGraph } from "./graph-functions";
 
 const GET_GRADES_FAIL: [number, number, number[]] = [-1, -1, []];
 
-type GPAJSONDictonary = {
+export type GPAJSONDictonary = {
     [key: string]: {
       classNames: string[],
       inputtedGPAValues: number[],

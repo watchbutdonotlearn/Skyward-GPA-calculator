@@ -1,44 +1,48 @@
-let graphHasSet: boolean;
-var GPAGraphArray;
+import { settings } from "../main";
+import { Settings } from "../settings";
+import { Chart } from "./chartjs/dist/types";
 
-function getChartStorage() {
+let GPAGraphArray: GraphValueType[];
+
+type GraphValueType = {
+  unweighted: number;
+  weighted: number;
+  timestamp: number;
+}
+
+function getChartStorage(settings: Settings) {
   chrome.storage.local.get(["GPAGraphArray"], function (data) {
-    graphHasSet = true;
-    GPAGraphArray = data.GPAGraphArray;
+    settings.graphHasSet = true;
+    GPAGraphArray = data.GPAGraphArray as GraphValueType[];
     console.log(GPAGraphArray);
     if (GPAGraphArray == undefined) {
       console.log("GPA graph JSON value is not yet set");
-      graphHasSet = false;
+      settings.graphHasSet = false;
     }
-    if (graphHasSet == true) {
+    if (settings.graphHasSet == true) {
       initChart();
     }
   });
 }
 
 function initChart() {
-  /*
-    var xValues = [];
-    for(i=0;i<GPAGraphArray.length;i++){
-        xValues.push(GPAGraphArray[i].timestamp)
-    }
-    */
-  var unweightedValues = [];
-  for (i = 0; i < GPAGraphArray.length; i++) {
+  const unweightedValues = [];
+  for (let i = 0; i < GPAGraphArray.length; i++) {
     unweightedValues.push({
       x: GPAGraphArray[i].timestamp,
       y: GPAGraphArray[i].unweighted,
     });
   }
-  var weightedValues = [];
-  for (i = 0; i < GPAGraphArray.length; i++) {
+  const weightedValues = [];
+  for (let i = 0; i < GPAGraphArray.length; i++) {
     weightedValues.push({
       x: GPAGraphArray[i].timestamp,
       y: GPAGraphArray[i].weighted,
     });
   }
 
-  var chart = new Chart("GPAChart", {
+  Chart.defaults.plugins.legend.labels.usePointStyle = true;
+  const chart = new Chart("GPAChart", {
     type: "scatter",
     data: {
       datasets: [
@@ -48,7 +52,7 @@ function initChart() {
           backgroundColor: "rgb(0,30,255)",
           pointBackgroundColor: "rgb(0,30,255)",
           pointBorderColor: "rgb(0,30,255)",
-          BorderColor: "rgb(0,30,255)",
+          borderColor: "rgb(0,30,255)",
           data: unweightedValues,
           fill: false,
           tension: 0,
@@ -66,91 +70,87 @@ function initChart() {
       ],
     },
     options: {
-      legend: { display: true },
-      scales: {
-        //yAxes: [{ticks: {max:5}}],
-        //xAxes: {ticks: {min: (GPAGraphArray[0].timestamp-0.2)}/*, type:'time', time: {tooltipFormat: 'DD T'}*/}
-      },
+      plugins: {
+        legend: {
+          display: true
+        }
+      }
     },
-    plugins: [
-      {
-        beforeDraw: function (c) {
-          //c.getDatasetMeta(0).hidden=true;
-          //c.update();
-          var legends = c.legend.legendItems;
-          //console.log(c.legend.legendItems);
-          c.legend.legendItems[0].fillStyle = "blue";
-          c.legend.legendItems[1].fillStyle = "rgb(0,170,90)";
-          /*legends.forEach(function(e) {
-                    e.fillStyle = 'red';
-                });*/
-          //console.log(c.legend.legendItems);
-        },
-      },
-    ],
   });
   chart.getDatasetMeta(0).hidden = true;
   chart.update();
 }
 
 function clearValues() {
-  let emptyarray = [];
-  chrome.storage.local.set({ GPAGraphArray: emptyarray });
+  const emptyarray: GraphValueType[] = [];
+  chrome.storage.local.set({ GPAGraphArray: emptyarray }).catch(() => "Clearing values failed!");
   console.log("clearing array");
 }
 function saveAutosaveSetting() {
-  var settingValue = document.forms.divdarkmodeForm.autosaveRadio.value;
+  const settingValue = document.forms.namedItem("divdarkmodeForm");
+  let savedValue = false;
   console.log(settingValue);
-  if (settingValue == 1) {
-    settingValue = true;
-  } else {
-    settingValue = false;
+  if (settingValue != null) {
+    if (settingValue.nodeValue != null && settingValue.nodeValue == "1") {
+      savedValue = true;
+    } else {
+      savedValue = false;
+    }
+    chrome.storage.local.set({ autosaveSetting: savedValue }).catch(() => "Storing the autosave setting failed!");
   }
-  chrome.storage.local.set({ autosaveSetting: settingValue });
 }
 
 window.onload = function () {
-  document
-    .getElementById("clearGraphBtn")
-    .addEventListener("click", clearValues);
-  document
-    .getElementById("autosavetrue")
-    .addEventListener("click", saveAutosaveSetting);
-  document
-    .getElementById("autosavefalse")
-    .addEventListener("click", saveAutosaveSetting);
-  document
-    .getElementById("divdarkmodesetting")
-    .addEventListener("click", saveAutosaveSetting);
-  getChartStorage();
+  const clearValuesButton = document.getElementById("clearGraphBtn")
+  if (clearValuesButton != null) {
+    clearValuesButton.addEventListener("click", clearValues);
+  }
+  const autosaveTrueButton = document.getElementById("autosavetrue")
+  if (autosaveTrueButton != null) {
+    autosaveTrueButton.addEventListener("click", saveAutosaveSetting);
+  }
+  const autosaveFalseButton = document.getElementById("autosavefalse")
+  if (autosaveFalseButton != null) {
+    autosaveFalseButton.addEventListener("click", saveAutosaveSetting);
+  }
+  const divdarkmodeSettingButton = document.getElementById("divdarkmodesetting")
+  if (divdarkmodeSettingButton != null) {
+    divdarkmodeSettingButton.addEventListener("click", saveAutosaveSetting);
+  }
+  getChartStorage(settings);
   function returnAutosaveSetting() {
     chrome.storage.local.get(["autosaveSetting"], function (items) {
-      let enabled = items.autosaveSetting;
+      let enabled: boolean = items.autosaveSetting as boolean;
       if (
         enabled === undefined ||
         enabled === null ||
         enabled === 0 ||
         typeof enabled != "boolean"
       ) {
-        chrome.storage.local.set({ autosaveSetting: false });
+        chrome.storage.local.set({ autosaveSetting: false }).catch(() => "Issue with saving autosave settings!");
         console.log(
           "changing stored autosave setting blank to default value of false",
         );
         enabled = false;
       }
       //change radio of settings to saved value
-      let getRadioId = "autosave" + enabled.toString();
+      const getRadioId = "autosave" + enabled.toString();
       const selectedItem = document.getElementById(getRadioId);
       console.log(selectedItem);
-      const newItem1 = document.createElement("radio");
-      newItem1.innerHTML =
-        '<input type="radio" id="autosave' +
-        enabled.toString() +
-        '" name="autosaveRadio" value="' +
-        (enabled ? "1" : "2") +
-        '" checked="checked">';
-      selectedItem.parentNode.replaceChild(newItem1, selectedItem);
-      saveAutosaveSetting();
+
+      if (selectedItem != null) {
+        const newItem1 = document.createElement("radio");
+        newItem1.innerHTML =
+          '<input type="radio" id="autosave' +
+          enabled.toString() +
+          '" name="autosaveRadio" value="' +
+          (enabled ? "1" : "2") +
+          '" checked="checked">';
+        if (selectedItem.parentNode != null) {
+          selectedItem.parentNode.replaceChild(newItem1, selectedItem);
+        }
+        saveAutosaveSetting();
+      }
     });
   }
   returnAutosaveSetting();

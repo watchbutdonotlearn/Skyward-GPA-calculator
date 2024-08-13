@@ -14,5 +14,5 @@ export function setClassNames() {
     classNamesArray.push(classNames[l].firstChild.innerText);
   }
   classNamesArray = [...new Set(classNamesArray)];
-  chrome.storage.local.set({ classNames: classNamesArray });
+  chrome.storage.local.set({ classNames: classNamesArray }).catch(() => "Error in setting class names!");
 }

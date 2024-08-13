@@ -5,8 +5,8 @@
   "author": "Mahid Sheikh <mahid@standingpad.org>",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel watch src/manifest.json --public-url=./",
-    "build": "parcel build src/manifest.json --public-url=./"
+    "dev": "parcel watch src/manifest.json --host localhost",
+    "build": "parcel build src/manifest.json"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",

@@ -1,50 +1,60 @@
 function togglevisibility() {
-  var x = document.getElementById("weightselectordiv");
-  var GPAForms = document.getElementsByClassName("GPAForm");
-  var openSkyward = document.getElementById("openSkyward");
-  var GPAFormHolder = document.getElementById("GPAFormHolder");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  const x = document.getElementById("weightselectordiv");
+  const GPAForms = Array.from(document.getElementsByClassName("GPAForm") as HTMLCollectionOf<HTMLElement>);
+  const GPAFormHolder = document.getElementById("GPAFormHolder");
+
+  if (x != null) {
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
   }
   chrome.storage.local.get(["numberOfClasses", "classNames"], function (data) {
     console.log("Number Of Classes (from storage): ");
     console.log(data);
     if (!data.numberOfClasses || !data.classNames) {
       let biggestClassTitleWidth = 0;
-      GPAFormHolder.style.display = "block";
-      for (let i = 0; i < GPAForms.length; i++) {
-        if (i < 7) {
-          GPAForms[i].style.display = "block";
-          let classTitleEl =
-            GPAForms[i].getElementsByClassName("classTitle")[0];
-          classTitleEl.innerHTML = "Class " + Math.floor(i + 1);
-          if (classTitleEl.offsetWidth > biggestClassTitleWidth)
-            biggestClassTitleWidth = classTitleEl.offsetWidth;
+
+      if (GPAFormHolder != null) {
+        GPAFormHolder.style.display = "block";
+        for (let i = 0; i < GPAForms.length; i++) {
+          if (i < 7) {
+            GPAForms[i].style.display = "block";
+            const classTitleEl = GPAForms[i].getElementsByClassName("classTitle")[0] as HTMLElement;
+            classTitleEl.innerHTML = "Class " + Math.floor(i + 1);
+            if (classTitleEl.offsetWidth > biggestClassTitleWidth)
+              biggestClassTitleWidth = classTitleEl.offsetWidth;
+          }
         }
       }
       console.log("biggestClassTitleWidth: " + biggestClassTitleWidth + "px");
-      let classTitles = document.getElementsByClassName("classTitle");
+      const classTitles = Array.from(document.getElementsByClassName("classTitle") as HTMLCollectionOf<HTMLElement>);
       for (let o = 0; o < classTitles.length; o++) {
         classTitles[o].style.minWidth = `${biggestClassTitleWidth + 20}px`;
       }
     } else {
       let biggestClassTitleWidth = 0;
-      GPAFormHolder.style.display = "block";
+
+      if (GPAFormHolder != null) {
+        GPAFormHolder.style.display = "block";
+      }
       console.log(GPAForms);
-      for (let i = 0; i < GPAForms.length; i++) {
-        if (i < parseInt(data["numberOfClasses"])) {
-          GPAForms[i].style.display = "block";
-          let classTitleEl =
-            GPAForms[i].getElementsByClassName("classTitle")[0];
-          classTitleEl.innerHTML = data.classNames[i];
-          if (classTitleEl.offsetWidth > biggestClassTitleWidth)
-            biggestClassTitleWidth = classTitleEl.offsetWidth;
+
+      if (GPAForms != null) {
+        for (let i = 0; i < GPAForms.length; i++) {
+          if (i < parseInt(data["numberOfClasses"] as string)) {
+            GPAForms[i].style.display = "block";
+            const classTitleEl =
+              GPAForms[i].getElementsByClassName("classTitle")[0] as HTMLElement;
+            classTitleEl.innerHTML = data.classNames[i] as string;
+            if (classTitleEl.offsetWidth > biggestClassTitleWidth)
+              biggestClassTitleWidth = classTitleEl.offsetWidth;
+          }
         }
       }
       console.log("biggestClassTitleWidth: " + biggestClassTitleWidth + "px");
-      let classTitles = document.getElementsByClassName("classTitle");
+      const classTitles = Array.from(document.getElementsByClassName("classTitle") as HTMLCollectionOf<HTMLElement>);
       for (let o = 0; o < classTitles.length; o++) {
         classTitles[o].style.minWidth = `${biggestClassTitleWidth + 20}px`;
       }
@@ -53,28 +63,32 @@ function togglevisibility() {
 }
 
 function togglevisibility3() {
-  var x = document.getElementById("settingsdiv");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  const x = document.getElementById("settingsdiv");
+  if (x != null) {
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
   }
 }
 
 function togglevisibility2() {
-  var z = document.getElementById("mainPage");
-  if (z.style.display === "none") {
-    z.style.display = "block";
-  } else {
-    z.style.display = "none";
+  const z = document.getElementById("mainPage");
+  if (z != null) {
+    if (z.style.display === "none") {
+      z.style.display = "block";
+    } else {
+      z.style.display = "none";
+    }
   }
 }
 
-var y = document.getElementById("weightselectordiv");
+const y = document.getElementById("weightselectordiv");
 if (y) y.style.display = "none";
 
-var z = document.getElementById("settingsdiv");
-z.style.display = "none";
+const z = document.getElementById("settingsdiv");
+if (z) z.style.display = "none";
 
 window.onload = function () {
   document.getElementById("popupBtn").addEventListener("click", showhide);
@@ -94,9 +108,6 @@ window.onload = function () {
   document
     .getElementById("closeSettings")
     .addEventListener("click", storeDivNumberGrades);
-  document
-    .getElementById("closeSettings")
-    .addEventListener("click", storeDarkMode);
   document
     .getElementById("closeSettings")
     .addEventListener("click", savePreviousSemesterGrades);
@@ -212,37 +223,6 @@ window.onload = function () {
   }
   returndivgrades();
 
-  function returnDivDarkMode() {
-    chrome.storage.local.get(["skywardDarkTheme"], function (items) {
-      let enabled = items.skywardDarkTheme;
-      if (
-        enabled === undefined ||
-        enabled === null ||
-        enabled === 0 ||
-        typeof enabled != "boolean"
-      ) {
-        chrome.storage.local.set({ skywardDarkTheme: false });
-        console.log(
-          "changing stored skyward Dark Theme blank to default value of false",
-        );
-        enabled = false;
-      }
-      //change radio of settings to saved value
-      let getRadioId = "divDarkMode" + enabled.toString();
-      const selectedItem = document.getElementById(getRadioId);
-      console.log(selectedItem);
-      const newItem1 = document.createElement("radio");
-      newItem1.innerHTML =
-        '<input type="radio" id="divDarkMode' +
-        enabled.toString() +
-        '" name="darkModeRadio" value="' +
-        (enabled ? "1" : "2") +
-        '" checked="checked">';
-      selectedItem.parentNode.replaceChild(newItem1, selectedItem);
-    });
-  }
-  returnDivDarkMode();
-
   //return values of import json box
   chrome.storage.local.get(["storedCumulativeGrades"], function (data) {
     console.log(data);
@@ -321,47 +301,4 @@ function savePreviousSemesterGrades() {
   let previousSemesterGrades =
     document.getElementById("cumulativeSaveBox").value;
   chrome.storage.local.set({ storedCumulativeGrades: previousSemesterGrades });
-}
-
-function storeDarkMode() {
-  let value = document.forms.divdarkmodeForm.darkModeRadio.value;
-  chrome.storage.local.get(["skywardDarkTheme"], function (data) {
-    let darkTheme = data.skywardDarkTheme;
-    let newValue;
-
-    if (value == 1 && darkTheme != true) {
-      newValue = true;
-    } else if (value == 2 && darkTheme != false) {
-      newValue = false;
-    }
-
-    if (newValue != undefined) {
-      chrome.tabs.query(
-        { url: "https://*/scripts/wsisa.dll/WService=wsEAplus/*" },
-        function (tab) {
-          tab.forEach((t) => {
-            if (t.url.toString().includes("seplog01.w")) {
-              chrome.tabs.reload(t.id);
-            } else {
-              // chrome.tabs.executeScript(t.id, {code: `
-              // 	children = document.getElementById("sf_navMenu").children;
-              // 	for(let c = 0; c < children.length; c++) {
-              // 		let datan = children[c].firstChild.getAttribute('data-nav');
-              // 		// console.log(datan)
-              // 		let url = '${t.url.split("/scripts/wsisa.dll/WService=wsEAplus/")[1]}';
-              // 		// console.log(url)
-              // 		if(datan && datan == url) {
-              // 			children[c].click();
-              // 			console.log('clicked!')
-              // 			console.log(children[c])
-              // 		}
-              // 	}
-              // `})
-            }
-          });
-        },
-      );
-      chrome.storage.local.set({ skywardDarkTheme: newValue });
-    }
-  });
 }

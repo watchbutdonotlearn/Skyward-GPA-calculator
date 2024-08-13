@@ -2,8 +2,8 @@ import {
   calculateGPA,
   calculateGPAParams,
   displayGPA,
+  GPAJSONDictonary,
 } from "./functions/calculate-gpa";
-import { setDarkMode } from "./functions/dark-mode";
 import {
   delayStorageGet,
   delayStorageGet2,
@@ -13,11 +13,10 @@ import { Settings } from "./settings";
 
 console.log("Attempting to inject script");
 
-const settings: Settings = {
+export const settings: Settings = {
   autosaveSetting: false,
   originalGraphHasSet: 0,
-  graphHasSet: graphHasSet,
-  skywardDarkTheme: false,
+  graphHasSet: false,
 };
 const scriptTag = document.createElement("script");
 scriptTag.src = chrome.runtime.getURL("script2.js");
@@ -26,14 +25,6 @@ document.head.appendChild(scriptTag);
 const url = location.href;
 const page = url.split("/scripts/wsisa.dll/WService=")[1].split("/")[1];
 console.log("[DEBUG] page = " + page);
-
-chrome.storage.local.get(["skywardDarkTheme"], function (data) {
-  console.log(data);
-  settings.skywardDarkTheme = data.skywardDarkTheme as boolean;
-  if (settings.skywardDarkTheme) {
-    setDarkMode(page);
-  }
-});
 
 let weightaverage = 4.0;
 let weightArray: number[] = [];
@@ -58,7 +49,7 @@ const myPromise = new Promise<void>(function (myResolve, _myReject) {
     }
     if (isPrevGradesSet == 1) {
       const tempPrevSemesterGrades = data.storedCumulativeGrades as string;
-      const PrevSemesterGradesJSON = JSON.parse(tempPrevSemesterGrades);
+      const PrevSemesterGradesJSON = JSON.parse(tempPrevSemesterGrades) as GPAJSONDictonary;
       for (const i in PrevSemesterGradesJSON) {
         console.log(PrevSemesterGradesJSON[i].inputtedGradeValues);
         prevSemesterGrades = prevSemesterGrades.concat(
@@ -139,7 +130,7 @@ if (page == "sfgradebook001.w") {
         };
         const [unweighted, weighted] = calculateGPA(params);
         displayGPA(unweighted, weighted, params, settings);
-      }).catch(() => "Required catch");
+      }).catch(() => "Couldn't display GPA");
     },
   );
 }
