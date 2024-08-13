@@ -37,8 +37,8 @@
         "../sprite/printer1.png",
         "../sprite/sf_bg_sprite001.png",
         "../sprite/sf_icons_sprite.png",
-        "../gpachart.html",
         "../assets/images/SkyLogoBlue.png",
+        "gpachart/gpachart.html",
         "script2.js"
       ],
       "matches": ["https://skyward.iscorp.com/*", "http://skyward.iscorp.com/*"]
