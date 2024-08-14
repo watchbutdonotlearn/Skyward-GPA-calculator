@@ -1,6 +1,5 @@
 import { settings } from "../main";
 import { Settings } from "../settings";
-import { Chart } from "./chartjs/dist/types";
 
 let GPAGraphArray: GraphValueType[];
 

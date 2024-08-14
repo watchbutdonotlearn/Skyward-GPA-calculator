@@ -317,7 +317,7 @@ export function displayGPA(
 
   GPAstr +=
     '<button type="button" style="float: right;" id="saveGraphBtn">Save to graph</button><p><a target="_blank" style="text-align: right;" href=' +
-    chrome.runtime.getURL("gpachart.html") +
+    chrome.runtime.getURL("gpachart/gpachart.html") +
     ">See GPA graph</a></p>";
 
   gpa_container.innerHTML = GPAstr;
