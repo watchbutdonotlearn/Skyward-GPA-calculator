@@ -1,5 +1,5 @@
 import { Settings } from "../settings";
-import { setNumberOfClasses, setClassNames } from "./class-functions";
+import { setClassNamesAndNumberOfClasses } from "./class-functions";
 import { saveGPAtoGraph } from "./graph-functions";
 
 const GET_GRADES_FAIL: [number, number, number[]] = [-1, -1, []];
@@ -26,75 +26,66 @@ export interface calculateGPAParams {
 }
 
 /**
- * Get a list of grades for each individual class.
- *
- * @param {number} numberOfGradeDivs - The number of grade divs in Skyward
+ * Get a list of grades for each individual class. This takes into account
+ * multiple grade divs.
  * */
-function getGrades(numberOfGradeDivs: number): [number, number, number[]] {
+function getGrades(): [number, number, number[]] {
   const container = document.getElementById("printGradesContainer"); // Get main node
-  // Find grade node
-  let counterthing = 1;
-  let grade_container = null;
+  if (container == null) {
+    return GET_GRADES_FAIL;
+  }
+  // Find grade nodes
+  const grade_containers = [];
   for (let i = 0; i < container.children.length; i++) {
     const child = container.children[i];
-    if (numberOfGradeDivs == 1) {
-      console.log("number of grade divs is 1");
-      if (child.id.substring(0, 18) === "grid_stuGradesGrid") {
-        grade_container = child;
-        break;
-      }
-    } else {
-      console.log("number of grade divs is 2");
-      if (child.id.substring(0, 18) === "grid_stuGradesGrid") {
-        counterthing++;
-        if (counterthing === 2) {
-          continue;
-        }
-        grade_container = child;
-        break;
-      }
+    if (child.id.substring(0, 18) === "grid_stuGradesGrid") {
+      grade_containers.push(child);
     }
   }
-  console.log(grade_container);
-  if (grade_container === null) {
+  console.log(grade_containers);
+  if (!grade_containers.length) {
     console.log("[ERROR] Grades not found");
     return GET_GRADES_FAIL;
   }
-  const detectUndefined = grade_container;
-  if (detectUndefined === undefined) {
-    console.log("[ERROR] Grades not found");
-    return GET_GRADES_FAIL;
-  }
-  // Get grades
-  const inner_grades =
-    grade_container.children[2].children[0].children[0].children[0].children[1]
-      .children[0].children[0];
-  console.log(inner_grades);
+  
+  const grades: number[] = []
   let gpa_sub = 0;
   let gpa_cnt = 0;
+  for (let i = 0; i < grade_containers.length; i++) {
+    const grade_container = grade_containers[i]
+    const detectUndefined = grade_container;
+    if (detectUndefined === undefined) {
+      console.log("[ERROR] Grades not found");
+      return GET_GRADES_FAIL;
+    }
+    // Get grades
+    const inner_grades =
+      grade_container.children[2].children[0].children[0].children[0].children[1]
+        .children[0].children[0];
+    console.log(inner_grades);
 
-  const tempGrades = [];
-  for (let i = 0; i < inner_grades.children.length; i++) {
-    const child = inner_grades.children[i];
-    if (child.hasAttribute("group-parent")) {
-      let final_grade = -1;
-      for (let j = 0; j < child.children.length; j++) {
-        const c_child = child.children[j];
-        if (c_child.children[0].innerHTML.length < 10) continue;
-        final_grade = parseInt(c_child.children[0].children[0].innerHTML);
+    for (let i = 0; i < inner_grades.children.length; i++) {
+      const child = inner_grades.children[i];
+      if (child.hasAttribute("group-parent")) {
+        let final_grade = -1;
+        for (let j = 0; j < child.children.length; j++) {
+          const c_child = child.children[j];
+          if (c_child.children[0].innerHTML.length < 10) continue;
+          final_grade = parseInt(c_child.children[0].children[0].innerHTML);
+        }
+
+        if (final_grade !== -1) {
+          gpa_sub += 0.05 * (100 - final_grade);
+          gpa_cnt++;
+        }
+
+        console.log("final_grade: " + final_grade);
+        grades.push(final_grade);
       }
-
-      if (final_grade !== -1) {
-        gpa_sub += 0.05 * (100 - final_grade);
-        gpa_cnt++;
-      }
-
-      console.log("final_grade: " + final_grade);
-      tempGrades.push(final_grade);
     }
   }
-  console.log(tempGrades);
-  return [gpa_sub, gpa_cnt, tempGrades];
+  console.log(grades);
+  return [gpa_sub, gpa_cnt, grades];
 }
 
 /**
@@ -105,9 +96,8 @@ function getGrades(numberOfGradeDivs: number): [number, number, number[]] {
  * @param {calculateGPAParams} params - An object that contains all of the parameters used
  * */
 export function calculateGPA(params: calculateGPAParams): [number, number] {
-  setNumberOfClasses();
-  setClassNames();
-  let [gpa_sub, gpa_cnt, tempGrades] = getGrades(params.numberOfGradeDivs);
+  setClassNamesAndNumberOfClasses()
+  let [gpa_sub, gpa_cnt, tempGrades] = getGrades();
 
   // Error occurred
   if (tempGrades === GET_GRADES_FAIL) {

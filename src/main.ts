@@ -114,23 +114,21 @@ if (page == "sfgradebook001.w") {
       console.log(weightsum);
       weightaverage = weightsum / numberOfWeights;
       console.log(weightaverage);
-
-      myPromise.then(function (_value) {
-        console.log("success ig");
-        const params: calculateGPAParams = {
-          numberOfWeights: numberOfWeights,
-          weightArray: weightArray,
-          isPrevGradesSet: isPrevGradesSet == 1,
-          prevSemesterGrades: prevSemesterGrades,
-          prevSemesterWeights: prevSemesterWeights,
-          currentGPAJSON: currentGPAJSON,
-          weightAverage: weightaverage,
-          algNumber: algNumber,
-          numberOfGradeDivs: numberOfgradeDivs,
-        };
-        const [unweighted, weighted] = calculateGPA(params);
-        displayGPA(unweighted, weighted, params, settings);
-      }).catch(() => "Couldn't display GPA");
+      
+      const params: calculateGPAParams = {
+        numberOfWeights: numberOfWeights,
+        weightArray: weightArray,
+        isPrevGradesSet: isPrevGradesSet == 1,
+        prevSemesterGrades: prevSemesterGrades,
+        prevSemesterWeights: prevSemesterWeights,
+        currentGPAJSON: currentGPAJSON,
+        weightAverage: weightaverage,
+        algNumber: algNumber,
+        numberOfGradeDivs: numberOfgradeDivs,
+      };
+      const [unweighted, weighted] = calculateGPA(params);
+      displayGPA(unweighted, weighted, params, settings);
+      console.log("success ig");
     },
   );
 }

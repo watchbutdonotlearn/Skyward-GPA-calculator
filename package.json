@@ -20,5 +20,13 @@
     "prettier": "3.3.3",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.0.0"
+  },
+  "targets": {
+    "prod": {
+      "sourceMap": {
+        "inline": false,
+        "inlineSources": true
+      }
+    }
   }
 }
