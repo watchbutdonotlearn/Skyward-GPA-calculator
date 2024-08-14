@@ -2,7 +2,6 @@
     "include": ["src/**/*"],
     "noImplicitAny": true,
     "compilerOptions": {
-        "isolatedModules": true,
         "target": "es2021",
         "strict": true,
         "types": [
