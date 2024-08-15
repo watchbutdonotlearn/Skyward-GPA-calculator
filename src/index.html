@@ -1,0 +1,258 @@
+<html>
+  <head> </head>
+  <style>
+    img {
+      opacity: 0.3;
+    }
+
+    .Main {
+      position: absolute;
+      top: 50px;
+      left: 8px;
+    }
+
+    .settingspage {
+      position: absolute;
+      top: 50px;
+      left: 8px;
+    }
+
+    .selectWeights {
+      position: absolute;
+      top: 0px;
+      left: 8px;
+      width: 98%;
+    }
+
+    .class1 {
+      position: absolute;
+      top: 50px;
+      left: 8px;
+    }
+
+    .class2 {
+      position: absolute;
+      top: 70px;
+      left: 8px;
+    }
+
+    .class3 {
+      position: absolute;
+      top: 90px;
+      left: 8px;
+    }
+
+    .class4 {
+      position: absolute;
+      top: 110px;
+      left: 8px;
+    }
+
+    .class5 {
+      position: absolute;
+      top: 130px;
+      left: 8px;
+    }
+
+    .class6 {
+      position: absolute;
+      top: 150px;
+      left: 8px;
+    }
+
+    .class7 {
+      position: absolute;
+      top: 170px;
+      left: 8px;
+    }
+
+    .class8 {
+      position: absolute;
+      top: 190px;
+      left: 8px;
+    }
+
+    .class9 {
+      position: absolute;
+      top: 210px;
+      left: 8px;
+    }
+
+    .GPAForm {
+      display: none;
+    }
+
+    .classTitle {
+      display: inline-block;
+    }
+  </style>
+  <body>
+    <!-- Elements Present on All Pages -->
+    <h1>Skyward GPA Calculator</h1>
+    <img
+      src="../assets/images/Skyward.png"
+      id="skywardimg"
+      width="418"
+      height="341"
+    />
+
+    <!-- Main page -->
+    <div class="Main" id="mainPage">
+      <button id="popupBtn">Select GPA weights</button>
+      <button id="popupBtn2">Settings</button>
+      <p>Version 0.12</p>
+      <p>
+        <a href="https://github.com/watchbutdonotlearn/Skyward-GPA-calculator"
+          >Contribute on Github</a
+        >
+      </p>
+    </div>
+
+    <!-- SelectWeights page -->
+    <div class="selectWeights" id="weightselectordiv">
+      <div id="GPAFormHolder" style="display: none">
+        <form id="form1" name="GPAform1" class="GPAForm">
+          <div class="class1">
+            <span class="classTitle">Class 1 Weight</span>
+            <input type="radio" id="4-1" name="GPA" value="4" />
+            <label for="4">4</label>
+            <input type="radio" id="4.5-1" name="GPA" value="4.5" />
+            <label for="4.5">4.5</label>
+            <input type="radio" id="5.0-1" name="GPA" value="5.0" />
+            <label for="5">5</label>
+          </div>
+        </form>
+        <form id="form2" name="GPAform2" class="GPAForm">
+          <div class="class2">
+            <span class="classTitle">Class 2 Weight</span>
+            <input type="radio" id="4-2" name="GPA" value="4" />
+            <label for="4">4</label>
+            <input type="radio" id="4.5-2" name="GPA" value="4.5" />
+            <label for="4.5">4.5</label>
+            <input type="radio" id="5.0-2" name="GPA" value="5.0" />
+            <label for="5">5</label>
+          </div>
+        </form>
+        <form id="form3" name="GPAform3" class="GPAForm">
+          <div class="class3">
+            <span class="classTitle">Class 3 Weight</span>
+            <input type="radio" id="4-3" name="GPA" value="4" />
+            <label for="4">4</label>
+            <input type="radio" id="4.5-3" name="GPA" value="4.5" />
+            <label for="4.5">4.5</label>
+            <input type="radio" id="5.0-3" name="GPA" value="5.0" />
+            <label for="5">5</label>
+          </div>
+        </form>
+        <form id="form4" name="GPAform4" class="GPAForm">
+          <div class="class4">
+            <span class="classTitle">Class 4 Weight</span>
+            <input type="radio" id="4-4" name="GPA" value="4" />
+            <label for="4">4</label>
+            <input type="radio" id="4.5-4" name="GPA" value="4.5" />
+            <label for="4.5">4.5</label>
+            <input type="radio" id="5.0-4" name="GPA" value="5.0" />
+            <label for="5">5</label>
+          </div>
+        </form>
+        <form id="form5" name="GPAform5" class="GPAForm">
+          <div class="class5">
+            <span class="classTitle">Class 5 Weight</span>
+            <input type="radio" id="4-5" name="GPA" value="4" />
+            <label for="4">4</label>
+            <input type="radio" id="4.5-5" name="GPA" value="4.5" />
+            <label for="4.5">4.5</label>
+            <input type="radio" id="5.0-5" name="GPA" value="5.0" />
+            <label for="5">5</label>
+          </div>
+        </form>
+        <form id="form6" name="GPAform6" class="GPAForm">
+          <div class="class6">
+            <span class="classTitle">Class 6 Weight</span>
+            <input type="radio" id="4-6" name="GPA" value="4" />
+            <label for="4">4</label>
+            <input type="radio" id="4.5-6" name="GPA" value="4.5" />
+            <label for="4.5">4.5</label>
+            <input type="radio" id="5.0-6" name="GPA" value="5.0" />
+            <label for="5">5</label>
+          </div>
+        </form>
+        <form id="form7" name="GPAform7" class="GPAForm">
+          <div class="class7">
+            <span class="classTitle">Class 7 Weight</span>
+            <input type="radio" id="4-7" name="GPA" value="4" />
+            <label for="4">4</label>
+            <input type="radio" id="4.5-7" name="GPA" value="4.5" />
+            <label for="4.5">4.5</label>
+            <input type="radio" id="5.0-7" name="GPA" value="5.0" />
+            <label for="5">5</label>
+          </div>
+        </form>
+        <form id="form8" name="GPAform8" class="GPAForm">
+          <div class="class8">
+            <span class="classTitle">Class 8 Weight</span>
+            <input type="radio" id="4-8" name="GPA" value="4" />
+            <label for="4">4</label>
+            <input type="radio" id="4.5-8" name="GPA" value="4.5" />
+            <label for="4.5">4.5</label>
+            <input type="radio" id="5.0-8" name="GPA" value="5.0" />
+            <label for="5">5</label>
+          </div>
+        </form>
+        <div class="class9">
+          <p>
+            Leave any classes you don't have blank. Enter in the order that they
+            appear in skyward.
+          </p>
+          <p><button id="clearWeightSelections">Clear selections</button></p>
+          <button id="closeWeight">Save and exit to main page</button>
+          <button id="closeNoSave">Exit without saving</button>
+        </div>
+      </div>
+    </div>
+    <div class="settingspage" id="settingsdiv">
+      <form id="algorithmsetting" name="algorithmForm">
+        <div class="alorithm">
+          <strong>Algorithm to use when calculating GPA:</strong>
+          <input type="radio" id="Alg1" name="algorithm" value="1" />
+          <label for="4">Subtraction</label>
+          <input type="radio" id="Alg2" name="algorithm" value="2" />
+          <label for="4.5">Simple Average</label>
+        </div>
+        (Some school districts use different methods of calculating GPA. The
+        subtraction algorithm is where each percentage point from 100 is a
+        reduction of 0.05 from its class weight. The simple average algorithm is
+        where the percentage score in each class is multiplied by the class
+        weight, divided by 100, then averaged. Default is subtraction.)
+      </form>
+      <form id="divnumbersetting" name="divnumberForm">
+        <div class="divnumber">
+          <strong>Number of grade boxes:</strong>
+          <input type="radio" id="gradeDiv1" name="gradeDivNumber" value="1" />
+          <label for="4">1</label>
+          <input type="radio" id="gradeDiv2" name="gradeDivNumber" value="2" />
+          <label for="4.5">2</label>
+        </div>
+        (Some people may have multiple boxes in their gradebook for grades, the
+        first one of which may be blank. If this is so, click the second option.
+        Default is 1.)
+      </form>
+      <div class="divcumulative">
+        <strong
+          >Cumulative GPA for previous semesters (import from
+          <a href="https://captainbboy.github.io">captainbboy.github.io</a
+          >):</strong
+        >
+        <textarea
+          name="cumulativebox"
+          id="cumulativeSaveBox"
+          cols="40"
+          rows="3"
+        ></textarea>
+      </div>
+      <button id="closeSettings">Save and exit to main page</button>
+      <button id="closeSettingsNoSave">Exit without saving</button>
+    </div>
+    <script src="background/main.ts"></script>
+  </body>
+</html>
