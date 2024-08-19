@@ -7,7 +7,10 @@ export function saveGPAtoGraph(
 ) {
   chrome.storage.local.get(["GPAGraphArray"], function (data) {
     let graphHasSet = 0;
-    const GPAGraphArray = data.GPAGraphArray;
+    let GPAGraphArray = [];
+    if (data.GPAGraphArray != undefined) {
+      GPAGraphArray = data.GPAGraphArray;
+    }
     let hasbeen24hours = 0;
     let isrepeatvalue = 0;
     console.log(GPAGraphArray);

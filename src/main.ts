@@ -23,7 +23,14 @@ scriptTag.src = chrome.runtime.getURL("script2.js");
 document.head.appendChild(scriptTag);
 
 const url = location.href;
-const page = url.split("/scripts/wsisa.dll/WService=")[1].split("/")[1];
+
+let page = undefined;
+if (url != undefined) {
+  const first_split = url.split("/scripts/wsisa.dll/WService=")[1]
+  if (first_split != undefined) {
+    page = first_split.split("/")[1];
+  }
+}
 console.log("[DEBUG] page = " + page);
 
 let weightaverage = 4.0;
