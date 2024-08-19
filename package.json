@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "rm -rf .parcel-cache  && parcel watch src/manifest.json --host localhost",
     "build": "rm -rf .parcel-cache && parcel build src/manifest.json",
-    "package-firefox": "web-ext build -s dist/"
+    "package-firefox": "rm -rf web-ext-artifacts && web-ext build -s dist/"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
