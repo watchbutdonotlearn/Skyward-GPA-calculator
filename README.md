@@ -4,20 +4,6 @@
 
 This is an extension which injects various scripts into Skyward, to calculate GPA and perform other tasks, such as disabling the idle logout prompt.
 
-# Installing
-If you are on Chrome, follow these steps to install the extension:
-
-1. Clone the repository and follow the build instructions
-3. Go to [chrome://extensions](chrome://extensions) in your chrome browser.
-4. Enable Developer mode by flipping the switch in the upper-right corner of your screen.
-5. Now, click on the "Load unpacked" button in the upper-left side of the screen.
-6. Navigate to the directory which you cloned the repository, and click on the `dist` folder
-
-
-As of right now there are no plans on uploading this extension to the Chrome Web Store due to it requiring a 5 dollar fee for developers.
-
-If you are on Firefox, the installation process is much easier! The extension can be installed from [here](https://addons.mozilla.org/en-US/firefox/addon/skyward-gpa-calculator/).
-
 # Building
 This extension uses `yarn` to manage packages, and is built in Typescript.
 
@@ -36,4 +22,8 @@ yarn build
 ```
 Type errors are to be expected, as this was ported from a JavaScript project with relaxed use of types.
 
-The outputted extension (including `manifest.json`) will be in `dist`
+The outputted extension (including `manifest.json`) will be in `dist`. To package as a FireFox extension, run 
+```
+yarn package-firefox
+```
+The outputted extension will be in `web-ext-artifacts`.
