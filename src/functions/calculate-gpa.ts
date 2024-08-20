@@ -5,12 +5,12 @@ import { saveGPAtoGraph } from "./graph-functions";
 const GET_GRADES_FAIL: [number, number, number[]] = [-1, -1, []];
 
 export type GPAJSONDictonary = {
-    [key: string]: {
-      classNames: string[],
-      inputtedGPAValues: number[],
-      inputtedGradeValues: number[],
-      setNumberOfClasses: string
-    };
+  [key: string]: {
+    classNames: string[];
+    inputtedGPAValues: number[];
+    inputtedGradeValues: number[];
+    setNumberOfClasses: string;
+  };
 };
 
 export interface calculateGPAParams {
@@ -47,12 +47,12 @@ function getGrades(): [number, number, number[]] {
     console.log("[ERROR] Grades not found");
     return GET_GRADES_FAIL;
   }
-  
-  const grades: number[] = []
+
+  const grades: number[] = [];
   let gpa_sub = 0;
   let gpa_cnt = 0;
   for (let i = 0; i < grade_containers.length; i++) {
-    const grade_container = grade_containers[i]
+    const grade_container = grade_containers[i];
     const detectUndefined = grade_container;
     if (detectUndefined === undefined) {
       console.log("[ERROR] Grades not found");
@@ -60,8 +60,8 @@ function getGrades(): [number, number, number[]] {
     }
     // Get grades
     const inner_grades =
-      grade_container.children[2].children[0].children[0].children[0].children[1]
-        .children[0].children[0];
+      grade_container.children[2].children[0].children[0].children[0]
+        .children[1].children[0].children[0];
     console.log(inner_grades);
 
     for (let i = 0; i < inner_grades.children.length; i++) {
@@ -96,7 +96,7 @@ function getGrades(): [number, number, number[]] {
  * @param {calculateGPAParams} params - An object that contains all of the parameters used
  * */
 export function calculateGPA(params: calculateGPAParams): [number, number] {
-  setClassNamesAndNumberOfClasses()
+  setClassNamesAndNumberOfClasses();
   let [gpa_sub, gpa_cnt, tempGrades] = getGrades();
 
   // Error occurred
@@ -312,7 +312,10 @@ export function displayGPA(
       "</h2>";
   }
 
-  const currentGPAStr = JSON.stringify(params.currentGPAJSON).replace(/"/g, "'");
+  const currentGPAStr = JSON.stringify(params.currentGPAJSON).replace(
+    /"/g,
+    "'",
+  );
   GPAstr += `<a target="_blank" href="http://captainbboy.github.io?import=${currentGPAStr}">Export to captainbboy.github.io</a>`;
 
   GPAstr +=
@@ -329,7 +332,9 @@ export function displayGPA(
 
   document
     .getElementById("saveGraphBtn")
-    .addEventListener("click", function(){saveGPAtoGraph(unweighted, weighted, settings)});
+    .addEventListener("click", function () {
+      saveGPAtoGraph(unweighted, weighted, settings);
+    });
 
   chrome.storage.local.get(["autosaveSetting"], function (data) {
     settings.autosaveSetting =

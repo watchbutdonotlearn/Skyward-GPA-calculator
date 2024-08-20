@@ -7,7 +7,7 @@ type GraphValueType = {
   unweighted: number;
   weighted: number;
   timestamp: number;
-}
+};
 
 function getChartStorage(settings: Settings) {
   chrome.storage.local.get(["GPAGraphArray"], function (data) {
@@ -71,9 +71,9 @@ function initChart() {
     options: {
       plugins: {
         legend: {
-          display: true
-        }
-      }
+          display: true,
+        },
+      },
     },
   });
   chart.getDatasetMeta(0).hidden = true;
@@ -82,7 +82,9 @@ function initChart() {
 
 function clearValues() {
   const emptyarray: GraphValueType[] = [];
-  chrome.storage.local.set({ GPAGraphArray: emptyarray }).catch(() => "Clearing values failed!");
+  chrome.storage.local
+    .set({ GPAGraphArray: emptyarray })
+    .catch(() => "Clearing values failed!");
   console.log("clearing array");
 }
 function saveAutosaveSetting() {
@@ -95,24 +97,27 @@ function saveAutosaveSetting() {
     } else {
       savedValue = false;
     }
-    chrome.storage.local.set({ autosaveSetting: savedValue }).catch(() => "Storing the autosave setting failed!");
+    chrome.storage.local
+      .set({ autosaveSetting: savedValue })
+      .catch(() => "Storing the autosave setting failed!");
   }
 }
 
 window.onload = function () {
-  const clearValuesButton = document.getElementById("clearGraphBtn")
+  const clearValuesButton = document.getElementById("clearGraphBtn");
   if (clearValuesButton != null) {
     clearValuesButton.addEventListener("click", clearValues);
   }
-  const autosaveTrueButton = document.getElementById("autosavetrue")
+  const autosaveTrueButton = document.getElementById("autosavetrue");
   if (autosaveTrueButton != null) {
     autosaveTrueButton.addEventListener("click", saveAutosaveSetting);
   }
-  const autosaveFalseButton = document.getElementById("autosavefalse")
+  const autosaveFalseButton = document.getElementById("autosavefalse");
   if (autosaveFalseButton != null) {
     autosaveFalseButton.addEventListener("click", saveAutosaveSetting);
   }
-  const divdarkmodeSettingButton = document.getElementById("divdarkmodesetting")
+  const divdarkmodeSettingButton =
+    document.getElementById("divdarkmodesetting");
   if (divdarkmodeSettingButton != null) {
     divdarkmodeSettingButton.addEventListener("click", saveAutosaveSetting);
   }
@@ -126,7 +131,9 @@ window.onload = function () {
         enabled === 0 ||
         typeof enabled != "boolean"
       ) {
-        chrome.storage.local.set({ autosaveSetting: false }).catch(() => "Issue with saving autosave settings!");
+        chrome.storage.local
+          .set({ autosaveSetting: false })
+          .catch(() => "Issue with saving autosave settings!");
         console.log(
           "changing stored autosave setting blank to default value of false",
         );

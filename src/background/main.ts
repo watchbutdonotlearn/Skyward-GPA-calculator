@@ -1,6 +1,8 @@
 function togglevisibility() {
   const x = document.getElementById("weightselectordiv");
-  const GPAForms = Array.from(document.getElementsByClassName("GPAForm") as HTMLCollectionOf<HTMLElement>);
+  const GPAForms = Array.from(
+    document.getElementsByClassName("GPAForm") as HTMLCollectionOf<HTMLElement>,
+  );
   const GPAFormHolder = document.getElementById("GPAFormHolder");
 
   if (x != null) {
@@ -21,7 +23,9 @@ function togglevisibility() {
         for (let i = 0; i < GPAForms.length; i++) {
           if (i < 7) {
             GPAForms[i].style.display = "block";
-            const classTitleEl = GPAForms[i].getElementsByClassName("classTitle")[0] as HTMLElement;
+            const classTitleEl = GPAForms[i].getElementsByClassName(
+              "classTitle",
+            )[0] as HTMLElement;
             classTitleEl.innerHTML = "Class " + Math.floor(i + 1);
             if (classTitleEl.offsetWidth > biggestClassTitleWidth)
               biggestClassTitleWidth = classTitleEl.offsetWidth;
@@ -29,7 +33,11 @@ function togglevisibility() {
         }
       }
       console.log("biggestClassTitleWidth: " + biggestClassTitleWidth + "px");
-      const classTitles = Array.from(document.getElementsByClassName("classTitle") as HTMLCollectionOf<HTMLElement>);
+      const classTitles = Array.from(
+        document.getElementsByClassName(
+          "classTitle",
+        ) as HTMLCollectionOf<HTMLElement>,
+      );
       for (let o = 0; o < classTitles.length; o++) {
         classTitles[o].style.minWidth = `${biggestClassTitleWidth + 20}px`;
       }
@@ -45,8 +53,9 @@ function togglevisibility() {
         for (let i = 0; i < GPAForms.length; i++) {
           if (i < parseInt(data["numberOfClasses"] as string)) {
             GPAForms[i].style.display = "block";
-            const classTitleEl =
-              GPAForms[i].getElementsByClassName("classTitle")[0] as HTMLElement;
+            const classTitleEl = GPAForms[i].getElementsByClassName(
+              "classTitle",
+            )[0] as HTMLElement;
             classTitleEl.innerHTML = data.classNames[i] as string;
             if (classTitleEl.offsetWidth > biggestClassTitleWidth)
               biggestClassTitleWidth = classTitleEl.offsetWidth;
@@ -54,7 +63,11 @@ function togglevisibility() {
         }
       }
       console.log("biggestClassTitleWidth: " + biggestClassTitleWidth + "px");
-      const classTitles = Array.from(document.getElementsByClassName("classTitle") as HTMLCollectionOf<HTMLElement>);
+      const classTitles = Array.from(
+        document.getElementsByClassName(
+          "classTitle",
+        ) as HTMLCollectionOf<HTMLElement>,
+      );
       for (let o = 0; o < classTitles.length; o++) {
         classTitles[o].style.minWidth = `${biggestClassTitleWidth + 20}px`;
       }

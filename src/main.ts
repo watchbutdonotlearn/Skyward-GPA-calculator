@@ -26,7 +26,7 @@ const url = location.href;
 
 let page = undefined;
 if (url != undefined) {
-  const first_split = url.split("/scripts/wsisa.dll/WService=")[1]
+  const first_split = url.split("/scripts/wsisa.dll/WService=")[1];
   if (first_split != undefined) {
     page = first_split.split("/")[1];
   }
@@ -56,7 +56,9 @@ const myPromise = new Promise<void>(function (myResolve, _myReject) {
     }
     if (isPrevGradesSet == 1) {
       const tempPrevSemesterGrades = data.storedCumulativeGrades as string;
-      const PrevSemesterGradesJSON = JSON.parse(tempPrevSemesterGrades) as GPAJSONDictonary;
+      const PrevSemesterGradesJSON = JSON.parse(
+        tempPrevSemesterGrades,
+      ) as GPAJSONDictonary;
       for (const i in PrevSemesterGradesJSON) {
         console.log(PrevSemesterGradesJSON[i].inputtedGradeValues);
         prevSemesterGrades = prevSemesterGrades.concat(
@@ -121,7 +123,7 @@ if (page == "sfgradebook001.w") {
       console.log(weightsum);
       weightaverage = weightsum / numberOfWeights;
       console.log(weightaverage);
-      
+
       const params: calculateGPAParams = {
         numberOfWeights: numberOfWeights,
         weightArray: weightArray,
