@@ -1,8 +1,6 @@
 # Skyward-GPA-calculator
 > [!IMPORTANT]
 > This extension has entered into maintainence mode, and maintainership has passed over to [Mahid Sheikh](https://github.com/StandingPadAnimations/). PRs will be reviewed and accepted, but new features won't be a priority 
-> 
-> A rewrite to TypeScript is also in progress to make this more maintainable for future developers. Check the `rewrite` branch for progress on the rewrite.
 
 This is an extension which injects various scripts into Skyward, to calculate GPA and perform other tasks, such as disabling the idle logout prompt.
 
